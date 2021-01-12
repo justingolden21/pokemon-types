@@ -16,4 +16,3 @@ if os.path.exists('docs/'):
         shutil.rmtree('docs/')
 os.makedirs('docs/')
 recursive_copy('dist/', 'docs/')
-input('Done.')
