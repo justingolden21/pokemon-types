@@ -1,0 +1,28 @@
+{
+	"name": "pokemon-types",
+	"version": "1.0.0",
+	"description": "A simple tool for type matchups in Pokemon Go",
+	"scripts": {
+		"dev-no-watch": "postcss src/styles.css -o dist/css/styles.css",
+		"dev": "postcss src/styles.css -o dist/css/styles.css --watch",
+		"build": "cross-env NODE_ENV=production postcss src/styles.css -o dist/css/styles.css && cleancss -o dist/css/styles.css dist/css/styles.css"
+	},
+	"keywords": [
+		"pokemon types",
+		"pokemon go",
+		"pokemon go types",
+		"pokemon type chart",
+		"pokemon go super effective",
+		"pokemon type matchups",
+		"pokemon go type matchups"
+	],
+	"author": "Justin Golden",
+	"license": "MIT",
+	"dependencies": {
+		"autoprefixer": "^10.1.0",
+		"clean-css-cli": "^4.3.0",
+		"cross-env": "^7.0.3",
+		"postcss-cli": "^8.3.1",
+		"tailwindcss": "^2.0.2"
+	}
+}

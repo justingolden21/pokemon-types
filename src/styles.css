@@ -1,0 +1,257 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	::-moz-selection {
+		@apply bg-gray-100;
+	}
+	::selection {
+		@apply bg-gray-100;
+	}
+	*:focus, button:focus {
+		@apply outline-none ring-2 ring-gray-300;
+	}
+
+	h1 {
+		@apply text-2xl font-light;
+	}
+	h2 {
+		@apply text-xl font-medium;
+	}
+	p {
+		@apply leading-relaxed;
+	}
+}
+
+@layer components {
+
+	.btn {
+		@apply rounded py-2 px-4;
+		/*font-bold*/
+	}
+	.btn.xs {
+		@apply px-1;
+	}
+	.btn.sm {
+		@apply py-1 px-2;
+	}
+	.btn.md {
+		@apply py-2 px-4;
+	}
+
+
+	.btn.normal {
+		border: 2px solid #A8A878;
+		color: #000;
+	}
+	.btn.normal:hover {
+		background-color: #A8A878;
+		color: #FFF;
+	}
+	.btn.normal:focus {
+		--tw-ring-shadow: 0 0 0 2px #A8A87844;
+	}
+	.btn.fighting {
+		border: 2px solid #C03028;
+		color: #000;
+	}
+	.btn.fighting:hover {
+		background-color: #C03028;
+		color: #FFF;
+	}
+	.btn.fighting:focus {
+		--tw-ring-shadow: 0 0 0 2px #C0302844;
+	}
+	.btn.flying {
+		border: 2px solid #A890F0;
+		color: #000;
+	}
+	.btn.flying:hover {
+		background-color: #A890F0;
+		color: #FFF;
+	}
+	.btn.flying:focus {
+		--tw-ring-shadow: 0 0 0 2px #A890F044;
+	}
+	.btn.poison {
+		border: 2px solid #A040A0;
+		color: #000;
+	}
+	.btn.poison:hover {
+		background-color: #A040A0;
+		color: #FFF;
+	}
+	.btn.poison:focus {
+		--tw-ring-shadow: 0 0 0 2px #A040A044;
+	}
+	.btn.ground {
+		border: 2px solid #E0C068;
+		color: #000;
+	}
+	.btn.ground:hover {
+		background-color: #E0C068;
+		color: #FFF;
+	}
+	.btn.ground:focus {
+		--tw-ring-shadow: 0 0 0 2px #E0C06844;
+	}
+	.btn.rock {
+		border: 2px solid #B8A038;
+		color: #000;
+	}
+	.btn.rock:hover {
+		background-color: #B8A038;
+		color: #FFF;
+	}
+	.btn.rock:focus {
+		--tw-ring-shadow: 0 0 0 2px #B8A03844;
+	}
+	.btn.bug {
+		border: 2px solid #A8B820;
+		color: #000;
+	}
+	.btn.bug:hover {
+		background-color: #A8B820;
+		color: #FFF;
+	}
+	.btn.bug:focus {
+		--tw-ring-shadow: 0 0 0 2px #A8B82044;
+	}
+	.btn.ghost {
+		border: 2px solid #705898;
+		color: #000;
+	}
+	.btn.ghost:hover {
+		background-color: #705898;
+		color: #FFF;
+	}
+	.btn.ghost:focus {
+		--tw-ring-shadow: 0 0 0 2px #70589844;
+	}
+	.btn.steel {
+		border: 2px solid #B8B8D0;
+		color: #000;
+	}
+	.btn.steel:hover {
+		background-color: #B8B8D0;
+		color: #FFF;
+	}
+	.btn.steel:focus {
+		--tw-ring-shadow: 0 0 0 2px #B8B8D044;
+	}
+	.btn.fire {
+		border: 2px solid #F08030;
+		color: #000;
+	}
+	.btn.fire:hover {
+		background-color: #F08030;
+		color: #FFF;
+	}
+	.btn.fire:focus {
+		--tw-ring-shadow: 0 0 0 2px #F0803044;
+	}
+	.btn.water {
+		border: 2px solid #6890F0;
+		color: #000;
+	}
+	.btn.water:hover {
+		background-color: #6890F0;
+		color: #FFF;
+	}
+	.btn.water:focus {
+		--tw-ring-shadow: 0 0 0 2px #6890F044;
+	}
+	.btn.grass {
+		border: 2px solid #78C850;
+		color: #000;
+	}
+	.btn.grass:hover {
+		background-color: #78C850;
+		color: #FFF;
+	}
+	.btn.grass:focus {
+		--tw-ring-shadow: 0 0 0 2px #78C85044;
+	}
+	.btn.electric {
+		border: 2px solid #F8D030;
+		color: #000;
+	}
+	.btn.electric:hover {
+		background-color: #F8D030;
+		color: #FFF;
+	}
+	.btn.electric:focus {
+		--tw-ring-shadow: 0 0 0 2px #F8D03044;
+	}
+	.btn.psychic {
+		border: 2px solid #F85888;
+		color: #000;
+	}
+	.btn.psychic:hover {
+		background-color: #F85888;
+		color: #FFF;
+	}
+	.btn.psychic:focus {
+		--tw-ring-shadow: 0 0 0 2px #F8588844;
+	}
+	.btn.ice {
+		border: 2px solid #98D8D8;
+		color: #000;
+	}
+	.btn.ice:hover {
+		background-color: #98D8D8;
+		color: #FFF;
+	}
+	.btn.ice:focus {
+		--tw-ring-shadow: 0 0 0 2px #98D8D844;
+	}
+	.btn.dragon {
+		border: 2px solid #7038F8;
+		color: #000;
+	}
+	.btn.dragon:hover {
+		background-color: #7038F8;
+		color: #FFF;
+	}
+	.btn.dragon:focus {
+		--tw-ring-shadow: 0 0 0 2px #7038F844;
+	}
+	.btn.dark {
+		border: 2px solid #705848;
+		color: #000;
+	}
+	.btn.dark:hover {
+		background-color: #705848;
+		color: #FFF;
+	}
+	.btn.dark:focus {
+		--tw-ring-shadow: 0 0 0 2px #70584844;
+	}
+	.btn.fairy {
+		border: 2px solid #EE99AC;
+		color: #000;
+	}
+	.btn.fairy:hover {
+		background-color: #EE99AC;
+		color: #FFF;
+	}
+	.btn.fairy:focus {
+		--tw-ring-shadow: 0 0 0 2px #EE99AC44;
+	}
+
+
+
+}
+
+@media (min-width: 640px) { /* sm */
+}
+
+@media (min-width: 768px) { /* md */
+}
+
+@media (min-width: 1024px) { /* lg */
+}
+
+@media (min-width: 1280px) { /* xl */
+}
