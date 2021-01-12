@@ -12,7 +12,7 @@ const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
 // 		console.log(json);
 // 	});
 
-fetch('../data/types.json')
+fetch('data/types.json')
 	.then(response => response.json())
 	.then(json => {
 		// console.log(json);
