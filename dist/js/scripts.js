@@ -6,12 +6,12 @@ if('serviceWorker' in navigator) {
 
 const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
 
-
+let typeJson;
 fetch('data/types.json')
 	.then(response => response.json())
 	.then(json => {
-		// console.log(json);
-		for(type of json) {
+		typeJson = json;
+		for(let type of json) {
 			let btn = document.createElement('button');
 			btn.innerText = capitalize(type.name);
 			btn.classList = `btn ${type.name}`;
@@ -24,6 +24,23 @@ fetch('data/types.json')
 
 let currentType1, currentType2;
 let recentlyChangedType;
+
+function updateTypeDisplay() {
+	let weakHtml = '';
+	let resistHtml = '';
+	for(let type of typeJson) {
+		let matchup = getMatchup(type.name, currentType1, currentType2);
+		if(matchup == 1) continue;
+		const html = `<div class="matchup-item" style="background-color: #${type.color};">${matchup}x ${type.name}</div>`;
+		if(matchup > 1) {
+			weakHtml += html;
+		} else {
+			resistHtml += html;
+		}
+	}
+	document.getElementById('type-weak').innerHTML = weakHtml;
+	document.getElementById('type-resist').innerHTML = resistHtml;
+}
 
 function handleClick(type) {
 	if(currentType1 == type) {
@@ -47,6 +64,8 @@ function handleClick(type) {
 			}
 		}
 	}
+
+	updateTypeDisplay();
 }
 
 function changeType(num, type) {

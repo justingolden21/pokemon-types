@@ -244,6 +244,10 @@
 	.btn.fairy:focus {
 		--tw-ring-shadow: 0 0 0 2px #EE99AC44;
 	}
+	.matchup-item {
+		@apply p-2;
+		color: #FFF;
+	}
 	/* purgecss end ignore */
 
 }
