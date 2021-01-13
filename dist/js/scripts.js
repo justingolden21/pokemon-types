@@ -27,20 +27,25 @@ let recentlyChangedType;
 
 function handleClick(type) {
 	if(!currentType1) {
-		currentType1 = type;
-		recentlyChangedType = 1;
+		changeType(1, type);
 	} else if(!currentType2) {
-		currentType2 = type;
-		recentlyChangedType = 2;
+		changeType(2, type);
 	} else {
 		if(recentlyChangedType==1) {
-			currentType2 = type;
-			recentlyChangedType = 2;
+			changeType(2, type);
 		} else {
-			currentType2 = type;
-			recentlyChangedType = 2;
+			changeType(1, type);
 		}
 	}
+}
+
+function changeType(num, type) {
+	if(num==1) {
+		currentType1 = type;
+	} else {
+		currentType2 = type;
+	}
+	recentlyChangedType = num;
 }
 
 // fetch('../data/pokedex.json')
