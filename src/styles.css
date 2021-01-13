@@ -41,6 +41,7 @@
 	}
 
 
+	/* purgecss start ignore */
 	.btn.normal {
 		border: 2px solid #A8A878;
 		color: #000;
@@ -239,8 +240,7 @@
 	.btn.fairy:focus {
 		--tw-ring-shadow: 0 0 0 2px #EE99AC44;
 	}
-
-
+	/* purgecss end ignore */
 
 }
 
