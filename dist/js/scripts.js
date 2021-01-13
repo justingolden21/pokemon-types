@@ -26,23 +26,31 @@ let currentType1, currentType2;
 let recentlyChangedType;
 
 function handleClick(type) {
-	if(!currentType1) {
-		changeType(1, type);
-	} else if(!currentType2) {
-		changeType(2, type);
+	if(currentType1 == type) {
+		currentType1 = '';
+		removeActive(type);
+	} else if (currentType2 == type) {
+		currentType2 = '';
+		removeActive(type);
 	} else {
-		if(recentlyChangedType==1) {
-			removeActive(currentType2);
+		if(!currentType1) {
+			changeType(1, type);
+		} else if(!currentType2) {
 			changeType(2, type);
 		} else {
-			removeActive(currentType1);
-			changeType(1, type);
+			if(recentlyChangedType == 1) {
+				removeActive(currentType2);
+				changeType(2, type);
+			} else {
+				removeActive(currentType1);
+				changeType(1, type);
+			}
 		}
 	}
 }
 
 function changeType(num, type) {
-	if(num==1) {
+	if(num == 1) {
 		currentType1 = type;
 	} else {
 		currentType2 = type;
