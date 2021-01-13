@@ -71,6 +71,7 @@ function handleClick(type) {
 	}
 
 	updateTypeDisplay();
+	document.getElementById('search').value = '';
 }
 
 function changeType(num, type) {
