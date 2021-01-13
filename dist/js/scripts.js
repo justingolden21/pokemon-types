@@ -32,8 +32,10 @@ function handleClick(type) {
 		changeType(2, type);
 	} else {
 		if(recentlyChangedType==1) {
+			removeActive(currentType2);
 			changeType(2, type);
 		} else {
+			removeActive(currentType1);
 			changeType(1, type);
 		}
 	}
@@ -46,6 +48,15 @@ function changeType(num, type) {
 		currentType2 = type;
 	}
 	recentlyChangedType = num;
+
+	addActive(type);
+}
+
+function addActive(type) {
+	document.querySelector(`.${type}`).classList.add('active');
+}
+function removeActive(type) {
+	document.querySelector(`.${type}`).classList.remove('active');
 }
 
 // fetch('../data/pokedex.json')
