@@ -57,6 +57,8 @@ self.addEventListener('fetch', evt => {
 		caches.match(evt.request).then(cacheRes => {
 			return cacheRes || fetch(evt.request).then(fetchRes => {
 				return caches.open(dynamicCacheName).then(cache => {
+					// https://stackoverflow.com/a/19709846/4907950
+					if (new RegExp('^(?:[a-z]+:)?//', 'i').test(new URL(evt.request.url).protocol) ) return;
 					cache.put(evt.request.url, fetchRes.clone());
 					// check cached items size
 					limitCacheSize(dynamicCacheName, 100);
