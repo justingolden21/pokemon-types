@@ -43,7 +43,7 @@
 	/* purgecss start ignore */
 
 	#type-btns .btn {
-		@apply mx-2 my-1;
+		@apply mx-2 my-1 overflow-x-hidden;
 	}
 	#type-btns .btn:hover:not(.active) {
 		opacity: 0.75;
@@ -260,7 +260,7 @@
 		display: inline-block;
 	}
 	input[type=text] {
-		@apply bg-gray-100 w-48 px-4 py-2;
+		@apply bg-gray-100 w-64 md:w-96 px-4 py-2;
 	}
 	.autocomplete-items {
 		@apply border-2 border-gray-200 border-t-0 border-b-0 absolute left-0 right-0 z-10 max-h-96 overflow-y-auto;
