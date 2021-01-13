@@ -5,7 +5,9 @@ const assets = [
 	'/index.html',
 	'/404.html',
 	'/pages/fallback.html',
+	'/js/autocomplete.js',
 	'/js/scripts.js',
+	'/js/types.js',
 	'/css/styles.css',
 	'/img/icons/icon-96x96.png',
 ];
