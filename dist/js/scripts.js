@@ -4,6 +4,10 @@ if('serviceWorker' in navigator) {
 		.catch(err => console.log('service worker not registered', err));
 }
 
+window.onload = ()=> {
+	document.getElementById('clear-btn').onclick = clearTypes;
+}
+
 const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
 
 let typeJson;
@@ -84,6 +88,19 @@ function addActive(type) {
 }
 function removeActive(type) {
 	document.querySelector(`.${type}`).classList.remove('active');
+}
+
+function clearTypes() {
+	if(currentType2 != '') {
+		removeActive(currentType2);
+		currentType2 = '';
+	}
+	if(currentType1 != '') {
+		removeActive(currentType1);
+		currentType1 = '';
+	}
+
+	updateTypeDisplay();
 }
 
 // fetch('../data/pokedex.json')
