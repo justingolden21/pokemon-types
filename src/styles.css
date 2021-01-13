@@ -40,12 +40,16 @@
 		@apply py-2 px-4;
 	}
 
-	#type-btns button {
+	/* purgecss start ignore */
+
+	#type-btns .btn {
 		@apply mx-2 my-1;
+	}
+	#type-btns .btn:hover {
+		opacity: 0.5;
 	}
 
 
-	/* purgecss start ignore */
 	.btn.normal {
 		border: 2px solid #A8A878;
 		color: #000;
