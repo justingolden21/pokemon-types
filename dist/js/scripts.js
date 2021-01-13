@@ -5,7 +5,7 @@ if('serviceWorker' in navigator) {
 }
 
 window.onload = ()=> {
-	document.getElementById('clear-btn').onclick = clearTypes;
+	document.getElementById('clear-btn').onclick = ()=> clearTypes();
 }
 
 const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
@@ -104,6 +104,7 @@ function clearTypes(skipUpdate=false) {
 
 	if(!skipUpdate) {
 		updateTypeDisplay();
+		document.getElementById('search').value = '';
 	}
 }
 
