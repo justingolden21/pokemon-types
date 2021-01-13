@@ -61,6 +61,8 @@ function autocomplete(inp, options) {
 			if(currentFocus > -1) {
 				// simulate a click on the active item
 				if(items) items[currentFocus].click();
+			} else {
+				items[0].click();
 			}
 		}
 	});
