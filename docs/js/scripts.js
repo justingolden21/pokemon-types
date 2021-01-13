@@ -5,7 +5,7 @@ if('serviceWorker' in navigator) {
 }
 
 window.onload = ()=> {
-	document.getElementById('clear-btn').onclick = clearTypes;
+	document.getElementById('clear-btn').onclick = ()=> clearTypes();
 }
 
 const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
@@ -36,7 +36,8 @@ function updateTypeDisplay() {
 	for(let type of typeJson) {
 		let matchup = getMatchup(type.name, currentType1, currentType2);
 		if(matchup == 1) continue;
-		const html = `<div class="matchup-item" style="background-color: #${type.color};">${matchup}x ${capitalize(type.name)}</div>`;
+		const strong = (matchup != 0.625 && matchup != 1.6);
+		const html = `<div class="matchup-item" style="background-color: #${type.color};">${strong?'<strong>':''}${matchup}${strong?'</strong>':''}x ${capitalize(type.name)}</div>`;
 		if(matchup > 1) {
 			weakHtml += html;
 		} else {
@@ -104,6 +105,7 @@ function clearTypes(skipUpdate=false) {
 
 	if(!skipUpdate) {
 		updateTypeDisplay();
+		document.getElementById('search').value = '';
 	}
 }
 
