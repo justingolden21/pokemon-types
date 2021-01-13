@@ -45,7 +45,7 @@
 	#type-btns .btn {
 		@apply mx-2 my-1;
 	}
-	#type-btns .btn:hover {
+	#type-btns .btn:hover:not(.active) {
 		opacity: 0.75;
 	}
 
