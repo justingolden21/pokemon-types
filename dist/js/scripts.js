@@ -6,15 +6,29 @@ if('serviceWorker' in navigator) {
 
 window.onload = ()=> {
 	document.getElementById('clear-btn').onclick = clearTypes;
+
+	const search = document.getElementById('search');
+	search.onchange = ()=> {
+		console.log('a');
+		if(!pokedexJson) return;
+		// linear search, could be optimized...
+		for(let pokemon of pokedexJson) {
+			// could use .trim(), would take longer
+			if(pokemon.name.toUpperCase() == search.value.toUpperCase() ) {
+				console.log(pokemon.type);
+				return;
+			}
+		}
+	}
 }
 
 const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
 
-let typeJson;
+let typeJson, pokedexJson;
+
 fetch('data/types.json')
 	.then(response => response.json())
 	.then(json => {
-		typeJson = json;
 		for(let type of json) {
 			let btn = document.createElement('button');
 			btn.innerText = capitalize(type.name);
@@ -24,6 +38,7 @@ fetch('data/types.json')
 				handleClick(btn.classList[1]);
 			};
 		}
+		typeJson = json;
 	});
 
 let currentType1, currentType2;
@@ -103,8 +118,17 @@ function clearTypes() {
 	updateTypeDisplay();
 }
 
-// fetch('../data/pokedex.json')
-// 	.then(response => response.json())
-// 	.then(json => {
-// 		console.log(json);
-// 	});
+// ================================
+
+fetch('../data/pokedex.json')
+	.then(response => response.json())
+	.then(json => {
+		let names = [];
+		for(let pokemon of json) {
+			names.push(pokemon.name);
+		}
+		// console.log(names);
+		autocomplete(document.getElementById('search'), names);
+
+		pokedexJson = json;
+	});

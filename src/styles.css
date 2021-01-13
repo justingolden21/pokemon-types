@@ -4,13 +4,13 @@
 
 @layer base {
 	::-moz-selection {
-		@apply bg-gray-100;
+		@apply bg-indigo-100;
 	}
 	::selection {
-		@apply bg-gray-100;
+		@apply bg-indigo-100;
 	}
 	*:focus, button:focus {
-		@apply outline-none ring-2 ring-gray-300;
+		@apply outline-none ring-2 ring-indigo-300;
 	}
 
 	h1 {
@@ -28,7 +28,7 @@
 
 	.btn {
 		@apply rounded py-2 px-4;
-		/*font-bold*/
+		cursor: pointer;
 	}
 	.btn.xs {
 		@apply px-1;
@@ -46,7 +46,7 @@
 		@apply mx-2 my-1;
 	}
 	#type-btns .btn:hover {
-		opacity: 0.5;
+		opacity: 0.75;
 	}
 
 
@@ -249,9 +249,32 @@
 		--tw-ring-shadow: 0 0 0 2px #EE99AC44;
 	}
 	.matchup-item {
-		@apply px-2 py-1;
-		color: #FFF;
+		@apply px-2 py-1 text-white;
 	}
+
+	/* -------- Autocomplete -------- */
+
+	* { box-sizing: border-box; }
+	.autocomplete {
+		position: relative;
+		display: inline-block;
+	}
+	input[type=text] {
+		@apply bg-gray-100 w-48 px-4 py-2;
+	}
+	.autocomplete-items {
+		@apply border-2 border-gray-200 border-t-0 border-b-0 absolute left-0 right-0 z-10 max-h-96 overflow-y-auto;
+	}
+	.autocomplete-items div {
+		@apply p-2 bg-white border border-gray-200 cursor-pointer;
+	}
+	.autocomplete-items div:hover {
+		@apply bg-gray-100;
+	}
+	.autocomplete-active {
+		@apply bg-indigo-500 text-white !important;
+	}
+
 	/* purgecss end ignore */
 
 }
