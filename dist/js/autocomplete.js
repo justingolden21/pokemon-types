@@ -19,20 +19,24 @@ function autocomplete(inp, options) {
 		// append the div as a child of the autocomplete container
 		this.parentNode.appendChild(listDiv);
 		let numResults = 0;
-		for(let option of options) {
+		for(let idx in options) {
 			// check if the option starts with the same letters as the text field value
-			if(option.substr(0, val.length).toUpperCase() == val.toUpperCase() ) {
+			if(options[idx].substr(0, val.length).toUpperCase() == val.toUpperCase() ) {
 				// create a div for each matching element
 				let optionDiv = document.createElement('DIV');
 				// make matching letters bold, input field holds the option's value
-				optionDiv.innerHTML = `<strong>${option.substr(0, val.length)}</strong>${option.substr(val.length)}
-				<input type="hidden" value="${option}">`;
+				optionDiv.innerHTML = `<strong>${options[idx].substr(0, val.length)}</strong>${options[idx].substr(val.length)}
+				<input type="hidden" value="${options[idx]}" data-index="${idx}">`;
 				// when user clicks on the option
 				optionDiv.addEventListener('click', function(e) {
 					// insert the selected value into the text field
 					inp.value = this.getElementsByTagName('input')[0].value;
 					// close the list since an item has been selected
 					closeAllLists();
+					
+					// pokemon specific: "open" the pokemon based off of index
+					let idx = this.getElementsByTagName('input')[0].getAttribute('data-index');
+					openPokemon(idx);
 				});
 				listDiv.appendChild(optionDiv);
 

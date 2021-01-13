@@ -6,20 +6,6 @@ if('serviceWorker' in navigator) {
 
 window.onload = ()=> {
 	document.getElementById('clear-btn').onclick = clearTypes;
-
-	const search = document.getElementById('search');
-	search.onchange = ()=> {
-		console.log('a');
-		if(!pokedexJson) return;
-		// linear search, could be optimized...
-		for(let pokemon of pokedexJson) {
-			// could use .trim(), would take longer
-			if(pokemon.name.toUpperCase() == search.value.toUpperCase() ) {
-				console.log(pokemon.type);
-				return;
-			}
-		}
-	}
 }
 
 const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
@@ -41,8 +27,8 @@ fetch('data/types.json')
 		typeJson = json;
 	});
 
-let currentType1, currentType2;
-let recentlyChangedType;
+let currentType1 = '', currentType2 = '';
+let recentlyChangedType = -1;
 
 function updateTypeDisplay() {
 	let weakHtml = '';
@@ -127,8 +113,14 @@ fetch('../data/pokedex.json')
 		for(let pokemon of json) {
 			names.push(pokemon.name);
 		}
-		// console.log(names);
 		autocomplete(document.getElementById('search'), names);
 
 		pokedexJson = json;
 	});
+
+function openPokemon(id) {
+	clearTypes();
+	let types = pokedexJson[id].type;
+	changeType(1, types[0].toLowerCase() );
+	if(types[1]) changeType(2, types[1].toLowerCase() );
+}
