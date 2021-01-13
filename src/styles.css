@@ -44,6 +44,7 @@
 
 	#type-btns .btn {
 		@apply mx-2 my-1 overflow-x-hidden;
+		/*transition: background-color 0.25s linear, color 0.25s linear;*/
 	}
 	#type-btns .btn:hover:not(.active) {
 		opacity: 0.75;
