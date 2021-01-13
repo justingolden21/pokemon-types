@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="js/scripts.js"></script>
 	<script src="js/types.js"></script>
+	<script src="js/autocomplete.js"></script>
 </head>
 <body class="text-center m-4 text-gray-900">
 	<section>
@@ -24,7 +25,16 @@
 			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
 		</button>
 		<h1 class="my-2">Pokemon Types</h1>
+
+		<form autocomplete="off" class="my-2">
+			<div class="autocomplete">
+				<input id="search" type="text" placeholder="Search for a Pokemon..."
+					autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+			</div>
+		</form>
+
 		<div id="type-btns" class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 my-2"></div>
+
 		<div class="grid grid-cols-2 my-2">
 			<div>
 				<h3>Weak to:</h3>

@@ -10,11 +10,11 @@ window.onload = ()=> {
 
 const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
 
-let typeJson;
+let typeJson, pokedexJson;
+
 fetch('data/types.json')
 	.then(response => response.json())
 	.then(json => {
-		typeJson = json;
 		for(let type of json) {
 			let btn = document.createElement('button');
 			btn.innerText = capitalize(type.name);
@@ -24,10 +24,11 @@ fetch('data/types.json')
 				handleClick(btn.classList[1]);
 			};
 		}
+		typeJson = json;
 	});
 
-let currentType1, currentType2;
-let recentlyChangedType;
+let currentType1 = '', currentType2 = '';
+let recentlyChangedType = -1;
 
 function updateTypeDisplay() {
 	let weakHtml = '';
@@ -90,7 +91,7 @@ function removeActive(type) {
 	document.querySelector(`.${type}`).classList.remove('active');
 }
 
-function clearTypes() {
+function clearTypes(skipUpdate=false) {
 	if(currentType2 != '') {
 		removeActive(currentType2);
 		currentType2 = '';
@@ -100,11 +101,30 @@ function clearTypes() {
 		currentType1 = '';
 	}
 
-	updateTypeDisplay();
+	if(!skipUpdate) {
+		updateTypeDisplay();
+	}
 }
 
-// fetch('../data/pokedex.json')
-// 	.then(response => response.json())
-// 	.then(json => {
-// 		console.log(json);
-// 	});
+// ================================
+
+fetch('../data/pokedex.json')
+	.then(response => response.json())
+	.then(json => {
+		let names = [];
+		for(let pokemon of json) {
+			names.push(pokemon.name);
+		}
+		autocomplete(document.getElementById('search'), names);
+
+		pokedexJson = json;
+	});
+
+function openPokemon(id) {
+	clearTypes(true);
+	let types = pokedexJson[id].type;
+	changeType(1, types[0].toLowerCase() );
+	if(types[1]) changeType(2, types[1].toLowerCase() );
+
+	updateTypeDisplay();
+}
