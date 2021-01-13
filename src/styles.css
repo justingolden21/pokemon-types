@@ -40,13 +40,17 @@
 		@apply py-2 px-4;
 	}
 
+	#type-btns button {
+		@apply mx-2 my-1;
+	}
+
 
 	/* purgecss start ignore */
 	.btn.normal {
 		border: 2px solid #A8A878;
 		color: #000;
 	}
-	.btn.normal:hover {
+	.btn.normal:hover, .btn.normal.active {
 		background-color: #A8A878;
 		color: #FFF;
 	}
@@ -57,7 +61,7 @@
 		border: 2px solid #C03028;
 		color: #000;
 	}
-	.btn.fighting:hover {
+	.btn.fighting:hover, .btn.fighting.active {
 		background-color: #C03028;
 		color: #FFF;
 	}
@@ -68,7 +72,7 @@
 		border: 2px solid #A890F0;
 		color: #000;
 	}
-	.btn.flying:hover {
+	.btn.flying:hover, .btn.flying.active {
 		background-color: #A890F0;
 		color: #FFF;
 	}
@@ -79,7 +83,7 @@
 		border: 2px solid #A040A0;
 		color: #000;
 	}
-	.btn.poison:hover {
+	.btn.poison:hover, .btn.poison.active {
 		background-color: #A040A0;
 		color: #FFF;
 	}
@@ -90,7 +94,7 @@
 		border: 2px solid #E0C068;
 		color: #000;
 	}
-	.btn.ground:hover {
+	.btn.ground:hover, .btn.ground.active {
 		background-color: #E0C068;
 		color: #FFF;
 	}
@@ -101,7 +105,7 @@
 		border: 2px solid #B8A038;
 		color: #000;
 	}
-	.btn.rock:hover {
+	.btn.rock:hover, .btn.rock.active {
 		background-color: #B8A038;
 		color: #FFF;
 	}
@@ -112,7 +116,7 @@
 		border: 2px solid #A8B820;
 		color: #000;
 	}
-	.btn.bug:hover {
+	.btn.bug:hover, .btn.bug.active {
 		background-color: #A8B820;
 		color: #FFF;
 	}
@@ -123,7 +127,7 @@
 		border: 2px solid #705898;
 		color: #000;
 	}
-	.btn.ghost:hover {
+	.btn.ghost:hover, .btn.ghost.active {
 		background-color: #705898;
 		color: #FFF;
 	}
@@ -134,7 +138,7 @@
 		border: 2px solid #B8B8D0;
 		color: #000;
 	}
-	.btn.steel:hover {
+	.btn.steel:hover, .btn.steel.active {
 		background-color: #B8B8D0;
 		color: #FFF;
 	}
@@ -145,7 +149,7 @@
 		border: 2px solid #F08030;
 		color: #000;
 	}
-	.btn.fire:hover {
+	.btn.fire:hover, .btn.fire.active {
 		background-color: #F08030;
 		color: #FFF;
 	}
@@ -156,7 +160,7 @@
 		border: 2px solid #6890F0;
 		color: #000;
 	}
-	.btn.water:hover {
+	.btn.water:hover, .btn.water.active {
 		background-color: #6890F0;
 		color: #FFF;
 	}
@@ -167,7 +171,7 @@
 		border: 2px solid #78C850;
 		color: #000;
 	}
-	.btn.grass:hover {
+	.btn.grass:hover, .btn.grass.active {
 		background-color: #78C850;
 		color: #FFF;
 	}
@@ -178,7 +182,7 @@
 		border: 2px solid #F8D030;
 		color: #000;
 	}
-	.btn.electric:hover {
+	.btn.electric:hover, .btn.electric.active {
 		background-color: #F8D030;
 		color: #FFF;
 	}
@@ -189,7 +193,7 @@
 		border: 2px solid #F85888;
 		color: #000;
 	}
-	.btn.psychic:hover {
+	.btn.psychic:hover, .btn.psychic.active {
 		background-color: #F85888;
 		color: #FFF;
 	}
@@ -200,7 +204,7 @@
 		border: 2px solid #98D8D8;
 		color: #000;
 	}
-	.btn.ice:hover {
+	.btn.ice:hover, .btn.ice.active {
 		background-color: #98D8D8;
 		color: #FFF;
 	}
@@ -211,7 +215,7 @@
 		border: 2px solid #7038F8;
 		color: #000;
 	}
-	.btn.dragon:hover {
+	.btn.dragon:hover, .btn.dragon.active {
 		background-color: #7038F8;
 		color: #FFF;
 	}
@@ -222,7 +226,7 @@
 		border: 2px solid #705848;
 		color: #000;
 	}
-	.btn.dark:hover {
+	.btn.dark:hover, .btn.dark.active {
 		background-color: #705848;
 		color: #FFF;
 	}
@@ -233,7 +237,7 @@
 		border: 2px solid #EE99AC;
 		color: #000;
 	}
-	.btn.fairy:hover {
+	.btn.fairy:hover, .btn.fairy.active {
 		background-color: #EE99AC;
 		color: #FFF;
 	}
