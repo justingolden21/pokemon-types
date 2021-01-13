@@ -8,6 +8,8 @@ const assets = [
 	'/js/autocomplete.js',
 	'/js/scripts.js',
 	'/js/types.js',
+	'/data/pokedex.json',
+	'/data/types.json',
 	'/css/styles.css',
 	'/img/icons/icon-96x96.png',
 ];
