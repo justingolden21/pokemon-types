@@ -35,7 +35,7 @@ function updateTypeDisplay() {
 	for(let type of typeJson) {
 		let matchup = getMatchup(type.name, currentType1, currentType2);
 		if(matchup == 1) continue;
-		const html = `<div class="matchup-item" style="background-color: #${type.color};">${matchup}x ${type.name}</div>`;
+		const html = `<div class="matchup-item" style="background-color: #${type.color};">${matchup}x ${capitalize(type.name)}</div>`;
 		if(matchup > 1) {
 			weakHtml += html;
 		} else {
