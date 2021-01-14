@@ -31,8 +31,10 @@ let currentType1 = '', currentType2 = '';
 let recentlyChangedType = -1;
 
 function updateTypeDisplay() {
-	let weakHtml = '';
-	let resistHtml = '';
+	let weakHtml = '<h3>Weak to:</h3>';
+	let resistHtml = '<h3>Resists:</h3>';
+	if(currentType1 == '' && currentType2 == '') weakHtml = '', resistHtml = '';
+
 	for(let type of typeJson) {
 		let matchup = getMatchup(type.name, currentType1, currentType2);
 		if(matchup == 1) continue;
@@ -93,7 +95,7 @@ function removeActive(type) {
 	document.querySelector(`.${type}`).classList.remove('active');
 }
 
-function clearTypes(skipUpdate=false) {
+function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
 	if(currentType2 != '') {
 		removeActive(currentType2);
 		currentType2 = '';
@@ -104,8 +106,16 @@ function clearTypes(skipUpdate=false) {
 	}
 
 	if(!skipUpdate) {
-		updateTypeDisplay();
 		document.getElementById('search').value = '';
+
+		const animateClasses = ['animate__animated', 'animate__bounceOutLeft', 'animate__fast'];
+		document.getElementById('type-weak').classList.add(...animateClasses);
+		document.getElementById('type-resist').classList.add(...animateClasses);
+		document.getElementById('type-weak').addEventListener('animationend', () => {
+			updateTypeDisplay();
+			document.getElementById('type-weak').classList.remove(...animateClasses);
+			document.getElementById('type-resist').classList.remove(...animateClasses);
+		});
 	}
 }
 

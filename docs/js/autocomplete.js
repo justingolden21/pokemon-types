@@ -61,7 +61,8 @@ function autocomplete(inp, options) {
 			if(currentFocus > -1) {
 				// simulate a click on the active item
 				if(items) items[currentFocus].click();
-			} else {
+			} else if(items) { // check that list exists
+				// select the top option
 				items[0].click();
 			}
 		}
