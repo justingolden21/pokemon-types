@@ -46,6 +46,10 @@ function updateTypeDisplay() {
 	}
 	document.getElementById('type-weak').innerHTML = weakHtml;
 	document.getElementById('type-resist').innerHTML = resistHtml;
+
+	const visibility = (currentType1 != '' || currentType2 != '') ? 'visible' : 'hidden';
+	document.getElementById('weak-label').style.visibility = visibility;
+	document.getElementById('resist-label').style.visibility = visibility;
 }
 
 function handleClick(type) {
@@ -104,8 +108,18 @@ function clearTypes(skipUpdate=false) {
 	}
 
 	if(!skipUpdate) {
-		updateTypeDisplay();
 		document.getElementById('search').value = '';
+
+		document.getElementById('weak-label').style.visibility = 'hidden';
+		document.getElementById('resist-label').style.visibility = 'hidden';
+
+		document.getElementById('type-weak').classList.add('animate__animated', 'animate__bounceOutLeft');
+		document.getElementById('type-resist').classList.add('animate__animated', 'animate__bounceOutLeft');
+		document.getElementById('type-weak').addEventListener('animationend', () => {
+			updateTypeDisplay();
+			document.getElementById('type-weak').classList.remove('animate__animated', 'animate__bounceOutLeft');
+			document.getElementById('type-resist').classList.remove('animate__animated', 'animate__bounceOutLeft');
+		});
 	}
 }
 

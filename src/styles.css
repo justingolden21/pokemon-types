@@ -263,8 +263,13 @@
 	.btn.fairy:focus {
 		--tw-ring-shadow: 0 0 0 2px #EE99AC44;
 	}
+
 	.matchup-item {
 		@apply px-2 py-1 text-white;
+	}
+
+	#weak-label, #resist-label {
+		visibility: hidden;
 	}
 
 	/* -------- Autocomplete -------- */
