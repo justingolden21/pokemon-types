@@ -31,8 +31,10 @@ let currentType1 = '', currentType2 = '';
 let recentlyChangedType = -1;
 
 function updateTypeDisplay() {
-	let weakHtml = '';
-	let resistHtml = '';
+	let weakHtml = '<h3>Weak to:</h3>';
+	let resistHtml = '<h3>Resists:</h3>';
+	if(currentType1 == '' && currentType2 == '') weakHtml = '', resistHtml = '';
+
 	for(let type of typeJson) {
 		let matchup = getMatchup(type.name, currentType1, currentType2);
 		if(matchup == 1) continue;
@@ -46,10 +48,6 @@ function updateTypeDisplay() {
 	}
 	document.getElementById('type-weak').innerHTML = weakHtml;
 	document.getElementById('type-resist').innerHTML = resistHtml;
-
-	const visibility = (currentType1 != '' || currentType2 != '') ? 'visible' : 'hidden';
-	document.getElementById('weak-label').style.visibility = visibility;
-	document.getElementById('resist-label').style.visibility = visibility;
 }
 
 function handleClick(type) {
@@ -97,7 +95,7 @@ function removeActive(type) {
 	document.querySelector(`.${type}`).classList.remove('active');
 }
 
-function clearTypes(skipUpdate=false) {
+function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
 	if(currentType2 != '') {
 		removeActive(currentType2);
 		currentType2 = '';
@@ -110,15 +108,13 @@ function clearTypes(skipUpdate=false) {
 	if(!skipUpdate) {
 		document.getElementById('search').value = '';
 
-		document.getElementById('weak-label').style.visibility = 'hidden';
-		document.getElementById('resist-label').style.visibility = 'hidden';
-
-		document.getElementById('type-weak').classList.add('animate__animated', 'animate__bounceOutLeft');
-		document.getElementById('type-resist').classList.add('animate__animated', 'animate__bounceOutLeft');
+		const animateClasses = ['animate__animated', 'animate__bounceOutLeft', 'animate__fast'];
+		document.getElementById('type-weak').classList.add(...animateClasses);
+		document.getElementById('type-resist').classList.add(...animateClasses);
 		document.getElementById('type-weak').addEventListener('animationend', () => {
 			updateTypeDisplay();
-			document.getElementById('type-weak').classList.remove('animate__animated', 'animate__bounceOutLeft');
-			document.getElementById('type-resist').classList.remove('animate__animated', 'animate__bounceOutLeft');
+			document.getElementById('type-weak').classList.remove(...animateClasses);
+			document.getElementById('type-resist').classList.remove(...animateClasses);
 		});
 	}
 }
