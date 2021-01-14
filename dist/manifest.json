@@ -4,8 +4,8 @@
 	"description": "A simple tool for type matchups in Pokemon Go",
 	"start_url": "index.html",
 	"display": "standalone",
-	"background_color": "#FFFFFF",
-	"theme_color": "#FFFFFF",
+	"background_color": "#B8B8D0",
+	"theme_color": "#B8B8D0",
 	"orientation": "portrait-primary",
 	"icons": [
 		{
