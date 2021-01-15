@@ -14,6 +14,15 @@ Production: `npm run build`
 
 Localhost: run `localhost.bat` if you have Python3 installed
 
+Deploy: `deploy_to_docs.py`
+
+Update existing PWAs:
+Update version in first line of sw.js
+```diff
+-const staticCacheName = 'site-static-v1';
++const staticCacheName = 'site-static-v2';
+```
+
 ### Links
 
 - Live demo: https://justingolden.me/pokemon-types
