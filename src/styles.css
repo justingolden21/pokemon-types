@@ -199,11 +199,11 @@
 		--tw-ring-shadow: 0 0 0 2px #EE99AC44;
 	}
 
+	/* -------- Matchups -------- */
+
 	.matchup-item {
 		@apply px-2 py-1 text-white;
 	}
-
-	/* -------- Matchups -------- */
 
 	#matchups.leave {
 		animation: bounceOutLeft 0.5s;
@@ -216,11 +216,11 @@
 
 	/* source: https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css */
 	@-webkit-keyframes bounceOutLeft {
-		20%{opacity:1;-webkit-transform:translate3d(24px,0,0) scaleX(.9);transform:translate3d(24px,0,0) scaleX(.9)}
+		20%{opacity:1;-webkit-transform:translate3d(16px,0,0) scaleX(.9);transform:translate3d(16px,0,0) scaleX(.9)}
 		to{opacity:0;-webkit-transform:translate3d(-1200px,0,0) scaleX(2);transform:translate3d(-1200px,0,0) scaleX(2)}
 	}
 	@keyframes bounceOutLeft {
-		20%{opacity:1;-webkit-transform:translate3d(24px,0,0) scaleX(.9);transform:translate3d(24px,0,0) scaleX(.9)}
+		20%{opacity:1;-webkit-transform:translate3d(16px,0,0) scaleX(.9);transform:translate3d(16px,0,0) scaleX(.9)}
 		to{opacity:0;-webkit-transform:translate3d(-1200px,0,0) scaleX(2);transform:translate3d(-1200px,0,0) scaleX(2)}
 	}
 	@-webkit-keyframes fadeInDown{
