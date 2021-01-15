@@ -75,6 +75,11 @@ function handleClick(type) {
 
 	updateTypeDisplay();
 	document.getElementById('search').value = '';
+
+	// end animation prematurely 
+	const animateClasses = ['animate__animated', 'animate__bounceOutLeft', 'animate__fast'];
+	document.getElementById('type-weak').classList.remove(...animateClasses);
+	document.getElementById('type-resist').classList.remove(...animateClasses);
 }
 
 function changeType(num, type) {
