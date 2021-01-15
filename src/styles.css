@@ -71,16 +71,6 @@
 		color: #FFF;
 	}
 
-	.btn .type-icon {
-		width: 1rem;
-		display: inline;
-		transition: width 0.25s linear;
-	}
-	#type-btns .btn:not(.active) .type-icon {
-		width: 0px;
-	}
-
-
 	.btn.normal {
 		border: 2px solid #A8A878;
 		background: linear-gradient(to right, #A8A878 50%, #FFF 50%) right;
@@ -264,11 +254,23 @@
 		@apply bg-indigo-500 text-white !important;
 	}
 
-	/* purgecss end ignore */
+	/* -------- Type Icons -------- */
+
+	#type-btns .btn .type-icon {
+		display: none; /* default for sm screens */
+	}
 
 }
 
 @media (min-width: 640px) { /* sm */
+	#type-btns .btn .type-icon {
+		width: 1rem;
+		display: inline;
+		transition: width 0.25s linear;
+	}
+	#type-btns .btn:not(.active) .type-icon {
+		width: 0px;
+	}
 }
 
 @media (min-width: 768px) { /* md */
@@ -279,3 +281,5 @@
 
 @media (min-width: 1280px) { /* xl */
 }
+
+	/* purgecss end ignore */
