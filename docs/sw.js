@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v5';
+const staticCacheName = 'site-static-v6';
 const dynamicCacheName = 'site-dynamic-v1';
 const assets = [
 	'/',
@@ -13,6 +13,10 @@ const assets = [
 	'/css/styles.css',
 	'/img/icons/icon-96x96.png',
 ];
+const typeNames = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
+for(let type of typeNames) {
+	assets.push(`/img/types/${type}.svg`);
+}
 
 // cache size limit function
 const limitCacheSize = (name, size) => {
