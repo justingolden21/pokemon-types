@@ -20,9 +20,7 @@ fetch('data/types.json')
 			btn.innerText = capitalize(type.name);
 			btn.classList = `btn ${type.name}`;
 			document.getElementById('type-btns').appendChild(btn);
-			btn.onclick = ()=> {
-				handleClick(btn.classList[1]);
-			};
+			btn.onclick = ()=> handleClick(btn.classList[1]);
 		}
 		typeJson = json;
 	});
@@ -48,6 +46,9 @@ function updateTypeDisplay() {
 	}
 	document.getElementById('type-weak').innerHTML = weakHtml;
 	document.getElementById('type-resist').innerHTML = resistHtml;
+
+	// end animation prematurely 
+	document.getElementById('matchups').classList.remove('animated');
 }
 
 function handleClick(type) {
@@ -75,9 +76,6 @@ function handleClick(type) {
 
 	updateTypeDisplay();
 	document.getElementById('search').value = '';
-
-	// end animation prematurely 
-	document.getElementById('matchups').classList.remove('animated');
 }
 
 function changeType(num, type) {
@@ -114,7 +112,6 @@ function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
 		document.getElementById('matchups').classList.add('animated');
 		document.getElementById('matchups').addEventListener('animationend', () => {
 			updateTypeDisplay();
-			document.getElementById('matchups').classList.remove('animated');
 		});
 	}
 }
@@ -124,11 +121,7 @@ function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
 fetch('data/pokedex.json')
 	.then(response => response.json())
 	.then(json => {
-		let names = [];
-		for(let pokemon of json) {
-			names.push(pokemon.name);
-		}
-		autocomplete(document.getElementById('search'), names);
+		autocomplete(document.getElementById('search'), json.map(x => x.name) );
 
 		pokedexJson = json;
 	});
