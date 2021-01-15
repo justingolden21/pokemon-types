@@ -71,6 +71,15 @@
 		color: #FFF;
 	}
 
+	.btn .type-icon {
+		width: 1rem;
+		display: inline;
+		transition: width 0.25s linear;
+	}
+	#type-btns .btn:not(.active) .type-icon {
+		width: 0px;
+	}
+
 
 	.btn.normal {
 		border: 2px solid #A8A878;
@@ -216,19 +225,19 @@
 
 	/* source: https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css */
 	@-webkit-keyframes bounceOutLeft {
-		20%{opacity:1;-webkit-transform:translate3d(16px,0,0) scaleX(.9);transform:translate3d(16px,0,0) scaleX(.9)}
+		20%{opacity:1;-webkit-transform:translate3d(24px,0,0) scaleX(.9);transform:translate3d(24px,0,0) scaleX(.9)}
 		to{opacity:0;-webkit-transform:translate3d(-1200px,0,0) scaleX(2);transform:translate3d(-1200px,0,0) scaleX(2)}
 	}
 	@keyframes bounceOutLeft {
-		20%{opacity:1;-webkit-transform:translate3d(16px,0,0) scaleX(.9);transform:translate3d(16px,0,0) scaleX(.9)}
+		20%{opacity:1;-webkit-transform:translate3d(24px,0,0) scaleX(.9);transform:translate3d(24px,0,0) scaleX(.9)}
 		to{opacity:0;-webkit-transform:translate3d(-1200px,0,0) scaleX(2);transform:translate3d(-1200px,0,0) scaleX(2)}
 	}
 	@-webkit-keyframes fadeInDown{
-		0%{opacity:0;-webkit-transform:translate3d(0,-120px,0);transform:translate3d(0,-120px,0)}
+		0%{opacity:0;-webkit-transform:translate3d(0,-64px,0);transform:translate3d(0,-64px,0)}
 		to{opacity:1;-webkit-transform:translateZ(0);transform:translateZ(0)}
 	}
 	@keyframes fadeInDown{
-		0%{opacity:0;-webkit-transform:translate3d(0,-120px,0);transform:translate3d(0,-120px,0)}
+		0%{opacity:0;-webkit-transform:translate3d(0,-64px,0);transform:translate3d(0,-64px,0)}
 		to{opacity:1;-webkit-transform:translateZ(0);transform:translateZ(0)}
 	}
 
