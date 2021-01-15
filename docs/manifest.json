@@ -1,7 +1,7 @@
 {
-	"name": "Pokemon Types",
-	"short_name": "Pokemon Types",
-	"description": "A simple tool for type matchups in Pokemon Go",
+	"name": "Pokémon Types",
+	"short_name": "Pokémon Types",
+	"description": "A simple tool for type matchups in Pokémon Go",
 	"start_url": "index.html",
 	"display": "standalone",
 	"background_color": "#B8B8D0",
