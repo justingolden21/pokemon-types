@@ -96,7 +96,7 @@ function removeActive(type) {
 	document.querySelector(`.${type}`).classList.remove('active');
 }
 
-function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
+function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '')) {
 	if(currentType2 != '') {
 		removeActive(currentType2);
 		currentType2 = '';
@@ -121,7 +121,7 @@ function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
 fetch('data/pokedex.json')
 	.then(response => response.json())
 	.then(json => {
-		autocomplete(document.getElementById('search'), json.map(x => x.name) );
+		autocomplete(document.getElementById('search'), json.map(x => x.name));
 
 		pokedexJson = json;
 	});
@@ -129,8 +129,8 @@ fetch('data/pokedex.json')
 function openPokemon(id) {
 	clearTypes(true);
 	let types = pokedexJson[id].type;
-	changeType(1, types[0].toLowerCase() );
-	if(types[1]) changeType(2, types[1].toLowerCase() );
+	changeType(1, types[0].toLowerCase());
+	if(types[1]) changeType(2, types[1].toLowerCase());
 
 	updateTypeDisplay();
 }
