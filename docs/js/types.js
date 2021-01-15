@@ -1,4 +1,3 @@
-
 const typeNames = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
 
 // defending type on top, attacking type on side
@@ -41,8 +40,8 @@ function getDoubleMatchup(attackType, defendType1, defendType2) {
 }
 
 function getMatchup(attackType, defendType1, defendType2) {
-	if(defendType1 == '') return round(getSingleMatchup(attackType, defendType2) );
-	if (defendType2 == '') return round(getSingleMatchup(attackType, defendType1) );
+	if(defendType1 == '') return round(getSingleMatchup(attackType, defendType2));
+	if(defendType2 == '') return round(getSingleMatchup(attackType, defendType1));
 	return  round(getDoubleMatchup(attackType, defendType1, defendType2)  );
 }
 

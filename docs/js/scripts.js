@@ -20,9 +20,7 @@ fetch('data/types.json')
 			btn.innerText = capitalize(type.name);
 			btn.classList = `btn ${type.name}`;
 			document.getElementById('type-btns').appendChild(btn);
-			btn.onclick = ()=> {
-				handleClick(btn.classList[1]);
-			};
+			btn.onclick = ()=> handleClick(btn.classList[1]);
 		}
 		typeJson = json;
 	});
@@ -48,6 +46,11 @@ function updateTypeDisplay() {
 	}
 	document.getElementById('type-weak').innerHTML = weakHtml;
 	document.getElementById('type-resist').innerHTML = resistHtml;
+
+	const matchupsDiv = document.getElementById('matchups');
+	matchupsDiv.classList.remove('leave', 'enter');
+	matchupsDiv.classList.add('enter');
+	matchupsDiv.addEventListener('animationend', () => matchupsDiv.classList.remove('enter'));
 }
 
 function handleClick(type) {
@@ -95,7 +98,7 @@ function removeActive(type) {
 	document.querySelector(`.${type}`).classList.remove('active');
 }
 
-function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
+function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '')) {
 	if(currentType2 != '') {
 		removeActive(currentType2);
 		currentType2 = '';
@@ -108,14 +111,9 @@ function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
 	if(!skipUpdate) {
 		document.getElementById('search').value = '';
 
-		const animateClasses = ['animate__animated', 'animate__bounceOutLeft', 'animate__fast'];
-		document.getElementById('type-weak').classList.add(...animateClasses);
-		document.getElementById('type-resist').classList.add(...animateClasses);
-		document.getElementById('type-weak').addEventListener('animationend', () => {
-			updateTypeDisplay();
-			document.getElementById('type-weak').classList.remove(...animateClasses);
-			document.getElementById('type-resist').classList.remove(...animateClasses);
-		});
+		const matchupsDiv = document.getElementById('matchups');
+		matchupsDiv.classList.add('leave');
+		matchupsDiv.addEventListener('animationend', updateTypeDisplay);
 	}
 }
 
@@ -124,11 +122,7 @@ function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
 fetch('data/pokedex.json')
 	.then(response => response.json())
 	.then(json => {
-		let names = [];
-		for(let pokemon of json) {
-			names.push(pokemon.name);
-		}
-		autocomplete(document.getElementById('search'), names);
+		autocomplete(document.getElementById('search'), json.map(x => x.name));
 
 		pokedexJson = json;
 	});
@@ -136,8 +130,8 @@ fetch('data/pokedex.json')
 function openPokemon(id) {
 	clearTypes(true);
 	let types = pokedexJson[id].type;
-	changeType(1, types[0].toLowerCase() );
-	if(types[1]) changeType(2, types[1].toLowerCase() );
+	changeType(1, types[0].toLowerCase());
+	if(types[1]) changeType(2, types[1].toLowerCase());
 
 	updateTypeDisplay();
 }

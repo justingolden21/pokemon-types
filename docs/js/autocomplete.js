@@ -21,7 +21,7 @@ function autocomplete(inp, options) {
 		let numResults = 0;
 		for(let idx in options) {
 			// check if the option starts with the same letters as the text field value
-			if(options[idx].substr(0, val.length).toUpperCase() == val.toUpperCase() ) {
+			if(options[idx].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
 				// create a div for each matching element
 				let optionDiv = document.createElement('DIV');
 				// make matching letters bold, input field holds the option's value

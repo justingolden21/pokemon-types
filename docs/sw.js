@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v3';
+const staticCacheName = 'site-static-v4';
 const dynamicCacheName = 'site-dynamic-v1';
 const assets = [
 	'/',
@@ -12,7 +12,6 @@ const assets = [
 	'/data/types.json',
 	'/css/styles.css',
 	'/img/icons/icon-96x96.png',
-	'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css',
 ];
 
 // cache size limit function
