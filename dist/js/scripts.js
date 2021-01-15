@@ -77,9 +77,7 @@ function handleClick(type) {
 	document.getElementById('search').value = '';
 
 	// end animation prematurely 
-	const animateClasses = ['animate__animated', 'animate__bounceOutLeft', 'animate__fast'];
-	document.getElementById('type-weak').classList.remove(...animateClasses);
-	document.getElementById('type-resist').classList.remove(...animateClasses);
+	document.getElementById('matchups').classList.remove('animated');
 }
 
 function changeType(num, type) {
@@ -113,13 +111,10 @@ function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
 	if(!skipUpdate) {
 		document.getElementById('search').value = '';
 
-		const animateClasses = ['animate__animated', 'animate__bounceOutLeft', 'animate__fast'];
-		document.getElementById('type-weak').classList.add(...animateClasses);
-		document.getElementById('type-resist').classList.add(...animateClasses);
-		document.getElementById('type-weak').addEventListener('animationend', () => {
+		document.getElementById('matchups').classList.add('animated');
+		document.getElementById('matchups').addEventListener('animationend', () => {
 			updateTypeDisplay();
-			document.getElementById('type-weak').classList.remove(...animateClasses);
-			document.getElementById('type-resist').classList.remove(...animateClasses);
+			document.getElementById('matchups').classList.remove('animated');
 		});
 	}
 }
