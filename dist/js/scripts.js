@@ -6,6 +6,10 @@ if('serviceWorker' in navigator) {
 
 window.onload = ()=> {
 	document.getElementById('clear-btn').onclick = ()=> clearTypes();
+	document.getElementById('clear-search-btn').onclick = ()=> {
+		document.getElementById('search').value = '';
+	};
+	
 }
 
 const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
