@@ -47,8 +47,10 @@ function updateTypeDisplay() {
 	document.getElementById('type-weak').innerHTML = weakHtml;
 	document.getElementById('type-resist').innerHTML = resistHtml;
 
-	// end animation prematurely 
-	document.getElementById('matchups').classList.remove('animated');
+	const matchupsDiv = document.getElementById('matchups');
+	matchupsDiv.classList.remove('leave', 'enter');
+	matchupsDiv.classList.add('enter');
+	matchupsDiv.addEventListener('animationend', () => matchupsDiv.classList.remove('enter'));
 }
 
 function handleClick(type) {
@@ -109,10 +111,9 @@ function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '')) {
 	if(!skipUpdate) {
 		document.getElementById('search').value = '';
 
-		document.getElementById('matchups').classList.add('animated');
-		document.getElementById('matchups').addEventListener('animationend', () => {
-			updateTypeDisplay();
-		});
+		const matchupsDiv = document.getElementById('matchups');
+		matchupsDiv.classList.add('leave');
+		matchupsDiv.addEventListener('animationend', updateTypeDisplay);
 	}
 }
 
