@@ -75,6 +75,7 @@ function handleClick(type) {
 
 	updateTypeDisplay();
 	document.getElementById('search').value = '';
+	document.getElementById('sprite').src = '';
 }
 
 function changeType(num, type) {
@@ -107,6 +108,7 @@ function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
 
 	if(!skipUpdate) {
 		document.getElementById('search').value = '';
+		document.getElementById('sprite').src = '';
 
 		const animateClasses = ['animate__animated', 'animate__bounceOutLeft', 'animate__fast'];
 		document.getElementById('type-weak').classList.add(...animateClasses);
@@ -124,11 +126,12 @@ function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '') ) {
 fetch('data/pokedex.json')
 	.then(response => response.json())
 	.then(json => {
-		let names = [];
+		let names = [], indices = [];
 		for(let pokemon of json) {
 			names.push(pokemon.name);
+			indices.push(pokemon.index);
 		}
-		autocomplete(document.getElementById('search'), names);
+		autocomplete(document.getElementById('search'), names, indices);
 
 		pokedexJson = json;
 	});

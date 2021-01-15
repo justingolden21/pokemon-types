@@ -2,7 +2,7 @@
 
 // inp: text field
 // options: array of possible autocompleted values
-function autocomplete(inp, options) {
+function autocomplete(inp, options, indices) {
 	let currentFocus;
 	// when user edits the text field
 	inp.addEventListener('input', function(e) {
@@ -26,7 +26,7 @@ function autocomplete(inp, options) {
 				let optionDiv = document.createElement('DIV');
 				// make matching letters bold, input field holds the option's value
 				optionDiv.innerHTML = `<strong>${options[idx].substr(0, val.length)}</strong>${options[idx].substr(val.length)}
-				<input type="hidden" value="${options[idx]}" data-index="${idx}">`;
+				<input type="hidden" value="${options[idx]}" data-index="${idx}" data-pokedex="${indices[idx]}">`;
 				// when user clicks on the option
 				optionDiv.addEventListener('click', function(e) {
 					// insert the selected value into the text field
@@ -37,6 +37,12 @@ function autocomplete(inp, options) {
 					// pokemon specific: "open" the pokemon based off of index
 					let idx = this.getElementsByTagName('input')[0].getAttribute('data-index');
 					openPokemon(idx);
+
+					let pokedex = this.getElementsByTagName('input')[0].getAttribute('data-pokedex');
+					// pokemon specific: show sprite (todo: handle offline, just show no image)
+					document.getElementById('sprite').src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${+pokedex}.svg`;
+					// document.getElementById('sprite').src = `https://www.serebii.net/pokemongo/pokemon/${pokedex}.png`;
+					// document.getElementById('sprite').src = `https://pokemon-trainer.com/images/sprite/dreamworld/${pokedex}.png`;
 				});
 				listDiv.appendChild(optionDiv);
 
