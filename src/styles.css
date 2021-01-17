@@ -28,7 +28,7 @@
 	}
 
 	h1 {
-		@apply text-2xl font-light;
+		@apply text-2xl;
 	}
 	h2 {
 		@apply text-xl font-medium;
@@ -36,6 +36,11 @@
 	p {
 		@apply leading-relaxed;
 	}
+
+	body, p, h1, h2, button, input {
+		@apply text-gray-700;
+	}
+
 }
 
 @layer components {
@@ -54,17 +59,22 @@
 		@apply py-2 px-4;
 	}
 
+	.btn {
+		@apply border-2 border-transparent hover:border-gray-700;
+	}
+
 	/* purgecss start ignore */
 
 	#type-btns .btn {
-		@apply mx-2 my-1 overflow-x-hidden;
+		@apply mx-1 my-1 overflow-x-hidden xl:my-2 xl:mx-2;
 
 		background-size: 200%;
 		transition: background-position 0.25s ease-out, color 0.25s linear;
-		color: #000;
 	}
 	#type-btns .btn:hover:not(.active) {
-		opacity: 0.75;
+		/*opacity: 0.75;*/
+		/*@apply bg-gray-100;*/
+		background-position: 75%;
 	}
 	#type-btns .btn.active {
 		background-position: left;
@@ -201,7 +211,7 @@
 	/* -------- Matchups -------- */
 
 	.matchup-item {
-		@apply px-2 py-1 text-white;
+		@apply px-2 py-1 text-white my-1;
 	}
 
 	#matchups.leave {
