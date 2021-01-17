@@ -19,6 +19,7 @@ fetch('data/types.json')
 			let btn = document.createElement('button');
 			btn.innerHTML = `<img class="type-icon" src="img/types/${type.name}.svg"> ` + capitalize(type.name);
 			btn.classList = `btn ${type.name}`;
+			btn.name = capitalize(type.name);
 			document.getElementById('type-btns').appendChild(btn);
 			btn.onclick = ()=> handleClick(btn.classList[1]);
 		}
