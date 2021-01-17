@@ -9,8 +9,8 @@ function autocomplete(inp, options) {
 		let val = this.value;
 		// close any already open lists
 		closeAllLists();
-		// requires at least 2 characters
-		if(!val || val.length < 2) return;
+		// requires at least 1 character
+		if(!val || val.length < 1) return;
 		currentFocus = -1;
 		// create a div to contain autocomplete results
 		let listDiv = document.createElement('DIV');
