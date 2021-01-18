@@ -14,7 +14,7 @@ Production: `npm run build`
 
 Localhost: run `localhost.bat` if you have Python3 installed
 
-Deploy: `deploy_to_docs.py`
+Deploy: copy `dist` folder to `gh-pages` branch
 
 Update existing PWAs:
 Update version in first line of sw.js
