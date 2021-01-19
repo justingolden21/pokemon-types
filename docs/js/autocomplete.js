@@ -28,9 +28,9 @@ function autocomplete(inp, options) {
 				optionDiv.innerHTML = `<strong>${options[idx].substr(0, val.length)}</strong>${options[idx].substr(val.length)}`;
 
 				// type icons
-				optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[0]}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[0].toLowerCase()).color}">`;
+				optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[0].toLowerCase()}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[0].toLowerCase()).color}">`;
 				if(pokedexJson[idx].type[1]) {
-					optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[1]}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[1].toLowerCase()).color}">`;
+					optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[1].toLowerCase()}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[1].toLowerCase()).color}">`;
 				}
 
 				// type text
