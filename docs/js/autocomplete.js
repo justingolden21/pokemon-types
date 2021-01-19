@@ -25,8 +25,18 @@ function autocomplete(inp, options) {
 				// create a div for each matching element
 				let optionDiv = document.createElement('DIV');
 				// make matching letters bold, input field holds the option's value
-				optionDiv.innerHTML = `<strong>${options[idx].substr(0, val.length)}</strong>${options[idx].substr(val.length)}
-				<input type="hidden" value="${options[idx]}" data-index="${idx}">`;
+				optionDiv.innerHTML = `<strong>${options[idx].substr(0, val.length)}</strong>${options[idx].substr(val.length)}`;
+
+				// type icons
+				optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[0]}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[0].toLowerCase()).color}">`;
+				if(pokedexJson[idx].type[1]) {
+					optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[1]}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[1].toLowerCase()).color}">`;
+				}
+
+				// type text
+				// optionDiv.innerHTML += ` <small>(${pokedexJson[idx].type.join(', ')})</small>`;
+
+				optionDiv.innerHTML += `<input type="hidden" value="${options[idx]}" data-index="${idx}">`;
 				// when user clicks on the option
 				optionDiv.addEventListener('click', function(e) {
 					// insert the selected value into the text field

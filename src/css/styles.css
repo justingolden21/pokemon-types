@@ -261,6 +261,16 @@
 	.autocomplete-active {
 		@apply bg-indigo-500 text-white !important;
 	}
+	.autocomplete-items div .type-icon {
+		width: 1.25rem;
+		display: inline;
+		padding: 0.25rem;
+		margin-left: 0.25rem;
+		border-radius: 50%;
+	}
+	.autocomplete-items div .type-icon[src*=undefined] {
+		display: none;
+	}
 
 	/* -------- Type Icons -------- */
 
