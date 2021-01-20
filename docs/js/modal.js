@@ -20,7 +20,7 @@ window.addEventListener('load', ()=> {
 		if(event.target.classList.contains('modal')) {
 			for(let modal of modals) {
 				if(typeof modal.style !== undefined) {
-					modal.style.display = 'none';    
+					modal.style.display = 'none';
 				}
 			}
 		}

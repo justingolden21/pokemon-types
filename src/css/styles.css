@@ -67,9 +67,10 @@
 
 	#type-btns .btn {
 		@apply mx-1 my-1 overflow-x-hidden xl:my-2 xl:mx-2;
-
 		background-size: 200%;
-		transition: background-position 0.25s ease-out, color 0.25s linear;
+	}
+	.animations #type-btns .btn {
+		transition: background-position 0.25s ease-out, color 0.25s;
 	}
 	#type-btns .btn:hover:not(.active) {
 		background-position: 75%;
@@ -213,12 +214,16 @@
 	}
 
 	#matchups.leave {
+		opacity: 0;
+	}
+
+	.animations #matchups.leave {
 		animation: bounceOutLeft 0.5s;
 		-webkit-animation: bounceOutLeft 0.5s;
 	}
-	#matchups.enter {
+	.animations #matchups.enter {
 		animation: fadeInDown 1s;
-		-webkit-animation: fadeInDown 1s;
+		-webkit-animation: fadeInDown 1s ease-in;
 	}
 
 	/* source: https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css */
@@ -281,7 +286,10 @@
 	}
 	.modal-content {
 		@apply rounded border-2 border-gray-300 bg-white p-6 pt-3 relative m-auto w-3/4;
-		animation: animateTop 0.25s linear;
+	}
+	.animations .modal-content {
+		animation: animateTop 0.25s;
+		-webkit-animation: animateTop 0.25s;
 	}
 	.modal .btn.close {
 		float: right;
@@ -300,8 +308,34 @@
 	}
 
 	@keyframes animateTop {
-		from {top: -240px; opacity: 0}
-		to {top: 0; opacity: 1}
+		from{top:-240px; opacity:0;}
+		to{top:0; opacity:1;}
+	}
+	@-webkit-keyframes animateTop {
+		from{top:-240px; opacity:0;}
+		to{top:0; opacity:1;}
+	}
+
+	/* -------- Toggle -------- */
+
+	.toggle-container {
+		@apply relative inline-block w-10 mr-2 align-middle select-none transition duration-500;
+	}
+	.toggle-checkbox {
+		@apply left-0 absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer;
+	}
+	.toggle-checkbox:checked {
+		@apply left-4 border-gray-500;
+	}
+
+	.toggle-checkbox + .toggle-bg {
+		@apply block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer;
+	}
+	.toggle-checkbox:checked + .toggle-bg {
+		@apply bg-gray-500;
+	}
+	.toggle-label:hover {
+		@apply text-gray-500;
 	}
 
 	/* -------- Type Icons -------- */
@@ -316,7 +350,9 @@
 	#type-btns .btn .type-icon {
 		width: 1rem;
 		display: inline;
-		transition: width 0.25s linear;
+	}
+	.animations #type-btns .btn .type-icon {
+		transition: width 0.25s;
 	}
 	#type-btns .btn:not(.active) .type-icon {
 		width: 0px;

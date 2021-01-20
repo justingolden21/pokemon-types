@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v13';
+const staticCacheName = 'site-static-v14';
 const dynamicCacheName = 'site-dynamic-v1';
 const assets = [
 	'/',
@@ -8,6 +8,7 @@ const assets = [
 	'/js/autocomplete.js',
 	'/js/modal.js',
 	'/js/scripts.js',
+	'/js/settings.js',
 	'/js/types.js',
 	'/data/pokedex.json',
 	'/data/types.json',
