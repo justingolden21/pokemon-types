@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v14';
+const staticCacheName = 'site-static-v15';
 const dynamicCacheName = 'site-dynamic-v1';
 const assets = [
 	'/',
@@ -6,6 +6,7 @@ const assets = [
 	'/404.html',
 	'/pages/fallback.html',
 	'/js/autocomplete.js',
+	'/js/dropdown.js',
 	'/js/modal.js',
 	'/js/scripts.js',
 	'/js/settings.js',

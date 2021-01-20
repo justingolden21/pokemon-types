@@ -46,27 +46,27 @@
 @layer components {
 
 	.btn {
-		@apply rounded py-2 px-4;
-		cursor: pointer;
-	}
-	.btn.xs {
-		@apply px-1;
+		@apply rounded p-4 cursor-pointer;
 	}
 	.btn.sm {
-		@apply py-1 px-2;
+		@apply p-2;
 	}
-	.btn.md {
-		@apply py-2 px-4;
+	.btn.hover-outline {
+		@apply border-2 border-transparent hover:border-gray-700;
+	}
+	.btn.hover-fill {
+		@apply hover:bg-gray-700 hover:text-white;
+		transition: background-color 0.25s, color 0.25s;
 	}
 
-	.btn {
-		@apply border-2 border-transparent hover:border-gray-700;
+	.btn svg {
+		@apply place-self-center;
 	}
 
 	/* purgecss start ignore */
 
 	#type-btns .btn {
-		@apply mx-1 my-1 overflow-x-hidden xl:my-2 xl:mx-2;
+		@apply py-2 px-4 mx-1 my-1 overflow-x-hidden xl:my-2 xl:mx-2;
 		background-size: 200%;
 	}
 	.animations #type-btns .btn {
@@ -255,7 +255,7 @@
 		@apply bg-gray-100 w-64 md:w-96 px-4 py-2;
 	}
 	.autocomplete-items {
-		@apply border-2 border-gray-200 border-t-0 border-b-0 absolute left-0 right-0 z-10 max-h-96 overflow-y-auto;
+		@apply border border-gray-200 border-t-0 border-b-0 absolute left-0 right-0 z-10 max-h-96 overflow-y-auto;
 	}
 	.autocomplete-items div {
 		@apply p-2 bg-white border border-gray-200 cursor-pointer;
@@ -336,6 +336,32 @@
 	}
 	.toggle-label:hover {
 		@apply text-gray-500;
+	}
+
+	/* -------- Dropdown -------- */
+
+	#dropdown {
+		position: relative;
+		display: inline-block;
+	}
+	#dropdown-content {
+		@apply absolute right-0 bg-white border-2 border-gray-200 z-10 overflow-auto;
+		min-width: 12rem;
+	}
+	#dropdown-content a {
+		@apply block p-4;
+	}
+	#dropdown-content a:not(:last-child) {
+		@apply border-b-2 border-gray-200;
+	}
+	#dropdown-content a:hover {
+		@apply bg-gray-100;
+	}
+	#dropdown-content.show {
+		display: block;
+	}
+	#dropdown-content:not(.show) {
+		display: none;
 	}
 
 	/* -------- Type Icons -------- */
