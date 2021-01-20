@@ -28,10 +28,10 @@
 	}
 
 	h1 {
-		@apply text-2xl;
+		@apply text-2xl tracking-wider;
 	}
 	h2 {
-		@apply text-xl font-medium;
+		@apply text-xl;
 	}
 	p {
 		@apply leading-relaxed;
@@ -272,13 +272,43 @@
 		display: none;
 	}
 
+	/* purgecss end ignore */
+
+	/* -------- Modal -------- */
+
+	.modal {
+		@apply pt-8 fixed left-0 top-0 hidden w-full h-full overflow-auto bg-gray-700 bg-opacity-50;
+	}
+	.modal-content {
+		@apply rounded border-2 border-gray-300 bg-white py-3 px-6 relative m-auto w-3/4;
+		animation: animateTop 0.25s linear;
+	}
+	.modal .btn.close {
+		float: right;
+	}
+	.modal h1 {
+		@apply text-left mt-3;
+	}
+	.modal h1 svg {
+		display: inline;
+	}
+	.modal-header {
+		@apply border-b-2 border-gray-300 pb-9;
+	}
+	.modal-body {
+		@apply pt-4 text-left;
+	}
+
+	@keyframes animateTop {
+		from {top: -240px; opacity: 0}
+		to {top: 0; opacity: 1}
+	}
+
 	/* -------- Type Icons -------- */
 
 	#type-btns .btn .type-icon {
 		display: none; /* default for sm screens */
 	}
-
-	/* purgecss end ignore */
 
 }
 

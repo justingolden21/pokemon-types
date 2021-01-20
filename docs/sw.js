@@ -6,6 +6,7 @@ const assets = [
 	'/404.html',
 	'/pages/fallback.html',
 	'/js/autocomplete.js',
+	'/js/modal.js',
 	'/js/scripts.js',
 	'/js/types.js',
 	'/data/pokedex.json',
