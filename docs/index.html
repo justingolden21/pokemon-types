@@ -31,14 +31,15 @@
 		<button id="clear-btn" class="btn hover-fill" name="Clear">
 			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
 		</button>
-		<div id="dropdown" class="float-right ml-2">
-			<button id="dropdown-btn" class="btn hover-fill" name="More">
+		<div id="dropdown" class="dropdown float-right ml-2"
+			aria-haspopup="true" aria-expanded="false">
+			<button id="dropdown-btn" class="btn dropdown-btn hover-fill" name="More">
 				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg>
 			</button>
-			<div id="dropdown-content">
-				<a href="#">Weather Boost</a>
-				<a href="#">Type Chart</a>
-				<a href="#">Type Quiz</a>
+			<div id="dropdown-content" class="dropdown-content">
+				<a role="menuitem">Weather Boost</a>
+				<a role="menuitem">Type Chart</a>
+				<a role="menuitem">Type Quiz</a>
 			</div>
 		</div>
 
@@ -66,7 +67,7 @@
 <div id="settings-modal" class="modal">
 	<div class="modal-content">
 		<div class="modal-header">
-			<button class="btn sm close">
+			<button class="btn sm close hover-fill">
 				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
 			</button>
 			<h1>
@@ -74,12 +75,33 @@
 			</h1>
 		</div>
 		<div class="modal-body">
-			<h2 class="mb-3">Display</h2>
+			<h2 class="my-3">Display</h2>
+			<h3 class="my-3"><b>General</b></h3>
 			<div class="toggle-container">
 				<input checked type="checkbox" id="animations-toggle" class="toggle-checkbox"/>
 				<label class="toggle-bg"></label>
 			</div>
 			<label for="animations-toggle" class="toggle-label">Animations</label>
+
+			<br>
+
+			<h3 class="my-3"><b>Autocomplete</b></h3>
+			<label>Show types as</label>
+
+			<div class="relative inline-block">
+				<button href="#type-display-options" class="dropdown-btn select-btn"
+					aria-haspopup="true" aria-expanded="false">
+					<span class="select-title">Icons</span>
+					<svg class="absolute right-0 mr-2 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+				</button>
+
+				<div id="type-display-options" class="dropdown-content select-content" role="menu">
+					<a role="menuitem">Icons</a>
+					<a role="menuitem">Words</a>
+					<a role="menuitem">Nothing</a>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>

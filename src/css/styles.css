@@ -222,7 +222,7 @@
 		-webkit-animation: bounceOutLeft 0.5s;
 	}
 	.animations #matchups.enter {
-		animation: fadeInDown 1s;
+		animation: fadeInDown 1s ease-in;
 		-webkit-animation: fadeInDown 1s ease-in;
 	}
 
@@ -258,7 +258,7 @@
 		@apply border border-gray-200 border-t-0 border-b-0 absolute left-0 right-0 z-10 max-h-96 overflow-y-auto;
 	}
 	.autocomplete-items div {
-		@apply p-2 bg-white border border-gray-200 cursor-pointer;
+		@apply p-2 bg-white border border-gray-200 cursor-pointer whitespace-nowrap overflow-x-hidden;
 	}
 	.autocomplete-items div:hover {
 		@apply bg-gray-100;
@@ -338,30 +338,43 @@
 		@apply text-gray-500;
 	}
 
-	/* -------- Dropdown -------- */
+	/* -------- Dropdown and Select -------- */
 
-	#dropdown {
+	.dropdown {
 		position: relative;
 		display: inline-block;
 	}
-	#dropdown-content {
+	.dropdown-content {
 		@apply absolute right-0 bg-white border-2 border-gray-200 z-10 overflow-auto;
 		min-width: 12rem;
 	}
-	#dropdown-content a {
-		@apply block p-4;
+	.dropdown-content a {
+		@apply block px-4 py-2 hover:bg-gray-100 cursor-pointer;
 	}
-	#dropdown-content a:not(:last-child) {
+	.dropdown-content a:not(:last-child) {
 		@apply border-b-2 border-gray-200;
 	}
-	#dropdown-content a:hover {
-		@apply bg-gray-100;
-	}
-	#dropdown-content.show {
+	.dropdown-content.show {
 		display: block;
 	}
-	#dropdown-content:not(.show) {
+	.dropdown-content:not(.show) {
 		display: none;
+	}
+
+	.animations .dropdown-content.show,
+	.animations .select-content.show {
+		animation: fadeInDown 0.5s;
+		-webkit-animation: fadeInDown 0.5s;
+	}
+
+	.select-btn {
+		@apply inline-flex border-2 border-gray-200 cursor-pointer px-4 py-2 text-sm hover:bg-gray-50 overflow-hidden w-48;
+	}
+	.select-content {
+		@apply absolute right-0 w-48 border-t-0;
+	}
+	.select-content a {
+		@apply block text-sm;
 	}
 
 	/* -------- Type Icons -------- */

@@ -27,14 +27,18 @@ function autocomplete(inp, options) {
 				// make matching letters bold, input field holds the option's value
 				optionDiv.innerHTML = `<strong>${options[idx].substr(0, val.length)}</strong>${options[idx].substr(val.length)}`;
 
-				// type icons
-				optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[0].toLowerCase()}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[0].toLowerCase()).color}">`;
-				if(pokedexJson[idx].type[1]) {
-					optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[1].toLowerCase()}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[1].toLowerCase()).color}">`;
+				switch(selectVal('type-display-options')) {
+					case 'Icons':
+						optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[0].toLowerCase()}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[0].toLowerCase()).color}">`;
+						if(pokedexJson[idx].type[1]) {
+							optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[1].toLowerCase()}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[1].toLowerCase()).color}">`;
+						}
+						break;
+					case 'Words':
+						optionDiv.innerHTML += ` <small>(${pokedexJson[idx].type.join(', ')})</small>`;
+						break;
+					default:
 				}
-
-				// type text
-				// optionDiv.innerHTML += ` <small>(${pokedexJson[idx].type.join(', ')})</small>`;
 
 				optionDiv.innerHTML += `<input type="hidden" value="${options[idx]}" data-index="${idx}">`;
 				// when user clicks on the option
