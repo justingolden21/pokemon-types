@@ -22,7 +22,9 @@ Update existing PWAs:
 Update version in first line of sw.js
 ```diff
 -const staticCacheName = 'site-static-v1';
+-const dynamicCacheName = 'site-dynamic-v1';
 +const staticCacheName = 'site-static-v2';
++const dynamicCacheName = 'site-dynamic-v2';
 ```
 
 ### Links
