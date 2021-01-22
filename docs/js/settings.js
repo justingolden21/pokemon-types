@@ -20,6 +20,14 @@ window.addEventListener('load', ()=> {
 		}
 	}
 
+	// turn on / off weather boost text
+	document.getElementById('weather-boost-toggle').onchange = ()=> {
+		document.getElementById('weather-boost-text').style.display = 
+			document.getElementById('weather-boost-toggle').checked ? 'block' : 'none';
+	}
+
+	document.getElementById('weather-boost-text').style.display = 'none';
+
 });
 
 function checkSetAnimationsOnClose() {
