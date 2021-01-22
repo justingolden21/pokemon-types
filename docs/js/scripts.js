@@ -79,6 +79,7 @@ function handleClick(type) {
 
 	updateTypeDisplay();
 	document.getElementById('search').value = '';
+	updateWeatherBoostDisplay([currentType1, currentType2]);
 }
 
 function changeType(num, type) {
@@ -99,7 +100,7 @@ function removeActive(type) {
 	document.querySelector(`.${type}`).classList.remove('active');
 }
 
-function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '')) {
+function clearTypes(skipUpdate = false) {
 	if(currentType2 != '') {
 		removeActive(currentType2);
 		currentType2 = '';
@@ -111,6 +112,7 @@ function clearTypes(skipUpdate = (currentType1 == '' && currentType2 == '')) {
 
 	if(!skipUpdate) {
 		document.getElementById('search').value = '';
+		document.getElementById('weather-boost-text').innerText = '';
 
 		const matchupsDiv = document.getElementById('matchups');
 		matchupsDiv.classList.add('leave');
@@ -135,4 +137,5 @@ function openPokemon(id) {
 	if(types[1]) changeType(2, types[1].toLowerCase());
 
 	updateTypeDisplay();
+	updateWeatherBoostDisplay(types);
 }

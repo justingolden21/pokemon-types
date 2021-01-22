@@ -1,5 +1,5 @@
 const staticCacheName = 'site-static-v17';
-const dynamicCacheName = 'site-dynamic-v3';
+const dynamicCacheName = 'site-dynamic-v4';
 const assets = [
 	'/',
 	'/index.html',
@@ -11,6 +11,7 @@ const assets = [
 	'/js/scripts.js',
 	'/js/settings.js',
 	'/js/types.js',
+	'/js/weatherboost.js',
 	'/data/pokedex.json',
 	'/data/types.json',
 	'/css/styles.css',

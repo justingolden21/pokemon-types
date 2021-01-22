@@ -72,9 +72,6 @@
 	.animations #type-btns .btn {
 		transition: background-position 0.25s ease-out, color 0.25s;
 	}
-	#type-btns .btn:hover:not(.active) {
-		background-position: 75%;
-	}
 	#type-btns .btn.active {
 		background-position: left;
 		color: #FFF;
@@ -395,6 +392,10 @@
 	}
 	#type-btns .btn:not(.active) .type-icon {
 		width: 0px;
+	}
+
+	#type-btns .btn:hover:not(.active) {
+		background-position: 75%;
 	}
 }
 
