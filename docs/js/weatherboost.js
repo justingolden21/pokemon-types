@@ -31,7 +31,6 @@ function updateWeatherBoostDisplay() {
 	let types = [];
 	if(currentType1 != '') types.push(currentType1);
 	if(currentType2 != '') types.push(currentType2);
-	console.log(types);
 	if(!types.length) {
 		document.getElementById('weather-boost-text').innerText = '';
 		document.getElementById('weather-boost-check').style.display = 'none';
