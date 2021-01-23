@@ -27,7 +27,22 @@ const getWeatherBoost = (types) => {
 	return weatherBoost[types[0]];
 }
 
-function updateWeatherBoostDisplay(types) {
+function updateWeatherBoostDisplay() {
+	let types = [];
+	if(currentType1 != '') types.push(currentType1);
+	if(currentType2 != '') types.push(currentType2);
+	console.log(types);
+	if(!types.length) {
+		document.getElementById('weather-boost-text').innerText = '';
+		document.getElementById('weather-boost-check').style.display = 'none';
+		return;
+	}
+	
 	const txt = (types[0] != '' || types[1] != '') ? 'Boosted in ' + getWeatherBoost(types) + ' weather' : '';
 	document.getElementById('weather-boost-text').innerText = txt;
+
+	const weather = selectVal('weather-boost-options').toLowerCase();
+	document.getElementById('weather-boost-check').style.display = isBoosted(types, weather) ? 'inline-block' : 'none';
 }
+
+const isBoosted = (types, weather) => weatherBoost[types[0]] == weather || weatherBoost[types[1]] == weather;

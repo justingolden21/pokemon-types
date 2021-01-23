@@ -49,14 +49,35 @@
 
 		<h1 class="my-2 tracking-wider">Pokémon Types</h1>
 
-		<form autocomplete="off" class="my-2">
-			<div class="autocomplete">
-				<input id="search" type="text" name="Search" placeholder="Search for a Pokémon..."
-					autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-			</div>
-		</form>
+		<div class="autocomplete my-2">
+			<input id="search" type="text" name="Search" placeholder="Search for a Pokémon..."
+				autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+		</div>
 
-		<p><small id="weather-boost-text"></small></p>
+		<div id="weather-boost-select" class="relative inline-block hidden">
+			<button href="#weather-boost-options" class="dropdown-btn select-btn"
+				aria-haspopup="true" aria-expanded="false">
+				<span class="select-title">None</span>
+				<svg class="absolute right-0 mr-2 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+			</button>
+
+			<div id="weather-boost-options" class="dropdown-content select-content" role="menu">
+				<a role="menuitem">None</a>
+				<a role="menuitem">Sunny</a>
+				<a role="menuitem">Rainy</a>
+				<a role="menuitem">Partly Cloudy</a>
+				<a role="menuitem">Cloudy</a>
+				<a role="menuitem">Windy</a>
+				<a role="menuitem">Snow</a>
+				<a role="menuitem">Fog</a>
+			</div>
+		</div>
+
+		<p>
+			<svg id="weather-boost-check" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+			<small id="weather-boost-text" class="hidden"></small>
+		</p>
+
 
 		<div id="type-btns" class="grid grid-cols-3 md:grid-cols-6 xl:grid-cols-9 my-2"></div>
 

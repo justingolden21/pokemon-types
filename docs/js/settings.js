@@ -22,11 +22,16 @@ window.addEventListener('load', ()=> {
 
 	// turn on / off weather boost text
 	document.getElementById('weather-boost-toggle').onchange = ()=> {
-		document.getElementById('weather-boost-text').style.display = 
-			document.getElementById('weather-boost-toggle').checked ? 'block' : 'none';
+		const display = document.getElementById('weather-boost-toggle').checked ? 'inline-block' : 'none';
+		document.getElementById('weather-boost-text').style.display = display;
+		document.getElementById('weather-boost-select').style.display = display;
+		document.getElementById('weather-boost-check').style.display = display;
+
+		updateWeatherBoostDisplay();
 	}
 
-	document.getElementById('weather-boost-text').style.display = 'none';
+	document.getElementById('weather-boost-select').onchange = ()=> updateWeatherBoostDisplay();
+
 
 });
 

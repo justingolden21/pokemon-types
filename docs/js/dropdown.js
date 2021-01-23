@@ -47,6 +47,7 @@ window.addEventListener('load', ()=> {
 		for(let option of options) {
 			option.onclick = function(event) {
 				option.parentNode.parentNode.querySelector('.select-title').innerText = event.target.innerText;
+				option.parentNode.parentNode.onchange();
 			};
 		}
 	}
