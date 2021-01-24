@@ -114,6 +114,7 @@ function clearTypes(skipUpdate = false) {
 	}
 
 	if(!skipUpdate) {
+		if(document.getElementById('clear-weather-toggle').checked) document.getElementById('weather-none').click();
 		document.getElementById('search').value = '';
 		updateWeatherBoostDisplay();
 

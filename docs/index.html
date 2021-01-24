@@ -62,7 +62,7 @@
 			</button>
 
 			<div id="weather-boost-options" class="dropdown-content select-content" role="menu">
-				<a role="menuitem">None</a>
+				<a id="weather-none" role="menuitem">None</a>
 				<a role="menuitem"><img class="weather-icon" src="img/weather/sunny.png"><img class="weather-icon" src="img/weather/clear.png"> Sunny/Clear</a>
 				<a role="menuitem"><img class="weather-icon" src="img/weather/rainy.png"> Rainy</a>
 				<a role="menuitem"><img class="weather-icon" src="img/weather/partly_cloudy.png"> Partly Cloudy</a>
@@ -119,6 +119,13 @@
 				<label class="toggle-bg"></label>
 			</div>
 			<label for="weather-boost-toggle" class="toggle-label">Weather Boost</label>
+
+			<br>
+			<div class="toggle-container">
+				<input type="checkbox" id="clear-weather-toggle" class="toggle-checkbox"/>
+				<label class="toggle-bg"></label>
+			</div>
+			<label for="clear-weather-toggle" class="toggle-label">Clear button clears weather</label>
 
 			<h3 class="my-3"><b>Autocomplete</b></h3>
 			<label>Show types as</label>
