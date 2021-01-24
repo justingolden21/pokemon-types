@@ -379,6 +379,10 @@
 		@apply w-6 h-6 inline-block;
 	}
 
+	.select-btn .weather-icon {
+		@apply w-4 h-4;
+	}
+
 	#type-btns .btn .type-icon {
 		display: none; /* default for sm screens */
 	}
