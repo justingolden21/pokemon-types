@@ -46,8 +46,14 @@ window.addEventListener('load', ()=> {
 		let options = document.querySelector(selectBtn.getAttribute('href')).querySelectorAll('a');
 		for(let option of options) {
 			option.onclick = function(event) {
-				option.parentNode.parentNode.querySelector('.select-title').innerText = event.target.innerText;
-				option.parentNode.parentNode.onchange();
+				let elm = event.target.parentNode.parentNode;
+				let txt = event.target.innerHTML;
+				if(event.target.tagName == 'IMG') {
+					elm = elm.parentNode;
+					txt = event.target.parentNode.innerHTML;
+				}
+				elm.querySelector('.select-title').innerHTML = txt;
+				elm.onchange();
 			};
 		}
 	}

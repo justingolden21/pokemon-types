@@ -20,7 +20,7 @@ const weatherBoost = {
 	'': ''
 };
 
-const getWeatherImg = weather => '<img class="weather-icon" src="img/weather/' + weather.replace(' ','_') + '.png">';
+const getWeatherImg = weather => '<img class="weather-icon" src="img/weather/' + weather.replace(' ', '_') + '.png">';
 
 const getWeatherSpan = types => {
 	types = types.map(s => s.toLowerCase());
@@ -47,7 +47,9 @@ function updateWeatherBoostDisplay() {
 		return;
 	}
 
-	const weather = selectVal('weather-boost-options').toLowerCase();
+	// replace img tag: https://stackoverflow.com/a/11025465/4907950
+	// remove text after '/' to handle 'Sunny/Clear'
+	const weather = selectVal('weather-boost-options').replace(/<img[^>]*>/g,'').toLowerCase().trim().split('/')[0];
 	document.getElementById('weather-boost-check').style.display = isBoosted(types, weather) ? 'inline-block' : 'none';
 
 	document.getElementById('weather-boost-text').innerHTML = getWeatherSpan(types);
