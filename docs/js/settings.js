@@ -16,7 +16,8 @@ window.addEventListener('load', ()=> {
 		if(document.getElementById('animations-toggle').checked) {
 			enableAnimationsOnClose = true;
 		} else {
-			document.body.classList.toggle('animations');
+			enableAnimationsOnClose = false;
+			document.body.classList.remove('animations');
 		}
 	}
 
