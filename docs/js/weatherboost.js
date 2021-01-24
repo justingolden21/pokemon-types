@@ -55,10 +55,12 @@ function updateWeatherBoostDisplay() {
 
 	// replace img tag: https://stackoverflow.com/a/11025465/4907950
 	// remove text after '/' to handle 'Sunny/Clear'
-	const weather = selectVal('weather-boost-options').replace(/<img[^>]*>/g,'').toLowerCase().trim().split('/')[0];
+	const weather = getWeather();
 	document.getElementById('weather-boost-check').style.display = isBoosted(types, weather) ? 'inline-block' : 'none';
 
 	document.getElementById('weather-boost-text').innerHTML = getWeatherSpan(types);
 }
 
 const isBoosted = (types, weather) => weatherBoost[types[0]] == weather || weatherBoost[types[1]] == weather;
+
+const getWeather = () => selectVal('weather-boost-options').replace(/<img[^>]*>/g,'').toLowerCase().trim().split('/')[0];

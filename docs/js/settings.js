@@ -30,9 +30,13 @@ window.addEventListener('load', ()=> {
 		document.getElementById('weather-boost-check').style.display = display;
 
 		if(checked) updateWeatherBoostDisplay();
+		updateTypeDisplay();
 	}
 
-	document.getElementById('weather-boost-select').onchange = ()=> updateWeatherBoostDisplay();
+	document.getElementById('weather-boost-select').onchange = ()=> {
+		updateWeatherBoostDisplay();
+		updateTypeDisplay();
+	}
 
 
 });

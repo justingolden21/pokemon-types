@@ -36,6 +36,9 @@ function updateTypeDisplay() {
 
 	for(let type of typeJson) {
 		let matchup = getMatchup(type.name, currentType1, currentType2);
+		if(document.getElementById('weather-boost-toggle').checked && isBoosted([type.name, ''], getWeather())) {
+			matchup *= 1.2;
+		}
 		if(matchup == 1) continue;
 		const strong = (matchup != 0.625 && matchup != 1.6);
 		const html = `<div class="matchup-item" style="background-color: #${type.color};">${strong?'<strong>':''}${matchup}${strong?'</strong>':''}x ${capitalize(type.name)}</div>`;
