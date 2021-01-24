@@ -7,7 +7,7 @@ window.addEventListener('load', ()=> {
 	let toggle_bgs = document.getElementsByClassName('toggle-bg');
 	for(toggle_bg of toggle_bgs) {
 		toggle_bg.onclick = function(event) {
-			toggle_bg.previousElementSibling.click();
+			event.target.previousElementSibling.click();
 		}
 	}
 
