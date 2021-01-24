@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v18';
-const dynamicCacheName = 'site-dynamic-v9';
+const staticCacheName = 'site-static-v19';
+const dynamicCacheName = 'site-dynamic-v10';
 const assets = [
 	'/',
 	'/index.html',
@@ -20,6 +20,11 @@ const assets = [
 const typeNames = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
 for(let type of typeNames) {
 	assets.push(`/img/types/${type}.svg`);
+}
+
+const weatherNames = ['clear', 'cloudy', 'fog', 'partly_cloudy', 'rainy', 'snow', 'sunny', 'windy'];
+for(let weather of weatherNames) {
+	assets.push(`/img/weather/${weather}.png`);
 }
 
 // cache size limit function
