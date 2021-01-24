@@ -34,10 +34,16 @@ const getWeatherSpan = types => {
 		img = getWeatherImg(weatherBoost[types[0]]);
 	}
 
+	if(txt.indexOf('sunny') != -1) {
+		img += getWeatherImg('clear');
+	}
+
 	return 'Boosted in ' + txt + ' weather ' + img;
 }
 
 function updateWeatherBoostDisplay() {
+	if(!document.getElementById('weather-boost-toggle').checked) return;
+
 	let types = [];
 	if(currentType1 != '') types.push(currentType1);
 	if(currentType2 != '') types.push(currentType2);
