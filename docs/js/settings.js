@@ -38,6 +38,10 @@ window.addEventListener('load', ()=> {
 		updateTypeDisplay();
 	}
 
+	document.getElementById('use-weather-boost-toggle').onchange = ()=> {
+		updateTypeDisplay();
+	}
+
 
 });
 

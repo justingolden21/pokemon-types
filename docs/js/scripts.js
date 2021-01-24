@@ -34,9 +34,12 @@ function updateTypeDisplay() {
 	let resistHtml = '<h3>Resists:</h3>';
 	if(currentType1 == '' && currentType2 == '') weakHtml = '', resistHtml = '';
 
+	const usingWeatherBoost = document.getElementById('weather-boost-toggle').checked 
+		&& document.getElementById('use-weather-boost-toggle').checked;
+
 	for(let type of typeJson) {
 		let matchup = getMatchup(type.name, currentType1, currentType2);
-		if(document.getElementById('weather-boost-toggle').checked && isBoosted([type.name, ''], getWeather())) {
+		if(usingWeatherBoost && isBoosted([type.name, ''], getWeather())) {
 			matchup *= 1.2;
 		}
 		if(matchup == 1) continue;
