@@ -374,7 +374,10 @@
 		@apply block text-sm;
 	}
 
-	/* -------- Type Icons -------- */
+	/* -------- Weather and Type Icons -------- */
+	.weather-icon {
+		@apply w-6 h-6 inline-block;
+	}
 
 	#type-btns .btn .type-icon {
 		display: none; /* default for sm screens */

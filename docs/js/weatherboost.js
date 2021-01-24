@@ -20,11 +20,21 @@ const weatherBoost = {
 	'': ''
 };
 
-const getWeatherBoost = (types) => {
+const getWeatherImg = weather => '<img class="weather-icon" src="img/weather/' + weather.replace(' ','_') + '.png">';
+
+const getWeatherSpan = types => {
 	types = types.map(s => s.toLowerCase());
-	if(types.length == 2 && weatherBoost[types[0]] != weatherBoost[types[1]])
-		return weatherBoost[types[0]] + ' or ' + weatherBoost[types[1]];
-	return weatherBoost[types[0]];
+	let txt, img;
+
+	if(types.length == 2 && weatherBoost[types[0]] != weatherBoost[types[1]]) {
+		txt = weatherBoost[types[0]] + ' or ' + weatherBoost[types[1]];
+		img = getWeatherImg(weatherBoost[types[0]]) + getWeatherImg(weatherBoost[types[1]]);
+	} else {
+		txt = weatherBoost[types[0]];
+		img = getWeatherImg(weatherBoost[types[0]]);
+	}
+
+	return 'Boosted in ' + txt + ' weather ' + img;
 }
 
 function updateWeatherBoostDisplay() {
@@ -36,12 +46,11 @@ function updateWeatherBoostDisplay() {
 		document.getElementById('weather-boost-check').style.display = 'none';
 		return;
 	}
-	
-	const txt = (types[0] != '' || types[1] != '') ? 'Boosted in ' + getWeatherBoost(types) + ' weather' : '';
-	document.getElementById('weather-boost-text').innerText = txt;
 
 	const weather = selectVal('weather-boost-options').toLowerCase();
 	document.getElementById('weather-boost-check').style.display = isBoosted(types, weather) ? 'inline-block' : 'none';
+
+	document.getElementById('weather-boost-text').innerHTML = getWeatherSpan(types);
 }
 
 const isBoosted = (types, weather) => weatherBoost[types[0]] == weather || weatherBoost[types[1]] == weather;
