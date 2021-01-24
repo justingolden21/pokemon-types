@@ -28,6 +28,8 @@ window.addEventListener('load', ()=> {
 		document.getElementById('weather-boost-text').style.display = display;
 		document.getElementById('weather-boost-select').style.display = display;
 		document.getElementById('weather-boost-check').style.display = display;
+		
+		document.getElementById('more-weather-settings').style.display = display;
 
 		if(checked) updateWeatherBoostDisplay();
 		updateTypeDisplay();
