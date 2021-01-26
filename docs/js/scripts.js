@@ -52,7 +52,7 @@ function updateTypeDisplay() {
 	matchups = matchups.sort((a, b) => b.matchup - a.matchup);
 
 	for(let mu of matchups) {
-		const strong = (!usingWeatherBoost && mu.matchup != 0.625 && mu.matchup != 1.6);
+		const strong = (mu.matchup < 0.625 || mu.matchup > 1.6);
 		const html = `<div class="matchup-item" style="background-color: #${mu.color};">${strong?'<strong>':''}${mu.matchup}${strong?'</strong>':''}x ${capitalize(mu.name)}</div>`;
 		if(mu.matchup > 1) {
 			weakHtml += html;
