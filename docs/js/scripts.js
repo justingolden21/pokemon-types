@@ -37,20 +37,30 @@ function updateTypeDisplay() {
 	const usingWeatherBoost = document.getElementById('weather-boost-toggle').checked 
 		&& document.getElementById('use-weather-boost-toggle').checked;
 
+	let matchups = [];
+
 	for(let type of typeJson) {
 		let matchup = getMatchup(type.name, currentType1, currentType2);
 		if(usingWeatherBoost && isBoosted([type.name, ''], getWeather())) {
 			matchup *= 1.2;
 		}
 		if(matchup == 1) continue;
-		const strong = (matchup != 0.625 && matchup != 1.6);
-		const html = `<div class="matchup-item" style="background-color: #${type.color};">${strong?'<strong>':''}${matchup}${strong?'</strong>':''}x ${capitalize(type.name)}</div>`;
-		if(matchup > 1) {
+
+		matchups.push({name: type.name, matchup: matchup, color: type.color});
+	}
+
+	matchups = matchups.sort((a, b) => b.matchup - a.matchup);
+
+	for(let mu of matchups) {
+		const strong = (!usingWeatherBoost && mu.matchup != 0.625 && mu.matchup != 1.6);
+		const html = `<div class="matchup-item" style="background-color: #${mu.color};">${strong?'<strong>':''}${mu.matchup}${strong?'</strong>':''}x ${capitalize(mu.name)}</div>`;
+		if(mu.matchup > 1) {
 			weakHtml += html;
 		} else {
 			resistHtml += html;
 		}
 	}
+
 	document.getElementById('type-weak').innerHTML = weakHtml;
 	document.getElementById('type-resist').innerHTML = resistHtml;
 
