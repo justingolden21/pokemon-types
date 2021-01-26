@@ -53,7 +53,7 @@ window.addEventListener('load', ()=> {
 					txt = event.target.parentNode.innerHTML;
 				}
 				elm.querySelector('.select-title').innerHTML = txt;
-				elm.onchange();
+				if(elm.onchange) elm.onchange();
 			};
 		}
 	}
