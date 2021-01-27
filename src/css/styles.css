@@ -41,6 +41,10 @@
 		@apply text-gray-700;
 	}
 
+	hr {
+		@apply border-gray-200;
+	}
+
 }
 
 @layer components {
@@ -274,7 +278,6 @@
 		display: none;
 	}
 
-	/* purgecss end ignore */
 
 	/* -------- Modal -------- */
 
@@ -374,7 +377,8 @@
 		@apply block text-sm;
 	}
 
-	/* -------- Weather and Type Icons -------- */
+	/* -------- Weather and Type Icons, Weather Boost Modal -------- */
+
 	.weather-icon {
 		@apply w-6 h-6 inline-block;
 	}
@@ -383,10 +387,25 @@
 		@apply w-4 h-4;
 	}
 
+	#weather-boost-modal .modal-body {
+		@apply text-sm;
+	}
+	.weather-icon-big, .type-icon-big {
+		@apply w-6 h-6 inline-block;
+	}
+	.type-icon-big {
+		border-radius:50%;
+		padding:0.25rem;
+		margin: 0.5rem;
+		margin-left: 0.75rem;
+		margin-right: 0.25rem;
+	}
+
 	#type-btns .btn .type-icon {
 		display: none; /* default for sm screens */
 	}
 
+	/* purgecss end ignore */
 }
 
 @media (min-width: 640px) { /* sm */
@@ -404,9 +423,25 @@
 	#type-btns .btn:hover:not(.active) {
 		background-position: 75%;
 	}
+
+	#weather-boost-modal .modal-body {
+		@apply text-base;
+	}
+	.weather-icon-big, .type-icon-big {
+		@apply w-8 h-8;
+	}
+	.type-icon-big {
+		padding:0.5rem;
+		margin: 1rem;
+		margin-left: 1.5rem;
+		margin-right: 0.5rem;
+	}
 }
 
 @media (min-width: 768px) { /* md */
+	.weather-types {
+		display: inline-block;
+	}
 }
 
 @media (min-width: 1024px) { /* lg */

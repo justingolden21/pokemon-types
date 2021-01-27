@@ -64,3 +64,30 @@ function updateWeatherBoostDisplay() {
 const isBoosted = (types, weather) => weatherBoost[types[0]] == weather || weatherBoost[types[1]] == weather;
 
 const getWeather = () => selectVal('weather-boost-options').replace(/<img[^>]*>/g,'').toLowerCase().trim().split('/')[0];
+
+window.addEventListener('load', ()=> {
+	const boosts = {
+		sunny: ['grass', 'fire', 'ground'],
+		rainy: ['water', 'electric', 'bug'],
+		partly_cloudy: ['normal', 'rock'],
+		cloudy: ['fairy', 'fighting', 'poison'],
+		windy: ['flying', 'dragon', 'psychic'],
+		snow: ['ice', 'steel'],
+		fog: ['dark', 'ghost'],
+	};
+	let html = 'Weather <span class="float-right">Types Boosted</span><hr><img src="img/weather/clear.png" class="weather-icon-big"> Clear &nbsp; ';
+	for(let weather in boosts) {
+		html += `<img src="img/weather/${weather}.png" class="weather-icon-big">
+			${capitalize(weather).replace('_',' ')}
+			<div class="weather-types">`
+		for(let type of boosts[weather]) {
+			html += `<p style="display:inline-block;"><img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${typeJson.find(x => x.name==type).color};">
+				${capitalize(type)}</p>`;
+		}
+		html += '</div><hr>';
+	}
+	html += `<br><p>Weather boost causes Pokémon of the boosted types to spawn more frequently, reward more stardust when caught, and at spawn higher levels with better stats.</p>
+	<br><p>You can view the weather in app on the top right of the map, and click it for details. Weather boosted Pokémon will have a weather icon above them briefly after clicking on them.</p>
+	<br><p>Moves of a weather boosted type will deal <b>1.2x</b> damage.</p>`;
+	document.querySelector('#weather-boost-modal .modal-body').innerHTML = html;
+});

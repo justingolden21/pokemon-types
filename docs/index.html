@@ -26,7 +26,7 @@
 <body class="text-center m-4 text-gray-900 animations">
 	<section>
 
-		<button id="settings-modal-btn" class="btn hover-fill modal-btn float-left ml-2" href="#settings-modal" name="Settings">
+		<button class="btn hover-fill modal-btn float-left ml-2" href="#settings-modal" name="Settings">
 			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
 		</button>
 		<button id="clear-btn" class="btn hover-fill" name="Clear">
@@ -38,7 +38,7 @@
 				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg>
 			</button>
 			<div id="dropdown-content" class="dropdown-content">
- 				<a role="menuitem">Coming soon...</a>
+ 				<a class="modal-btn" href="#weather-boost-modal" role="menuitem">Weather Boost</a>
  				<a role="menuitem">Coming soon...</a>
  				<a role="menuitem">Coming soon...</a>
 <!-- 				<a role="menuitem">Weather Boost</a>
@@ -77,7 +77,6 @@
 			<svg id="weather-boost-check" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
 			<small id="weather-boost-text" class="hidden"></small>
 		</p>
-
 
 		<div id="type-btns" class="grid grid-cols-3 md:grid-cols-6 xl:grid-cols-9 my-2"></div>
 
@@ -154,6 +153,19 @@
 				</div>
 			</div>
 
+		</div>
+	</div>
+</div>
+
+<div id="weather-boost-modal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button class="btn sm close hover-fill">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+			</button>
+			<h1>Weather Boost</h1>
+		</div>
+		<div class="modal-body">
 		</div>
 	</div>
 </div>
