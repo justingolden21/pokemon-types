@@ -41,10 +41,6 @@
 		@apply text-gray-700;
 	}
 
-	hr {
-		@apply border-gray-200;
-	}
-
 }
 
 @layer components {
@@ -379,6 +375,10 @@
 
 	/* -------- Weather and Type Icons, Weather Boost Modal -------- */
 
+	#type-btns .btn .type-icon {
+		display: none;
+	}
+
 	.weather-icon {
 		@apply w-6 h-6 inline-block;
 	}
@@ -394,15 +394,9 @@
 		@apply w-6 h-6 inline-block;
 	}
 	.type-icon-big {
-		border-radius:50%;
-		padding:0.25rem;
-		margin: 0.5rem;
-		margin-left: 0.75rem;
+		border-radius: 50%;
+		padding: 0.25rem;
 		margin-right: 0.25rem;
-	}
-
-	#type-btns .btn .type-icon {
-		display: none; /* default for sm screens */
 	}
 
 	/* purgecss end ignore */
@@ -431,17 +425,12 @@
 		@apply w-8 h-8;
 	}
 	.type-icon-big {
-		padding:0.5rem;
-		margin: 1rem;
-		margin-left: 1.5rem;
+		padding: 0.5rem;
 		margin-right: 0.5rem;
 	}
 }
 
 @media (min-width: 768px) { /* md */
-	.weather-types {
-		display: inline-block;
-	}
 }
 
 @media (min-width: 1024px) { /* lg */

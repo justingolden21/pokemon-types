@@ -75,19 +75,27 @@ window.addEventListener('load', ()=> {
 		snow: ['ice', 'steel'],
 		fog: ['dark', 'ghost'],
 	};
-	let html = 'Weather <span class="float-right">Types Boosted</span><hr><img src="img/weather/clear.png" class="weather-icon-big"> Clear &nbsp; ';
+	let html = 'Weather <span class="float-right">Boosted Types</span>';
 	for(let weather in boosts) {
-		html += `<img src="img/weather/${weather}.png" class="weather-icon-big">
+		html += `<div class="flex flex-col md:flex-row md:justify-between p-2 space-y-2 md:space-y-0">
+			<div class="flex space-x-2">`
+			if(weather=='sunny') html += '<img src="img/weather/clear.png" class="weather-icon-big"> Clear &nbsp; ';
+			html += `<img src="img/weather/${weather}.png" class="weather-icon-big">
 			${capitalize(weather).replace('_',' ')}
-			<div class="weather-types">`
-		for(let type of boosts[weather]) {
-			html += `<p style="display:inline-block;"><img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${typeJson.find(x => x.name==type).color};">
-				${capitalize(type)}</p>`;
-		}
-		html += '</div><hr>';
+			</div>
+			<div class="flex flex-wrap justify-center flex-col space-y-2 sm:flex-row sm:space-y-0">`;
+			for(let type of boosts[weather]) {
+				html += `<div class="flex items-center space-x-2 mx-4">
+				<img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${typeJson.find(x => x.name==type).color};">
+				${capitalize(type)}
+				</div>`;
+			}
+		html += '</div></div>';
 	}
-	html += `<br><p>Weather boost causes Pokémon of the boosted types to spawn more frequently, reward more stardust when caught, and at spawn higher levels with better stats.</p>
+	html += 
+	`<br><p>Weather boost causes Pokémon of the boosted types to spawn more frequently, reward more stardust when caught, and at spawn higher levels with better stats.</p>
 	<br><p>You can view the weather in app on the top right of the map, and click it for details. Weather boosted Pokémon will have a weather icon above them briefly after clicking on them.</p>
-	<br><p>Moves of a weather boosted type will deal <b>1.2x</b> damage.</p>`;
+	<br><p>Moves of a weather boosted type will deal <b>1.2x</b> damage.</p>
+	<a href="https://niantic.helpshift.com/a/pokemon-go/?s=finding-evolving-hatching&f=weather-boosts" target="_blank">Learn more</a>`;
 	document.querySelector('#weather-boost-modal .modal-body').innerHTML = html;
 });
