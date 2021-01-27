@@ -75,7 +75,7 @@ window.addEventListener('load', ()=> {
 		snow: ['ice', 'steel'],
 		fog: ['dark', 'ghost'],
 	};
-	let html = 'Weather <span class="float-right">Boosted Types</span>';
+	let html = '';
 	for(let weather in boosts) {
 		html += `<div class="flex flex-col md:flex-row md:justify-between p-2 space-y-2 md:space-y-0">
 			<div class="flex space-x-2">`
