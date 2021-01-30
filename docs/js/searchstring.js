@@ -48,27 +48,10 @@ function updateSearchString() {
 		return;
 	}
 
-	let typeToggle = document.getElementById('has-type-toggle');
-	let fastToggle = document.getElementById('has-fast-move-toggle');
-	let chargeToggle = document.getElementById('has-charge-move-toggle');
-	let anyToggle = document.getElementById('has-any-move-toggle');
-
-	let hasType = typeToggle.checked;
-	let hasFast = fastToggle.checked;
-	let hasCharge = chargeToggle.checked;
-	let hasAny = anyToggle.checked;
-
-	// if(hasAny) {
-	// 	fastToggle.checked = false;
-	// 	chargeToggle.checked = false;
-	// 	hasFast = false;
-	// 	hasCharge = false;
-	// } else if(hasFast || hasCharge) {
-	// 	anyToggle.checked = false;
-	// 	hasAny = false;
-	// }
-
-
+	let hasType = document.getElementById('has-type-toggle').checked;
+	let hasFast = document.getElementById('has-fast-move-toggle').checked;
+	let hasCharge = document.getElementById('has-charge-move-toggle').checked;
+	let hasAny = document.getElementById('has-any-move-toggle').checked;
 	let str = '';
 
 	if(currentType1 == '' || currentType2 == '') {
