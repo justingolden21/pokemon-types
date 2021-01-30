@@ -44,7 +44,6 @@ window.addEventListener('load', ()=> {
 		updateTypeDisplay();
 	}
 
-
 });
 
 function checkSetAnimationsOnClose() {

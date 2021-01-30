@@ -65,6 +65,8 @@ const isBoosted = (types, weather) => weatherBoost[types[0]] == weather || weath
 
 const getWeather = () => selectVal('weather-boost-options').replace(/<img[^>]*>/g,'').toLowerCase().trim().split('/')[0];
 
+const getTypeIcon = type => `<img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${typeJson.find(x => x.name==type).color};">`;
+
 window.addEventListener('load', ()=> {
 	const boosts = {
 		sunny: ['grass', 'fire', 'ground'],
@@ -86,7 +88,7 @@ window.addEventListener('load', ()=> {
 			<div class="flex flex-wrap justify-center flex-col space-y-2 sm:flex-row sm:space-y-0">`;
 			for(let type of boosts[weather]) {
 				html += `<div class="flex items-center space-x-2 mx-4">
-				<img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${typeJson.find(x => x.name==type).color};">
+				${getTypeIcon(type)}
 				${capitalize(type)}
 				</div>`;
 			}
