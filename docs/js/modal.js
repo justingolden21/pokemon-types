@@ -6,6 +6,7 @@ window.addEventListener('load', ()=> {
 
 	for(let modalBtn of modalBtns) {
 		modalBtn.onclick = function(event) {
+			event.preventDefault();
 			document.querySelector(modalBtn.getAttribute('href')).style.display = 'block';
 		}
 	}
