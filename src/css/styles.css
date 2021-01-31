@@ -415,7 +415,7 @@
 	}
 
 	#type-btns .btn:hover:not(.active) {
-		background-position: 75%;
+		background-position: 87.5%;
 	}
 
 	#weather-boost-modal .modal-body {

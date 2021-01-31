@@ -79,7 +79,7 @@ window.addEventListener('load', ()=> {
 	};
 	let html = '';
 	for(let weather in boosts) {
-		html += `<div class="flex flex-col md:flex-row md:justify-between p-2 space-y-2 md:space-y-0">
+		html += `<div class="md:border-b-2 md:border-gray-100 flex flex-col md:flex-row md:justify-between p-2 space-y-2 md:space-y-0">
 			<div class="flex space-x-2">`
 			if(weather=='sunny') html += '<img src="img/weather/clear.png" class="weather-icon-big"> Clear &nbsp; ';
 			html += `<img src="img/weather/${weather}.png" class="weather-icon-big">
