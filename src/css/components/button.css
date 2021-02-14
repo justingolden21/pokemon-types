@@ -1,0 +1,17 @@
+.btn {
+	@apply rounded p-4 cursor-pointer;
+}
+.btn.sm {
+	@apply p-2;
+}
+.btn.hover-outline {
+	@apply border-2 border-transparent hover:border-gray-700;
+}
+.btn.hover-fill {
+	@apply hover:bg-gray-700 hover:text-white;
+	transition: background-color 0.25s, color 0.25s;
+}
+
+.btn svg {
+	@apply place-self-center;
+}

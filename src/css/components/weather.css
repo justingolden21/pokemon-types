@@ -1,0 +1,32 @@
+.weather-icon {
+	@apply w-6 h-6 inline-block;
+}
+
+.select-btn .weather-icon {
+	@apply w-4 h-4;
+}
+
+#weather-boost-modal .modal-body {
+	@apply text-sm;
+}
+.weather-icon-big, .type-icon-big {
+	@apply w-6 h-6 inline-block;
+}
+.type-icon-big {
+	border-radius: 50%;
+	padding: 0.25rem;
+	margin-right: 0.25rem;
+}
+
+@media (min-width: 640px) { /* sm */
+	#weather-boost-modal .modal-body {
+		@apply text-base;
+	}
+	.weather-icon-big, .type-icon-big {
+		@apply w-8 h-8;
+	}
+	.type-icon-big {
+		padding: 0.5rem;
+		margin-right: 0.5rem;
+	}
+}

@@ -1,0 +1,36 @@
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+.dropdown-content {
+	@apply absolute right-0 bg-white border-2 border-gray-200 z-10 overflow-auto;
+	min-width: 12rem;
+}
+.dropdown-content a {
+	@apply block px-4 py-2 hover:bg-gray-100 cursor-pointer;
+}
+.dropdown-content a:not(:last-child) {
+	@apply border-b-2 border-gray-200;
+}
+.dropdown-content.show {
+	display: block;
+}
+.dropdown-content:not(.show) {
+	display: none;
+}
+
+.animations .dropdown-content.show,
+.animations .select-content.show {
+	animation: fadeInDown 0.5s;
+	-webkit-animation: fadeInDown 0.5s;
+}
+
+.select-btn {
+	@apply inline-flex border-2 border-gray-200 cursor-pointer px-4 py-2 text-sm hover:bg-gray-50 overflow-hidden w-48;
+}
+.select-content {
+	@apply absolute right-0 w-48 border-t-0;
+}
+.select-content a {
+	@apply block text-sm;
+}

@@ -1,18 +1,19 @@
 const staticCacheName = 'site-static-v19';
-const dynamicCacheName = 'site-dynamic-v24';
+const dynamicCacheName = 'site-dynamic-v25';
 const assets = [
 	'/',
 	'/index.html',
 	'/404.html',
 	'/pages/fallback.html',
-	'/js/autocomplete.js',
-	'/js/dropdown.js',
-	'/js/modal.js',
+
 	'/js/searchstring.js',
 	'/js/settings.js',
 	'/js/scripts.js',
 	'/js/types.js',
 	'/js/weatherboost.js',
+	'/js/components/autocomplete.js',
+	'/js/components/dropdown.js',
+	'/js/components/modal.js',
 	'/js/components/toggle.js',
 	'/data/pokedex.json',
 	'/data/types.json',
