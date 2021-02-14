@@ -3,22 +3,18 @@
 }
 .toggle-checkbox {
 	@apply left-0 absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer;
+	transition: left 0.25s;
 }
 .toggle-checkbox:checked {
 	@apply left-4 border-gray-500;
 }
-.animations .toggle-checkbox {
-	transition: left 0.25s;
-}
 
 .toggle-checkbox + .toggle-bg {
 	@apply block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer;
+	transition: background-color 0.25s;
 }
 .toggle-checkbox:checked + .toggle-bg {
 	@apply bg-gray-500;
-}
-.animations .toggle-checkbox + .toggle-bg {
-	transition: background-color 0.25s;
 }
 
 .toggle-label:hover {

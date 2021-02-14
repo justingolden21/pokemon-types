@@ -58,6 +58,24 @@
 
 @layer components {
 
+	/* source: https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css */
+	@-webkit-keyframes bounceOutLeft {
+		20%{opacity:1;-webkit-transform:translate3d(24px,0,0) scaleX(.9);transform:translate3d(24px,0,0) scaleX(.9)}
+		to{opacity:0;-webkit-transform:translate3d(-1200px,0,0) scaleX(2);transform:translate3d(-1200px,0,0) scaleX(2)}
+	}
+	@keyframes bounceOutLeft {
+		20%{opacity:1;-webkit-transform:translate3d(24px,0,0) scaleX(.9);transform:translate3d(24px,0,0) scaleX(.9)}
+		to{opacity:0;-webkit-transform:translate3d(-1200px,0,0) scaleX(2);transform:translate3d(-1200px,0,0) scaleX(2)}
+	}
+	@-webkit-keyframes fadeInDown {
+		0%{overflow:hidden;max-height:0;}
+		to{max-height:100vh;}
+	}
+	@keyframes fadeInDown {
+		0%{overflow:hidden;max-height:0;}
+		to{max-height:100vh;}
+	}
+
 }
 
 @media (min-width: 640px) { /* sm */

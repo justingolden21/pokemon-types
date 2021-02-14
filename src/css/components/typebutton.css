@@ -1,8 +1,6 @@
 #type-btns .btn {
 	@apply py-2 px-4 mx-1 my-1 overflow-x-hidden xl:my-2 xl:mx-2;
 	background-size: 200%;
-}
-.animations #type-btns .btn {
 	transition: background-position 0.25s ease-out, color 0.25s;
 }
 #type-btns .btn.active {
@@ -143,8 +141,6 @@
 	#type-btns .btn .type-icon {
 		width: 1rem;
 		display: inline;
-	}
-	.animations #type-btns .btn .type-icon {
 		transition: width 0.25s;
 	}
 	#type-btns .btn:not(.active) .type-icon {

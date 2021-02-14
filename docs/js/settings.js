@@ -1,17 +1,4 @@
-// make settings modal not re-animate when animation toggle becomes checked
-let enableAnimationsOnClose = false;
-
 window.addEventListener('load', ()=> {
-
-	// turn on / off animations
-	document.getElementById('animations-toggle').onchange = ()=> {
-		if(document.getElementById('animations-toggle').checked) {
-			enableAnimationsOnClose = true;
-		} else {
-			enableAnimationsOnClose = false;
-			document.body.classList.remove('animations');
-		}
-	}
 
 	// turn on / off weather boost text
 	document.getElementById('weather-boost-toggle').onchange = ()=> {
@@ -37,10 +24,3 @@ window.addEventListener('load', ()=> {
 	}
 
 });
-
-function checkSetAnimationsOnClose() {
-	if(enableAnimationsOnClose) {
-		document.body.classList.add('animations');
-		enableAnimationsOnClose = false;
-	}
-}

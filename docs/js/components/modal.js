@@ -13,9 +13,7 @@ window.addEventListener('load', ()=> {
 
 	for(let closeBtn of closeBtns) {
 		closeBtn.onclick = function(event) {
-			closeBtn.parentNode.parentNode.parentNode.style.display = 'none';
-			checkSetAnimationsOnClose();
-		}
+			closeBtn.parentNode.parentNode.parentNode.style.display = 'none';		}
 	}
 
 	window.onclick = function(event) {
@@ -23,7 +21,6 @@ window.addEventListener('load', ()=> {
 			for(let modal of modals) {
 				if(typeof modal.style !== undefined) {
 					modal.style.display = 'none';
-					checkSetAnimationsOnClose();
 				}
 			}
 		}
@@ -33,7 +30,6 @@ window.addEventListener('load', ()=> {
 		if(event.key == 'Escape') {
 			for(let modal of modals) {
 				modal.style.display = 'none';
-				checkSetAnimationsOnClose();
 			}
 		}
 	}

@@ -14,15 +14,11 @@
 }
 .dropdown-content.show {
 	display: block;
+	animation: fadeInDown 0.5s;
+	-webkit-animation: fadeInDown 0.5s;
 }
 .dropdown-content:not(.show) {
 	display: none;
-}
-
-.animations .dropdown-content.show,
-.animations .select-content.show {
-	animation: fadeInDown 0.5s;
-	-webkit-animation: fadeInDown 0.5s;
 }
 
 .select-btn {
