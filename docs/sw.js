@@ -13,6 +13,7 @@ const assets = [
 	'/js/scripts.js',
 	'/js/types.js',
 	'/js/weatherboost.js',
+	'/js/components/toggle.js',
 	'/data/pokedex.json',
 	'/data/types.json',
 	'/css/styles.css',
