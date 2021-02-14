@@ -1,31 +1,44 @@
-# Pokemon Types
+# Pokémon Types
 
 ### About
 
-A simple tool for type matchups in Pokemon Go
+A simple tool for type matchups in Pokémon Go
+
+https://justingolden.me/pokemon-types
+
+### Features
+
+- Find the type matchups for any type combination
+
+- Search and open the types for any Pokémon
+
+- View weather boost for types and Pokémon
+
+- View matchups taking weather into account
+
+- Quick copy for search strings for Pokémon of certain type(s) and/or with moves of certain type(s)
 
 ### Development
 
 First time setup: `npm install`
 
+*to install packages*
+
 Development: `npm run dev`
 
-Production: `npm run build`
+*to run postcss on watch*
 
-Localhost: run `localhost.bat` if you have Python3 installed
+Localhost: `npm run localhost`
 
-Easy development start: run `dev.bat`
+*to host on locahost and open chrome to localhost:8000*
 
-Deploy: build for production to the `docs` folder and push. Update PWA assets as needed.
+Local Dev: `npm run local-dev`
 
-Update existing PWAs:
-Update version in first line of sw.js
-```diff
--const staticCacheName = 'site-static-v1';
--const dynamicCacheName = 'site-dynamic-v1';
-+const staticCacheName = 'site-static-v2';
-+const dynamicCacheName = 'site-dynamic-v2';
-```
+*to open localhost and run postcss on watch*
+
+Production: `npm run prod`
+
+*builds the project and increments version*
 
 ### Links
 
