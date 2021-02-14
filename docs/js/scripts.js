@@ -36,14 +36,13 @@ function updateTypeDisplay() {
 
 	const usingWeatherBoost = document.getElementById('weather-boost-toggle').checked 
 		&& document.getElementById('use-weather-boost-toggle').checked;
+	const currentWeather = getWeather();
 
 	let matchups = [];
 
 	for(let type of typeJson) {
 		let matchup = getMatchup(type.name, currentType1, currentType2);
-		if(usingWeatherBoost && isBoosted([type.name, ''], getWeather())) {
-			matchup *= 1.2;
-		}
+		if(usingWeatherBoost && isBoosted([type.name, ''], currentWeather)) matchup *= 1.2;
 		if(matchup == 1) continue;
 
 		matchups.push({name: type.name, matchup: matchup, color: type.color});
