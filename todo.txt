@@ -1,0 +1,2 @@
+add search strings for types best against option
+add toast and popover titles
