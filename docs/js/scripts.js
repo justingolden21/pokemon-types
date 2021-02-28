@@ -8,7 +8,7 @@ window.onload = ()=> {
 	document.getElementById('clear-btn').onclick = ()=> clearTypes();
 
 	document.onkeyup = (e)=> {
-		if(e.code=='Space' && document.activeElement.tagName != 'INPUT') {
+		if(e.code=='Space' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
 			document.getElementById('search').select();
 		}
 	};
