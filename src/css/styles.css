@@ -46,8 +46,14 @@
 	h2 {
 		@apply text-xl;
 	}
+	h3 {
+		font-weight: bold;
+	}
 	p {
 		@apply leading-relaxed;
+	}
+	.modal a {
+		@apply text-indigo-500 hover:underline;
 	}
 
 	body, p, h1, h2, button, input {

@@ -53,3 +53,9 @@ Production: `npm run prod`
 - My repos: https://github.com/justingolden21
 
 - Contact me: contact@justingolden.me
+
+### Legal
+
+©2021 Justin Golden - All Rights Reserved
+
+Pokémon are trademarks of Nintendo, Game Freak, and The Pokémon Company. Pokémon And All Respective Names are Trademark & © of Nintendo, Pokémon GO is Trademark & © of Niantic, Inc. This website is not affiliated with Niantic Inc., The Pokemon Company, or Nintendo.
