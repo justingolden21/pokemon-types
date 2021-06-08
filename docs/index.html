@@ -24,6 +24,7 @@
 	<script src="js/settings.js"></script>
 	<script src="js/searchstring.js"></script>
 	<script src="js/components/toggle.js"></script>
+	<script src="js/typechart.js"></script>
 </head>
 <body class="text-center m-4 text-gray-900">
 	<section>
@@ -43,6 +44,7 @@
  				<a class="modal-btn" href="#weather-boost-modal" role="menuitem">Weather Boost</a>
  				<a class="modal-btn" href="#search-string-modal" role="menuitem">Search Strings</a>
  				<a class="modal-btn" href="#info-modal" role="menuitem">App Info</a>
+ 				<a class="modal-btn" href="#type-chart-modal" role="menuitem">Type Chart</a>
 <!--  				<a role="menuitem">Coming soon...</a>
 				<a role="menuitem">App Info / Help</a>
 				<a role="menuitem">Multipliers</a>
@@ -271,6 +273,20 @@
 				<hr class="my-2">
 				<p>Pokémon are trademarks of Nintendo, Game Freak, and The Pokémon Company. Pokémon And All Respective Names are Trademark & © of Nintendo, Pokémon GO is Trademark & © of Niantic, Inc. This website is not affiliated with Niantic Inc., The Pokemon Company, or Nintendo.</p>
 			</small>
+		</div>
+	</div>
+</div>
+
+<div id="type-chart-modal" class="modal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button class="btn sm close hover-fill">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+			</button>
+			<h1>Type Chart</h1>
+		</div>
+		<div class="modal-body">
+			<div id="type-chart"></div>
 		</div>
 	</div>
 </div>

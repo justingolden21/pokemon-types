@@ -30,7 +30,7 @@ Development: `npm run dev`
 
 Localhost: `npm run localhost`
 
-*to host on locahost and open chrome to localhost:8000*
+*to host on locahost and open chrome to localhost:8000, requires python*
 
 Local Dev: `npm run local-dev`
 
@@ -39,6 +39,10 @@ Local Dev: `npm run local-dev`
 Production: `npm run prod`
 
 *builds the project and increments version*
+
+### Built With
+
+Built with TailwindCSS and Hero Icons. Adapted animations from Animate.css.
 
 ### Links
 
