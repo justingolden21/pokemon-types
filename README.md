@@ -40,6 +40,8 @@ Production: `npm run prod`
 
 *builds the project and increments version*
 
+To test production build before deployment: `npm run localhost`
+
 ### Built With
 
 Built with TailwindCSS and Hero Icons. Adapted animations from Animate.css.

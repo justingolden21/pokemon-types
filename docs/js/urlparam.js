@@ -3,7 +3,9 @@ window.addEventListener('load', ()=> {
 	const q = url.searchParams.get('q');
     if(q=='typechart') {
     	document.getElementById('type-chart-modal').style.display = 'block';
-    }
+    } else if(q=='weatherboost') {
+    	document.getElementById('weather-boost-modal').style.display = 'block';
+	}
 
 });
 

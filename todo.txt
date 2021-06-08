@@ -1,7 +1,8 @@
 add search strings for types best against option
-add toast and popover titles
-add type chart and type lines
+add popover titles
+type chart
     top left cell can have icon with diagonal line top right to bottom left splitting sword and shield icon for attackers/defender types
     maybe later: quick search type on desktop, lower opacity black on rows and cols not of that type atk/def
+add type line chart
 start using umbrella.js
 make util.js

@@ -94,10 +94,5 @@ window.addEventListener('load', ()=> {
 			}
 		html += '</div></div>';
 	}
-	html += 
-	`<br><p>Weather boost causes Pokémon of the boosted types to spawn more frequently, reward more stardust when caught, and at spawn higher levels with better stats.</p>
-	<br><p>You can view the weather in app on the top right of the map, and click it for details. Weather boosted Pokémon will have a weather icon above them briefly after clicking on them.</p>
-	<br><p>Moves of a weather boosted type will deal <b>1.2x</b> damage.</p>
-	<a href="https://niantic.helpshift.com/a/pokemon-go/?s=finding-evolving-hatching&f=weather-boosts" target="_blank">Learn more</a>`;
-	document.querySelector('#weather-boost-modal .modal-body').innerHTML = html;
+	document.getElementById('weather-boost').innerHTML = html;
 });
