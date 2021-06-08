@@ -28,5 +28,5 @@ window.addEventListener('load', ()=> {
 	document.getElementById('type-chart').innerHTML = tmpHTML;
 
 	// DEV ONLY, COMMENT IN PROD
-	document.getElementById('type-chart-modal').style.display = 'block';
+	// document.getElementById('type-chart-modal').style.display = 'block';
 });
