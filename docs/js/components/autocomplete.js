@@ -1,5 +1,9 @@
 // https://www.w3schools.com/howto/howto_js_autocomplete.asp
 
+// @bug (UX): using arrow keys to change focus doesn't scroll autocomplete div to location of focused item
+// @steps: type "pi" in search box, use arrows to scroll past "piplup" to "pignite"
+// @expected behavior: autocomplete div moves down
+
 // inp: text field
 // options: array of possible autocompleted values
 function autocomplete(inp, options) {
