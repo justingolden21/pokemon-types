@@ -4,7 +4,7 @@ if('serviceWorker' in navigator) {
 		.catch(err => console.log('service worker not registered', err));
 }
 
-window.onload = ()=> {
+window.addEventListener('load', ()=> {
 	document.getElementById('clear-btn').onclick = ()=> clearTypes();
 
 	document.onkeyup = (e)=> {
@@ -12,25 +12,20 @@ window.onload = ()=> {
 			document.getElementById('search').select();
 		}
 	};
-}
+
+	// create type buttons
+	for(let type of TYPE_DATA) {
+		let btn = document.createElement('button');
+		btn.innerHTML = `<img class="type-icon" src="img/types/${type.name}.svg"> ` + capitalize(type.name);
+		btn.classList = `btn ${type.name}`;
+		btn.name = capitalize(type.name);
+		document.getElementById('type-btns').appendChild(btn);
+		btn.onclick = ()=> handleClick(btn.classList[1]);
+	}
+
+});
 
 const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
-
-let typeJson, pokedexJson;
-
-fetch('data/types.json')
-	.then(response => response.json())
-	.then(json => {
-		for(let type of json) {
-			let btn = document.createElement('button');
-			btn.innerHTML = `<img class="type-icon" src="img/types/${type.name}.svg"> ` + capitalize(type.name);
-			btn.classList = `btn ${type.name}`;
-			btn.name = capitalize(type.name);
-			document.getElementById('type-btns').appendChild(btn);
-			btn.onclick = ()=> handleClick(btn.classList[1]);
-		}
-		typeJson = json;
-	});
 
 let currentType1 = '', currentType2 = '';
 let recentlyChangedType = -1;
@@ -46,7 +41,7 @@ function updateTypeDisplay() {
 
 	let matchups = [];
 
-	for(let type of typeJson) {
+	for(let type of TYPE_DATA) {
 		let matchup = getMatchup(type.name, currentType1, currentType2);
 		if(usingWeatherBoost && isBoosted([type.name, ''], currentWeather)) matchup *= 1.2;
 		if(matchup == 1) continue;
@@ -143,6 +138,8 @@ function clearTypes(skipUpdate = false) {
 }
 
 // ================================
+
+let pokedexJson;
 
 fetch('data/pokedex.json')
 	.then(response => response.json())

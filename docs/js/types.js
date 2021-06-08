@@ -1,34 +1,36 @@
-const typeNames = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
-
-// defending type on top, attacking type on side
-// 5 means 0.5, or not very effective
-const typeData = [
-[1,1,1,1,1,1,1,1,1,1,1,1,5,0,1,1,5,1], // normal
-[1,5,5,1,2,2,1,1,1,1,1,2,5,1,5,1,2,1], // fire
-[1,2,5,1,5,1,1,1,2,1,1,1,2,1,5,1,1,1], // water
-[1,1,2,5,5,1,1,1,0,2,1,1,1,1,5,1,1,1], // electric
-[1,5,2,1,5,1,1,5,2,5,1,5,2,1,5,1,5,1], // grass
-[1,5,5,1,2,5,1,1,2,2,1,1,1,1,2,1,5,1], // ice
-[2,1,1,1,1,2,1,5,1,5,5,5,2,0,1,2,2,5], // fighting
-[1,1,1,1,2,1,1,5,5,1,1,1,5,5,1,1,0,2], // poison
-[1,2,1,2,5,1,1,2,1,0,1,5,2,1,1,1,2,1], // ground
-[1,1,1,5,2,1,2,1,1,1,1,2,5,1,1,1,5,1], // flying
-[1,1,1,1,1,1,2,2,1,1,5,1,1,1,1,0,5,1], // psychic
-[1,5,1,1,2,1,5,5,1,5,2,1,1,5,1,2,5,5], // bug
-[1,2,1,1,1,2,5,1,5,2,1,2,1,1,1,1,5,1], // rock
-[0,1,1,1,1,1,1,1,1,1,2,1,1,2,1,5,1,1], // ghost
-[1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,5,0], // dragon
-[1,1,1,1,1,1,5,1,1,1,2,1,1,2,1,5,1,5], // dark
-[1,5,5,5,1,2,1,1,1,1,1,1,2,1,1,1,5,2], // steel
-[1,5,1,1,1,1,2,5,1,1,1,1,1,1,2,2,5,1], // fairy
+const TYPE_DATA = [
+	{name: "normal", eff: "111115105111111111", color: "A8A878"},
+	{name: "fighting", eff: "215512502111152125", color: "C03028"},
+	{name: "flying", eff: "121115215112511111", color: "A890F0"},
+	{name: "poison", eff: "111555150112111112", color: "A040A0"},
+	{name: "ground", eff: "110212512215211111", color: "E0C068"},
+	{name: "rock", eff: "152151215211112111", color: "B8A038"},
+	{name: "bug", eff: "155511155512121125", color: "A8B820"},
+	{name: "ghost", eff: "011111121111121151", color: "705898"},
+	{name: "steel", eff: "111112115551512112", color: "B8B8D0"},
+	{name: "fire", eff: "111115212552112511", color: "F08030"},
+	{name: "water", eff: "111122111255111511", color: "6890F0"},
+	{name: "grass", eff: "115522515525111511", color: "78C850"},
+	{name: "electric", eff: "112101111125511511", color: "F8D030"},
+	{name: "psychic", eff: "121211115111151101", color: "F85888"},
+	{name: "ice", eff: "112121115552115211", color: "98D8D8"},
+	{name: "dragon", eff: "111111115111111210", color: "7038F8"},
+	{name: "dark", eff: "151111121111121155", color: "705848"},
+	{name: "fairy", eff: "121511115511111221", color: "EE99AC"}
 ];
 
-// input string output float
-function getSingleMatchup(attackType, defendType) {
-	const atk = typeNames.indexOf(attackType);
-	const def = typeNames.indexOf(defendType);
+const TYPE_NAMES = 'normal fighting flying poison ground rock bug ghost steel fire water grass electric psychic ice dragon dark fairy'.split(' ');
 
-	const matchup = typeData[atk][def];
+function getColor(typeName) {
+	return TYPE_DATA.find(t => t.name==typeName).color
+}
+
+// input string, output float
+function getSingleMatchup(attackType, defendType) {
+	const atk = TYPE_DATA.find(t => t.name==attackType);
+	const defIdx = TYPE_DATA.findIndex(t => t.name==defendType);
+	const matchup = atk.eff[defIdx];
+
 	if(matchup==0) return 0.390625; // 25/64
 	if(matchup==5) return 0.625; // 5/8
 	if(matchup==2) return 1.6; // 8/5

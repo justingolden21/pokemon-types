@@ -29,9 +29,9 @@ function autocomplete(inp, options) {
 
 				switch(selectVal('type-display-options')) {
 					case 'Icons':
-						optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[0].toLowerCase()}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[0].toLowerCase()).color}">`;
+						optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[0].toLowerCase()}.svg" style="background-color: #${TYPE_DATA.find(x => x.name == pokedexJson[idx].type[0].toLowerCase()).color}">`;
 						if(pokedexJson[idx].type[1]) {
-							optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[1].toLowerCase()}.svg" style="background-color: #${typeJson.find(x => x.name == pokedexJson[idx].type[1].toLowerCase()).color}">`;
+							optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[idx].type[1].toLowerCase()}.svg" style="background-color: #${TYPE_DATA.find(x => x.name == pokedexJson[idx].type[1].toLowerCase()).color}">`;
 						}
 						break;
 					case 'Words':

@@ -19,7 +19,7 @@
 	@apply border-b-2 border-gray-300 pb-9;
 }
 .modal-body {
-	@apply pt-4 text-left;
+	@apply pt-4 text-left overflow-x-scroll;
 }
 
 @keyframes animateTop {

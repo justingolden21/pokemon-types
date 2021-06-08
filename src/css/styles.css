@@ -5,6 +5,7 @@
 @import "./components/modal.css";
 @import "./components/toggle.css";
 @import "./components/typebutton.css";
+@import "./components/typechart.css";
 @import "./components/weather.css";
 
 @tailwind base;

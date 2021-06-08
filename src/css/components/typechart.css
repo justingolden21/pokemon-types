@@ -1,0 +1,31 @@
+#type-chart table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#type-chart td, #type-chart th {
+    @apply text-center border-2 border-gray-100 p-1 m-1;
+}
+#type-chart th {
+    @apply text-gray-600 w-12;
+}
+
+#type-chart td.super {
+    @apply bg-green-100;
+}
+#type-chart td.resist {
+    @apply bg-red-100;
+}
+#type-chart td.immune {
+    @apply bg-gray-100;
+}
+
+#type-chart .type-icon {
+    /* filter:invert(1); */
+    /* width: 1rem; */
+
+    @apply bg-gray-600 mx-auto;
+    width: 1.25rem;
+    padding: 0.25rem;
+    border-radius: 25%;
+}

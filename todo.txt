@@ -1,2 +1,9 @@
 add search strings for types best against option
 add toast and popover titles
+add type chart and type lines
+    download chart, share chart, print chart, quick search type on desktop
+    url param to open typechart (line 20 in typechart.js):
+    	document.getElementById('type-chart-modal').style.display = 'block';
+    top left cell can have icon with diagonal line top right to bottom left splitting sword and shield icon for attackers/defender types
+start using umbrella.js
+make util.js
