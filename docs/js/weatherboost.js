@@ -65,7 +65,7 @@ const isBoosted = (types, weather) => weatherBoost[types[0]] == weather || weath
 
 const getWeather = () => selectVal('weather-boost-options').replace(/<img[^>]*>/g,'').toLowerCase().trim().split('/')[0];
 
-const getTypeIcon = type => `<img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${typeJson.find(x => x.name==type).color};">`;
+const getTypeIcon = type => `<img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${getColor(type)};">`;
 
 window.addEventListener('load', ()=> {
 	const boosts = {

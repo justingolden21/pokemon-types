@@ -549,18 +549,19 @@ input[type=text] {
   width: 100%;
 }
 
+#type-chart td, #type-chart th {
+  --tw-border-opacity: 1;
+  border-color: rgba(243, 244, 246, var(--tw-border-opacity));
+  border-width: 2px;
+  margin: 0.25rem;
+  padding: 0.25rem;
+  text-align: center;
+}
+
 #type-chart th {
   --tw-text-opacity: 1;
   color: rgba(75, 85, 99, var(--tw-text-opacity));
-}
-
-#type-chart td, #type-chart th {
-  --tw-border-opacity: 1;
-  border-color: rgba(229, 231, 235, var(--tw-border-opacity));
-  border-width: 2px;
-  padding: 0.5rem;
-  text-align: center;
-  width: 5rem;
+  width: 3rem;
 }
 
 #type-chart td.super {

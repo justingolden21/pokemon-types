@@ -9,6 +9,7 @@ const assets = [
 	'/js/searchstring.js',
 	'/js/settings.js',
 	'/js/scripts.js',
+	'/js/typechart.js',
 	'/js/types.js',
 	'/js/weatherboost.js',
 	'/js/components/autocomplete.js',
@@ -16,7 +17,6 @@ const assets = [
 	'/js/components/modal.js',
 	'/js/components/toggle.js',
 	'/data/pokedex.json',
-	'/data/types.json',
 	'/css/styles.css',
 	'/img/icons/icon-96x96.png',
 ];

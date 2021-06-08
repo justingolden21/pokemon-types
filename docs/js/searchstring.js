@@ -90,11 +90,11 @@ function updateSearchString() {
 			&& document.getElementById('use-weather-boost-toggle').checked;
 		const currentWeather = getWeather();
 
-		for(let type of typeJson) {
-			let matchup = getMatchup(type.name, currentType1, currentType2);
-			if(usingWeatherBoost && isBoosted([type.name, ''], currentWeather)) matchup *= 1.2;
+		for(let type of TYPE_NAMES) {
+			let matchup = getMatchup(type, currentType1, currentType2);
+			if(usingWeatherBoost && isBoosted([type, ''], currentWeather)) matchup *= 1.2;
 			if(matchup < minMultiplier) continue;
-			matchups.push({name: type.name, matchup: matchup});
+			matchups.push({name: type, matchup: matchup});
 		}
 
 		matchups = matchups.sort((a, b) => b.matchup - a.matchup);
