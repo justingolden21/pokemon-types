@@ -1,5 +1,5 @@
 const staticCacheName = 'site-static-v19';
-const dynamicCacheName = 'site-dynamic-v31';
+const dynamicCacheName = 'site-dynamic-v32';
 const assets = [
 	'/',
 	'/index.html',
@@ -16,6 +16,7 @@ const assets = [
 	'/js/components/autocomplete.js',
 	'/js/components/dropdown.js',
 	'/js/components/modal.js',
+	'/js/components/snackbar.js',
 	'/js/components/toggle.js',
 	'/data/pokedex.json',
 	'/css/styles.css',

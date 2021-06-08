@@ -7,7 +7,6 @@ window.addEventListener('load', ()=> {
 			<img class="type-icon" style="background-color: #${getColor(typeName)}" src="img/types/${typeName}.svg"> 
 			${typeName.substring(0,3).toUpperCase()}
 		</th>`;
-	// 	${capitalize(typeName)}
 
 	let tmpHTML = '<table><th>Def &gt; <br> Atk v</th>';
 	for(let i=0; i<TYPE_NAMES.length; i++) {
@@ -34,15 +33,16 @@ window.addEventListener('load', ()=> {
 	document.getElementById('copy-type-chart-link-btn').onclick = ()=> {
         updateUrlParam('typechart');
         copyUrlParam();
-        // TODO: add toast component, show "Copied!" toast for 2.5s
+		const check = '<svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>';
+		showSnackbar(check + ' Copied link to type chart');
     };
 
     document.getElementById('print-type-chart-btn').onclick = ()=> printElm('type-chart');
 
 });
 
-function printElm(elm) {
-	let win = window.open('', 'PRINT', 'height=480,width=640');
+function printElm(elm, height, width) {
+	let win = window.open('', 'PRINT', height ? `height=${height},width=${width}` : '');
 
 	win.document.write('<html><head><link rel="stylesheet" href="css/styles.css"><title>'
 		+ document.title + '</title></head><body onload="window.print();window.close()">'
