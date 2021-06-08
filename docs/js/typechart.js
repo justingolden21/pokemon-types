@@ -1,5 +1,7 @@
 window.addEventListener('load', ()=> {
 
+	// create type chart
+
 	const getTypeTD = typeName => 
 		`<th style="color: #${getColor(typeName)}">
 			<img class="type-icon" style="background-color: #${getColor(typeName)}" src="img/types/${typeName}.svg"> 
@@ -27,6 +29,26 @@ window.addEventListener('load', ()=> {
 	tmpHTML += '</table>';
 	document.getElementById('type-chart').innerHTML = tmpHTML;
 
-	// DEV ONLY, COMMENT IN PROD
-	// document.getElementById('type-chart-modal').style.display = 'block';
+	// btn listeners
+
+	document.getElementById('copy-type-chart-link-btn').onclick = ()=> {
+        updateUrlParam('typechart');
+        copyUrlParam();
+        // TODO: add toast component, show "Copied!" toast for 2.5s
+    };
+
+    document.getElementById('print-type-chart-btn').onclick = ()=> printElm('type-chart');
+
 });
+
+function printElm(elm) {
+	let win = window.open('', 'PRINT', 'height=480,width=640');
+
+	win.document.write('<html><head><link rel="stylesheet" href="css/styles.css"><title>'
+		+ document.title + '</title></head><body onload="window.print();window.close()">'
+		+ document.getElementById(elm).outerHTML + '</body></html>');
+
+	// necessary for IE
+	win.document.close();
+	win.focus();
+}

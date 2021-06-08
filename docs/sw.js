@@ -1,5 +1,5 @@
 const staticCacheName = 'site-static-v19';
-const dynamicCacheName = 'site-dynamic-v30';
+const dynamicCacheName = 'site-dynamic-v31';
 const assets = [
 	'/',
 	'/index.html',
@@ -11,6 +11,7 @@ const assets = [
 	'/js/scripts.js',
 	'/js/typechart.js',
 	'/js/types.js',
+	'/js/urlparam.js',
 	'/js/weatherboost.js',
 	'/js/components/autocomplete.js',
 	'/js/components/dropdown.js',
@@ -19,6 +20,8 @@ const assets = [
 	'/data/pokedex.json',
 	'/css/styles.css',
 	'/img/icons/icon-96x96.png',
+	'/img/typechart.png',
+	'/img/typechart.pdf',
 ];
 const typeNames = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'];
 for(let type of typeNames) {

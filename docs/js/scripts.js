@@ -25,7 +25,16 @@ window.addEventListener('load', ()=> {
 
 });
 
-const capitalize = (str)=> str.charAt(0).toUpperCase() + str.substring(1);
+const capitalize = str => str.charAt(0).toUpperCase() + str.substring(1);
+
+const copyText = str => {
+	const elm = document.createElement('textarea');
+	elm.value = str;
+	document.body.appendChild(elm);
+	elm.select();
+	document.execCommand('copy');
+	document.body.removeChild(elm);
+}
 
 let currentType1 = '', currentType2 = '';
 let recentlyChangedType = -1;
