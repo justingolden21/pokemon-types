@@ -21,9 +21,7 @@ const TYPE_DATA = [
 
 const TYPE_NAMES = 'normal fighting flying poison ground rock bug ghost steel fire water grass electric psychic ice dragon dark fairy'.split(' ');
 
-function getColor(typeName) {
-	return TYPE_DATA.find(t => t.name==typeName).color
-}
+const getColor = typeName => TYPE_DATA.find(t => t.name==typeName).color;
 
 // input string, output float
 function getSingleMatchup(attackType, defendType) {

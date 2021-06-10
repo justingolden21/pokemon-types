@@ -45,6 +45,8 @@ window.addEventListener('load', ()=> {
 
 	document.getElementById('print-type-chart-btn').onclick = ()=> printElm('type-chart', 'Type Effectiveness in Pokemon Go');
 
+	document.getElementById('print-type-attack-chart-btn').onclick = ()=> printElm('type-attack-chart', 'Attacking Type Effectiveness in Pokemon Go');
+
 });
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.substring(1);
