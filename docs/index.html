@@ -113,6 +113,16 @@
 
 			<!-- <h2 class="my-3 border-b-2 border-gray-100">Features</h2> -->
 
+			<!-- todo: use local storage, read browser default -->
+			<h3 class="my-3">Appearance</h3>
+
+			<div class="toggle-container">
+				<input type="checkbox" id="dark-mode-toggle" class="toggle-checkbox"/>
+				<label class="toggle-bg"></label>
+			</div>
+			<label for="dark-mode-toggle" class="toggle-label">Dark Mode</label>
+
+
 			<h3 class="my-3">Weather Boost</h3>
 
 			<div class="toggle-container">
@@ -303,7 +313,7 @@
 			</button>
 			<h1>Type Chart</h1>
 		</div>
-		<div class="modal-body">
+		<div class="modal-body overflow-x-scroll">
 			<div id="type-chart"></div>
 
 			<button id="copy-type-chart-link-btn" class="btn sm hover-fill my-3 mr-3">

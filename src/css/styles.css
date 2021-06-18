@@ -19,13 +19,13 @@
 		box-sizing: border-box;
 	}
 	::-moz-selection {
-		@apply bg-indigo-100;
+		@apply bg-accent bg-opacity-50;
 	}
 	::selection {
-		@apply bg-indigo-100;
+		@apply bg-accent bg-opacity-50;
 	}
 	*:focus, button:focus {
-		@apply outline-none ring-2 ring-indigo-300;
+		@apply outline-none ring-2 ring-accent;
 	}
 	button, img, svg {
 		-webkit-touch-callout: none;
@@ -55,11 +55,19 @@
 		@apply leading-relaxed;
 	}
 	.modal a {
-		@apply text-indigo-500 hover:underline;
+		@apply text-accent hover:underline;
 	}
 
 	body, p, h1, h2, button, input {
 		@apply text-gray-700;
+	}
+
+	/* dark mode */
+	body.dark-mode {
+		@apply bg-gray-900;
+	}
+	body.dark-mode, body.dark-mode p, body.dark-mode h1, body.dark-mode h2, body.dark-mode button:not(#type-btns button) {
+		@apply text-gray-100;
 	}
 
 }

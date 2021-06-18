@@ -15,7 +15,7 @@ input[type=text] {
 	@apply bg-gray-100;
 }
 .autocomplete-active {
-	@apply bg-indigo-500 text-white !important;
+	@apply bg-accent text-white !important;
 }
 .autocomplete-items div .type-icon {
 	width: 1.25rem;
@@ -26,4 +26,12 @@ input[type=text] {
 }
 .autocomplete-items div .type-icon[src*=undefined] {
 	display: none;
+}
+
+/* dark mode */
+body.dark-mode .autocomplete-items div {
+	@apply bg-gray-800;
+}
+body.dark-mode .autocomplete-items div:hover {
+	@apply bg-gray-700;
 }

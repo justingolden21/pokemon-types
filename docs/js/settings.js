@@ -12,15 +12,21 @@ window.addEventListener('load', ()=> {
 
 		if(checked) updateWeatherBoostDisplay();
 		updateTypeDisplay();
-	}
+	};
 
 	document.getElementById('weather-boost-select').onchange = ()=> {
 		updateWeatherBoostDisplay();
 		updateTypeDisplay();
-	}
+	};
 
 	document.getElementById('use-weather-boost-toggle').onchange = ()=> {
 		updateTypeDisplay();
-	}
+	};
+
+	document.getElementById('dark-mode-toggle').onchange = ()=> {
+		const checked = document.getElementById('dark-mode-toggle').checked;
+		const display = checked ? 'dark' : 'light';
+		document.body.classList.toggle('dark-mode');
+	};
 
 });
