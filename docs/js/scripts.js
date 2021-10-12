@@ -79,10 +79,15 @@ window.addEventListener('load', () => {
 	// read url param
 	const url = new URL(window.location.href);
 	const typesParam = url.searchParams.get('types');
-	if (typesParam.indexOf(' ') != -1) {
+	const pokemonParam = url.searchParams.get('pokemon');
+	if (typesParam && typesParam.indexOf(' ') != -1) {
 		updateTypes(typesParam.split(' '));
 	} else if (typesParam) {
 		updateTypes([typesParam]);
+	} else if (pokemonParam && pokemonParam in pokedexJson) {
+		openPokemon(pokemonParam);
+		document.getElementById('search').value =
+			pokedexJson[pokemonParam].name;
 	}
 });
 
@@ -274,6 +279,8 @@ function updateTypes(types) {
 }
 
 function openPokemon(id) {
-	let types = pokedexJson[id].type;
-	updateTypes(types);
+	updateTypes(pokedexJson[id].type);
+
+	// update url param
+	history.replaceState({}, '', '?pokemon=' + id);
 }
