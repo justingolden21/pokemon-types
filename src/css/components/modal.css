@@ -19,14 +19,38 @@
 	@apply border-b-2 border-gray-300 pb-9;
 }
 .modal-body {
-	@apply pt-4 text-left overflow-x-scroll;
+	@apply pt-4 text-left;
 }
 
 @keyframes animateTop {
-	from{top:-240px; opacity:0;}
-	to{top:0; opacity:1;}
+	from {
+		top: -240px;
+		opacity: 0;
+	}
+	to {
+		top: 0;
+		opacity: 1;
+	}
 }
 @-webkit-keyframes animateTop {
-	from{top:-240px; opacity:0;}
-	to{top:0; opacity:1;}
+	from {
+		top: -240px;
+		opacity: 0;
+	}
+	to {
+		top: 0;
+		opacity: 1;
+	}
+}
+
+/* dark mode */
+body.dark-mode .modal {
+	@apply bg-gray-900 bg-opacity-50;
+}
+body.dark-mode .modal-content {
+	@apply bg-gray-800 text-white;
+}
+body.dark-mode .modal-content,
+body.dark-mode .modal-header {
+	@apply border-gray-700;
 }

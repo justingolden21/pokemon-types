@@ -20,3 +20,14 @@
 .toggle-label:hover {
 	@apply text-gray-500;
 }
+
+/* dark mode */
+body.dark-mode .toggle-checkbox {
+	@apply bg-gray-200 border-gray-400;
+}
+body.dark-mode .toggle-checkbox:not(:checked) + .toggle-bg {
+	@apply bg-gray-500;
+}
+body.dark-mode .toggle-checkbox:checked + .toggle-bg {
+	@apply bg-gray-700;
+}

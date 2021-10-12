@@ -1,12 +1,11 @@
-window.addEventListener('load', ()=> {
+window.addEventListener('load', () => {
 	const url = new URL(window.location.href);
 	const q = url.searchParams.get('q');
-    if(q=='typechart') {
-    	document.getElementById('type-chart-modal').style.display = 'block';
-    } else if(q=='weatherboost') {
-    	document.getElementById('weather-boost-modal').style.display = 'block';
+	if (q == 'typechart') {
+		document.getElementById('type-chart-modal').style.display = 'block';
+	} else if (q == 'weatherboost') {
+		document.getElementById('weather-boost-modal').style.display = 'block';
 	}
-
 });
 
 function updateUrlParam(q) {
@@ -14,5 +13,5 @@ function updateUrlParam(q) {
 }
 
 function copyUrlParam() {
-    copyText(window.location.href);
+	copyText(window.location.href);
 }

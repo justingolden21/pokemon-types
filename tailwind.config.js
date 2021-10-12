@@ -4,7 +4,11 @@ module.exports = {
 		'./docs/**/*.js'
 	],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				'accent': '#7038F8',
+			}
+		},
 	},
 	plugins: [],
 }
