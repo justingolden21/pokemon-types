@@ -1,20 +1,19 @@
-@import "./components/autocomplete.css";
-@import "./components/button.css";
-@import "./components/dropdown.css";
-@import "./components/matchup.css";
-@import "./components/modal.css";
-@import "./components/snackbar.css";
-@import "./components/toggle.css";
-@import "./components/typebutton.css";
-@import "./components/typechart.css";
-@import "./components/weather.css";
+@import './components/autocomplete.css';
+@import './components/button.css';
+@import './components/dropdown.css';
+@import './components/matchup.css';
+@import './components/modal.css';
+@import './components/snackbar.css';
+@import './components/toggle.css';
+@import './components/typebutton.css';
+@import './components/typechart.css';
+@import './components/weather.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-
 	* {
 		box-sizing: border-box;
 	}
@@ -24,10 +23,13 @@
 	::selection {
 		@apply bg-accent bg-opacity-50;
 	}
-	*:focus, button:focus {
+	*:focus,
+	button:focus {
 		@apply outline-none ring-2 ring-accent;
 	}
-	button, img, svg {
+	button,
+	img,
+	svg {
 		-webkit-touch-callout: none;
 		-webkit-user-select: none;
 		-khtml-user-select: none;
@@ -58,7 +60,12 @@
 		@apply text-accent hover:underline;
 	}
 
-	body, p, h1, h2, button, input {
+	body,
+	p,
+	h1,
+	h2,
+	button,
+	input {
 		@apply text-gray-700;
 	}
 
@@ -66,42 +73,77 @@
 	body.dark-mode {
 		@apply bg-gray-900;
 	}
-	body.dark-mode, body.dark-mode p, body.dark-mode h1, body.dark-mode h2, body.dark-mode button:not(#type-btns button) {
+	body.dark-mode textarea,
+	body.dark-mode input {
+		@apply bg-gray-800 text-gray-100;
+	}
+	body.dark-mode,
+	body.dark-mode p,
+	body.dark-mode h1,
+	body.dark-mode h2,
+	body.dark-mode button:not(#type-btns button) {
 		@apply text-gray-100;
 	}
-
 }
 
 @layer components {
-
 	/* source: https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css */
 	@-webkit-keyframes bounceOutLeft {
-		20%{opacity:1;-webkit-transform:translate3d(24px,0,0) scaleX(.9);transform:translate3d(24px,0,0) scaleX(.9)}
-		to{opacity:0;-webkit-transform:translate3d(-1200px,0,0) scaleX(2);transform:translate3d(-1200px,0,0) scaleX(2)}
+		20% {
+			opacity: 1;
+			-webkit-transform: translate3d(24px, 0, 0) scaleX(0.9);
+			transform: translate3d(24px, 0, 0) scaleX(0.9);
+		}
+		to {
+			opacity: 0;
+			-webkit-transform: translate3d(-1200px, 0, 0) scaleX(2);
+			transform: translate3d(-1200px, 0, 0) scaleX(2);
+		}
 	}
 	@keyframes bounceOutLeft {
-		20%{opacity:1;-webkit-transform:translate3d(24px,0,0) scaleX(.9);transform:translate3d(24px,0,0) scaleX(.9)}
-		to{opacity:0;-webkit-transform:translate3d(-1200px,0,0) scaleX(2);transform:translate3d(-1200px,0,0) scaleX(2)}
+		20% {
+			opacity: 1;
+			-webkit-transform: translate3d(24px, 0, 0) scaleX(0.9);
+			transform: translate3d(24px, 0, 0) scaleX(0.9);
+		}
+		to {
+			opacity: 0;
+			-webkit-transform: translate3d(-1200px, 0, 0) scaleX(2);
+			transform: translate3d(-1200px, 0, 0) scaleX(2);
+		}
 	}
 	@-webkit-keyframes fadeInDown {
-		0%{overflow:hidden;max-height:0;}
-		to{max-height:100vh;}
+		0% {
+			overflow: hidden;
+			max-height: 0;
+		}
+		to {
+			max-height: 100vh;
+		}
 	}
 	@keyframes fadeInDown {
-		0%{overflow:hidden;max-height:0;}
-		to{max-height:100vh;}
+		0% {
+			overflow: hidden;
+			max-height: 0;
+		}
+		to {
+			max-height: 100vh;
+		}
 	}
-
 }
 
-@media (min-width: 640px) { /* sm */
+@media (min-width: 640px) {
+	/* sm */
 }
 
-@media (min-width: 768px) { /* md */
+@media (min-width: 768px) {
+	/* md */
 }
 
-@media (min-width: 1024px) { /* lg */
+@media (min-width: 1024px) {
+	/* lg */
 }
 
-@media (min-width: 1280px) { /* xl */
+@media (min-width: 1280px) {
+	/* xl */
 }
