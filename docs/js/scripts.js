@@ -75,6 +75,15 @@ window.addEventListener('load', () => {
 			'type-attack-chart',
 			'Attacking Type Effectiveness in Pokemon Go'
 		);
+
+	// read url param
+	const url = new URL(window.location.href);
+	const typesParam = url.searchParams.get('types');
+	if (typesParam.indexOf(' ') != -1) {
+		updateTypes(typesParam.split(' '));
+	} else if (typesParam) {
+		updateTypes([typesParam]);
+	}
 });
 
 const capitalize = (str) => str.charAt(0).toUpperCase() + str.substring(1);
@@ -160,6 +169,16 @@ function updateTypeDisplay() {
 	matchupsDiv.addEventListener('animationend', () =>
 		matchupsDiv.classList.remove('enter')
 	);
+
+	// update url param
+	let typeStr;
+	if (currentType1 && currentType2)
+		typeStr = currentType1 + '+' + currentType2;
+	else if (currentType1) typeStr = currentType1;
+	else if (currentType2) typeStr = currentType2;
+	else typeStr = '';
+
+	history.replaceState({}, '', '?types=' + typeStr);
 }
 
 function handleClick(type) {
@@ -245,12 +264,16 @@ fetch('data/pokedex.json')
 		pokedexJson = json;
 	});
 
-function openPokemon(id) {
+function updateTypes(types) {
 	clearTypes(true);
-	let types = pokedexJson[id].type;
-	changeType(1, types[0].toLowerCase());
+	if (types[0]) changeType(1, types[0].toLowerCase());
 	if (types[1]) changeType(2, types[1].toLowerCase());
 
 	updateTypeDisplay();
 	updateWeatherBoostDisplay();
+}
+
+function openPokemon(id) {
+	let types = pokedexJson[id].type;
+	updateTypes(types);
 }

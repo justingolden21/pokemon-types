@@ -8,3 +8,5 @@ start using umbrella.js
 make util.js
 show number of pokemon with these types
 use localstorage, remember settings (at least dark mode), selected types
+link to specific pokemon
+handle url params between typechart and types (needs more bug testing)
