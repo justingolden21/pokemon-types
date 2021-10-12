@@ -70,6 +70,9 @@ function loadSettings() {
 		elm.checked = val;
 		elm.onchange();
 	}
+
+	const val = localStorage.getItem('type-display-options');
+	setSelectVal('type-display-options', val);
 }
 
 function storeSettingToggle(name) {
