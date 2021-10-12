@@ -1,12 +1,15 @@
-add search strings for types best against option
-add popover titles
 type chart
     top left cell can have icon with diagonal line top right to bottom left splitting sword and shield icon for attackers/defender types
     maybe later: quick search type on desktop, lower opacity black on rows and cols not of that type atk/def
 add type line chart
+use localstorage, remember settings (at least dark mode), selected types
+handle url params between typechart and types (needs more bug testing)
+handle pokemon forms, regionals, megas (giratina origin/altered, regional meowth, mega gyrados, etc )
+reset settings btn
+
+maybe:
+add popover titles
 start using umbrella.js
 make util.js
 show number of pokemon with these types
-use localstorage, remember settings (at least dark mode), selected types
-handle url params between typechart and types (needs more bug testing)
-handle forms, regionals, megas (giratina origin/altered, regional meowth, mega gyrados, etc )
+store weather in param (in addition to types/pokemon id)
