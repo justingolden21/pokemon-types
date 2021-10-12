@@ -7,4 +7,3 @@ add type line chart
 start using umbrella.js
 make util.js
 show number of pokemon with these types
-share btn

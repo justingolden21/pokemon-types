@@ -23,6 +23,22 @@ window.addEventListener('load', () => {
 
 	document.getElementById('clear-btn').onclick = () => clearTypes();
 
+	document.getElementById('share-btn').onclick = () => {
+		if (navigator.share) {
+			navigator
+				.share({
+					title: 'Pokémon Types',
+					url: window.location.href,
+				})
+				.then(() => {
+					console.log('Share successful');
+				})
+				.catch(console.error);
+		} else {
+			console.log('Share not supported'); // TODO?
+		}
+	};
+
 	document.onkeyup = (e) => {
 		if (
 			e.code == 'Space' &&
