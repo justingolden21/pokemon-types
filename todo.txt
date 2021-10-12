@@ -5,7 +5,10 @@ add type line chart
 use localstorage, remember settings (at least dark mode), selected types
 handle url params between typechart and types (needs more bug testing)
 handle pokemon forms, regionals, megas (giratina origin/altered, regional meowth, mega gyrados, etc )
+
 reset settings btn
+store pokemon id/types in localstorage, load if no url params present (load before url params are loaded)
+question: if both url params and local storage are present, and url params are loaded, should those params be stored in local storage, overriding previous storage from url
 
 maybe:
 add popover titles
