@@ -77,12 +77,8 @@ const setSelectVal = (selectOptionsName, val) => {
 	const items = document.querySelectorAll(
 		`#${selectOptionsName}.select-content a`
 	);
-	console.log(items);
 	for (item of items) {
-		console.log(item.innerText);
-
 		if (item.innerText == val) {
-			console.log(item);
 			item.click();
 			break;
 		}

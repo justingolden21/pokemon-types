@@ -45,7 +45,6 @@ window.addEventListener('load', () => {
 
 	document.getElementById('type-display-options').onclick = () => {
 		storeSetting('type-display-options', selectVal('type-display-options'));
-		console.log('type-display-options', selectVal('type-display-options'));
 	};
 
 	// read local storage
