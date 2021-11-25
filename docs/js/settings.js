@@ -52,6 +52,13 @@ window.addEventListener('load', () => {
 });
 
 function loadSettings() {
+	const preferDark =
+		window.matchMedia &&
+		window.matchMedia('(prefers-color-scheme: dark)').matches;
+	if (localStorage.getItem('dark-mode-toggle') === null) {
+		storeSetting('dark-mode-toggle', preferDark);
+	}
+
 	const toggles = [
 		'weather-boost',
 		'use-weather-boost',
