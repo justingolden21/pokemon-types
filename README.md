@@ -8,37 +8,37 @@ https://justingolden.me/pokemon-types
 
 ### Features
 
-- Find the type matchups for any type combination
+-   Find the type matchups for any type combination
 
-- Search and open the types for any Pokémon
+-   Search and open the types for any Pokémon
 
-- View weather boost for types and Pokémon
+-   View weather boost for types and Pokémon
 
-- View matchups taking weather into account
+-   View matchups taking weather into account
 
-- Quick copy for search strings for Pokémon of certain type(s) and/or with moves of certain type(s)
+-   Quick copy for search strings for Pokémon of certain type(s) and/or with moves of certain type(s)
 
 ### Development
 
 First time setup: `npm install`
 
-*to install packages*
+_to install packages_
 
 Development: `npm run dev`
 
-*to run postcss on watch*
+_to run postcss on watch_
 
-Localhost: `npm run localhost`
+Localhost: `npm run server`
 
-*to host on locahost and open chrome to localhost:8000, requires python*
+_to host on locahost and open chrome to localhost:8000, requires python_
 
 Local Dev: `npm run local-dev`
 
-*to open localhost and run postcss on watch*
+_to open localhost and run postcss on watch_
 
 Production: `npm run prod`
 
-*builds the project and increments version*
+_builds the project and increments version_
 
 To test production build before deployment: `npm run localhost`
 
@@ -48,17 +48,17 @@ Built with TailwindCSS and Hero Icons. Adapted animations from Animate.css.
 
 ### Links
 
-- Live demo: https://justingolden.me/pokemon-types
+-   Live demo: https://justingolden.me/pokemon-types
 
-- This repo: https://github.com/justingolden21/pokemon-types
+-   This repo: https://github.com/justingolden21/pokemon-types
 
 <hr>
 
-- My website: https://justingolden.me
+-   My website: https://justingolden.me
 
-- My repos: https://github.com/justingolden21
+-   My repos: https://github.com/justingolden21
 
-- Contact me: contact@justingolden.me
+-   Contact me: contact@justingolden.me
 
 ### Legal
 
