@@ -24,18 +24,21 @@ function autocomplete(inp, options) {
 		this.parentNode.appendChild(listDiv);
 		let numResults = 0;
 		for (let idx in options) {
-			// check if the option starts with the same letters as the text field value
-			if (
-				options[idx].substr(0, val.length).toUpperCase() ==
-				val.toUpperCase()
-			) {
+			// check if the option contains the same letters as the text field value
+			const foundIdx = options[idx]
+				.toUpperCase()
+				.indexOf(val.toUpperCase());
+			if (foundIdx !== -1) {
 				// create a div for each matching element
 				let optionDiv = document.createElement('DIV');
 				// make matching letters bold, input field holds the option's value
-				optionDiv.innerHTML = `<strong>${options[idx].substr(
+				const splitString = SplitStringThree(
+					options[idx],
 					0,
-					val.length
-				)}</strong>${options[idx].substr(val.length)}`;
+					foundIdx,
+					foundIdx + val.length
+				);
+				optionDiv.innerHTML = `${splitString[0]}<strong>${splitString[1]}</strong>${splitString[2]}`;
 
 				switch (selectVal('type-display-options')) {
 					case 'Icons':
@@ -145,4 +148,12 @@ function autocomplete(inp, options) {
 	document.addEventListener('click', function (e) {
 		closeAllLists(e.target);
 	});
+}
+
+function SplitStringThree(str, idx0, idx1, idx2) {
+	return [
+		str.substring(idx0, idx1),
+		str.substring(idx1, idx2),
+		str.substring(idx2),
+	];
 }
