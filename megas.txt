@@ -1,0 +1,193 @@
+
+003
+Mega Venusaur
+grass poison
+
+006
+Mega Charizard X
+fire dragon
+
+006
+Mega Charizard Y
+fire flying
+
+009
+Mega Blastoise
+water
+
+015
+Mega Beedrill
+bug poison
+
+018
+Mega Pidgeot
+normal flying
+
+065
+Mega Alakazam
+psychic
+
+080
+Mega Slowbro
+water psychic
+
+094
+Mega Gengar
+ghost poison
+
+115
+Mega Kangaskhan
+normal
+
+127
+Mega Pinsir
+bug flying
+
+130
+Mega Gyarados
+water dark
+
+142
+Mega Aerodactyl
+rock flying
+
+150
+Mega Mewtwo X
+psychic fighting
+
+150
+Mega Mewtwo Y
+psychic
+
+181
+Mega Ampharos
+electric dragon
+
+208
+Mega Steelix
+steel ground
+
+212
+Mega Scizor
+bug steel
+
+214
+Mega Heracross
+bug fighting
+
+229
+Mega Houndoom
+dark fire
+
+248
+Mega Tyranitar
+rock dark
+
+254
+Mega Sceptile
+grass dragon
+
+257
+Mega Blaziken
+fire fighting
+
+260
+Mega Swampert
+water ground
+
+282
+Mega Gardevoir
+psychic fairy
+
+302
+Mega Sableye
+dark ghost
+
+303
+Mega Mawile
+steel fairy
+
+306
+Mega Aggron
+steel
+
+308
+Mega Medicham
+fighting psychic
+
+310
+Mega Manectric
+electric
+
+319
+Mega Sharpedo
+water dark
+
+323
+Mega Camerupt
+fire ground
+
+334
+Mega Altaria
+dragon fairy
+
+354
+Mega Banette
+ghost
+
+359
+Mega Absol
+dark
+
+362
+Mega Glalie
+ice
+
+373
+Mega Salamence
+dragon flying
+
+376
+Mega Metagross
+steel psychic
+
+380
+Mega Latias
+dragon psychic
+
+381
+Mega Latios
+dragon psychic
+
+384
+Mega Rayquaza
+dragon flying
+
+428
+Mega Lopunny
+normal fighting
+
+445
+Mega Garchomp
+dragon ground
+
+448
+Mega Lucario
+fighting steel
+
+460
+Mega Abomasnow
+grass ice
+
+475
+Mega Gallade
+psychic fighting
+
+531
+Mega Audino
+normal fairy
+
+719
+Mega Diancie
+rock fairy
+
