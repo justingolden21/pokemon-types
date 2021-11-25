@@ -42,6 +42,8 @@ _builds the project and increments version_
 
 To test production build before deployment: `npm run localhost`
 
+Update `.gitignore` with `docs/css/` so VS code, prettier, and others know to ignore the absolutely massive generated file, however, this file should be commited, and the chagnes to `.gitignore` shouldn't be.
+
 ### Project Notes
 
 The ID used in url params is not the pokemon ID, but rather the index in the list of pokemon. Update this in future? Index could be "M003" for mega venusaur for example
