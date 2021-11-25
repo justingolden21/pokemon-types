@@ -16,3 +16,5 @@ start using umbrella.js
 make util.js
 show number of pokemon with these types
 store weather in param (in addition to types/pokemon id)
+
+future: mention pokemon with levitate ability (immune to ground) if doing mainline series
