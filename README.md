@@ -42,6 +42,10 @@ _builds the project and increments version_
 
 To test production build before deployment: `npm run localhost`
 
+### Project Notes
+
+The ID used in url params is not the pokemon ID, but rather the index in the list of pokemon. Update this in future? Index could be "M003" for mega venusaur for example
+
 ### Built With
 
 Built with TailwindCSS and Hero Icons. Adapted animations from Animate.css.
