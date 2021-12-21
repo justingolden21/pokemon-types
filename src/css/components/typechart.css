@@ -28,7 +28,7 @@ body.dark-mode #type-chart td.resist {
 	@apply bg-red-800;
 }
 body.dark-mode #type-chart td.immune {
-	@apply bg-gray-800;
+	@apply bg-gray-600;
 }
 
 body.dark-mode #type-chart th {
