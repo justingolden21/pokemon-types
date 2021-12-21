@@ -50,8 +50,6 @@ window.addEventListener('load', () => {
 					isMain ? '<b>' : ''
 			  } ${capitalize(typeName)} ${isMain ? '</b>' : ''}</div>`;
 
-	const leftArrow =
-		'<svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg>';
 	const rightArrow =
 		'<svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>';
 
@@ -61,7 +59,7 @@ window.addEventListener('load', () => {
 		tmpHTML += `<div class="${divClassesCSS}"></div>`;
 	tmpHTML +=
 		`<div class="${divClassesCSS}"><b>Weak To</b></div>` +
-		leftArrow.replace('currentColor', 'transparent') +
+		rightArrow.replace('currentColor', 'transparent') +
 		`<div class="${divClassesCSS}"></div>` +
 		rightArrow.replace('currentColor', 'transparent') +
 		`<div class="${divClassesCSS}"><b>Strong Against</b></div>`;
@@ -86,7 +84,7 @@ window.addEventListener('load', () => {
 		tmpHTML += defHTML; // add blanks *before* types
 
 		// the type itself
-		tmpHTML += leftArrow + getTypeDiv(TYPE_NAMES[i], true) + rightArrow;
+		tmpHTML += rightArrow + getTypeDiv(TYPE_NAMES[i], true) + rightArrow;
 
 		// / attacking
 		count = 0;
