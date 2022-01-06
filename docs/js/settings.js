@@ -41,8 +41,6 @@ window.addEventListener('load', () => {
 	};
 
 	document.getElementById('clear-weather-toggle').onchange = () => {
-		const checked = document.getElementById('clear-weather-toggle').checked;
-
 		storeSettingToggle('clear-weather-toggle');
 	};
 
