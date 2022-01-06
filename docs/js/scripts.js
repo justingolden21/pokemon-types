@@ -227,10 +227,6 @@ function updateTypeDisplay() {
 				}
 			}
 
-			if (i === 0) {
-				console.log(pokemonTypes, currentTypes, isMatch);
-			}
-
 			if (isMatch) {
 				countPokemonOfType++;
 				pokemonWithType += pokedexJson[i].name + ', ';
