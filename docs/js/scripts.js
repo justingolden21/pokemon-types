@@ -184,6 +184,66 @@ function updateTypeDisplay() {
 	else typeStr = '';
 
 	history.replaceState({}, '', '?types=' + typeStr);
+
+	// pokemon with type combination
+	if (document.getElementById('pokemon-with-type-toggle').checked) {
+		let pokemonWithType = '';
+		let countPokemonOfType = 0;
+		for (let i = 0; pokedexJson && i < pokedexJson.length; i++) {
+			let currentTypes;
+			let pokemonTypes;
+			let isMatch = false;
+			if (currentType2 === '') {
+				currentTypes = [currentType1];
+			} else if (currentType1 === '') {
+				currentTypes = [currentType2];
+			} else {
+				currentTypes = [currentType1, currentType2];
+			}
+			if (pokedexJson[i].type.length === 1) {
+				pokemonTypes = [pokedexJson[i].type[0].toLowerCase()];
+			} else {
+				pokemonTypes = [
+					pokedexJson[i].type[0].toLowerCase(),
+					pokedexJson[i].type[1].toLowerCase(),
+				];
+			}
+
+			if (pokemonTypes.length === currentTypes.length) {
+				if (pokemonTypes.length === 1) {
+					if (pokemonTypes[0] === currentTypes[0]) {
+						isMatch = true;
+					}
+				}
+				if (pokemonTypes.length === 2) {
+					if (
+						(pokemonTypes[0] === currentTypes[0] &&
+							pokemonTypes[1] === currentTypes[1]) ||
+						(pokemonTypes[0] === currentTypes[1] &&
+							pokemonTypes[1] === currentTypes[0])
+					) {
+						isMatch = true;
+					}
+				}
+			}
+
+			if (i === 0) {
+				console.log(pokemonTypes, currentTypes, isMatch);
+			}
+
+			if (isMatch) {
+				countPokemonOfType++;
+				pokemonWithType += pokedexJson[i].name + ', ';
+			}
+		}
+		document.getElementById(
+			'pokemon-with-type'
+		).innerHTML = `${countPokemonOfType} pokemon with this type combination ${
+			countPokemonOfType !== 0 ? ':' : ''
+		} ${pokemonWithType.slice(0, -2)}`;
+	} else {
+		document.getElementById('pokemon-with-type').innerHTML = '';
+	}
 }
 
 function handleClick(type) {

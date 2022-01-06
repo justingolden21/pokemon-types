@@ -161,13 +161,21 @@
                 <!-- <h2 class="my-3 border-b-2 border-gray-100">Features</h2> -->
 
                 <!-- todo: use local storage, read browser default -->
-                <h3 class="my-3">Appearance</h3>
+                <h3 class="my-3">Display</h3>
 
                 <div class="toggle-container">
                     <input type="checkbox" id="dark-mode-toggle" class="toggle-checkbox" />
                     <label class="toggle-bg"></label>
                 </div>
                 <label for="dark-mode-toggle" class="toggle-label">Dark Mode</label>
+                <br>
+                <br>
+                <div class="toggle-container">
+                    <input type="checkbox" id="pokemon-with-type-toggle" class="toggle-checkbox" />
+                    <label class="toggle-bg"></label>
+                </div>
+                <label for="pokemon-with-type-toggle" class="toggle-label">Show Pokemon with Current Type
+                    Combination</label>
 
 
                 <h3 class="my-3">Weather Boost</h3>
@@ -495,6 +503,8 @@
     </div>
 
     <div id="snackbar"></div>
+
+    <p id="pokemon-with-type"></p>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDML9CJTDG"></script>

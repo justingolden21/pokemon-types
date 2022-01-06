@@ -30,11 +30,14 @@ window.addEventListener('load', () => {
 	};
 
 	document.getElementById('dark-mode-toggle').onchange = () => {
-		const checked = document.getElementById('dark-mode-toggle').checked;
-		const display = checked ? 'dark' : 'light';
 		document.body.classList.toggle('dark-mode');
 
 		storeSettingToggle('dark-mode-toggle');
+	};
+
+	document.getElementById('pokemon-with-type-toggle').onchange = () => {
+		updateTypeDisplay();
+		storeSettingToggle('pokemon-with-type-toggle');
 	};
 
 	document.getElementById('clear-weather-toggle').onchange = () => {
@@ -63,6 +66,7 @@ function loadSettings() {
 		'weather-boost',
 		'use-weather-boost',
 		'dark-mode',
+		'pokemon-with-type',
 		'clear-weather',
 	];
 	for (let toggle of toggles) {
