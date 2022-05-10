@@ -17,3 +17,5 @@ make util.js
 store weather in param (in addition to types/pokemon id)
 
 future: mention pokemon with levitate ability (immune to ground) if doing mainline series
+
+UPDATE DEX: https://serebii.net/pokemongo/pokemon.shtml
