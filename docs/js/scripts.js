@@ -25,9 +25,31 @@ window.addEventListener('load', () => {
 
 	document.getElementById('share-btn').onclick = () => {
 		if (navigator.share) {
+			let shareTxt;
+			// read url param
+			const url = new URL(window.location.href);
+			const typesParam = url.searchParams.get('types');
+			const pokemonParam = url.searchParams.get('pokemon');
+			if (typesParam && typesParam.indexOf(' ') != -1) {
+				shareTxt = `See the type matchups for ${typesParam
+					.split(' ')
+					.join(' and ')}`;
+			} else if (typesParam) {
+				shareTxt = `See the type matchups for ${typesParam}`;
+			} else if (
+				(pokemonParam && pokemonParam in pokedexJson) ||
+				pokemonParam === 0
+			) {
+				shareTxt = `See the type matchups for ${pokedexJson[pokemonParam].name}`;
+			} else {
+				shareTxt =
+					'View type matchups of all Pokémon in Pokémon Go in seconds';
+			}
+
 			navigator
 				.share({
 					title: 'Pokémon Types',
+					text: shareTxt,
 					url: window.location.href,
 				})
 				.then(() => {
@@ -84,7 +106,10 @@ window.addEventListener('load', () => {
 		updateTypes(typesParam.split(' '));
 	} else if (typesParam) {
 		updateTypes([typesParam]);
-	} else if (pokemonParam && pokemonParam in pokedexJson) {
+	} else if (
+		(pokemonParam && pokemonParam in pokedexJson) ||
+		pokemonParam === 0
+	) {
 		openPokemon(pokemonParam);
 		document.getElementById('search').value =
 			pokedexJson[pokemonParam].name;
