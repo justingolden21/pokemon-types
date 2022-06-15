@@ -15,6 +15,13 @@
 	const pokemonNames = pokedexJson.map((x) => x.name);
 
 	$: types = $state.types;
+	$: usingWeatherBoost =
+		$settings.weatherBoost.weatherBoostEnabled && $settings.weatherBoost.useWeatherBoostMultiplier;
+	$: matchups = TYPE_DATA.map((type) => {
+		let matchup = getMatchup(type.name, types[0], types[1]);
+		if (usingWeatherBoost && isBoosted([type.name, ''], getWeather())) matchup *= 1.2;
+		return { name: type.name, matchup: matchup, color: type.color };
+	}).sort((a, b) => b.matchup - a.matchup);
 
 	// ========
 
@@ -94,41 +101,6 @@
 	let recentlyChangedType = -1;
 
 	function updateTypeDisplay() {
-		let weakHtml = '<h3>Weak to:</h3>';
-		let resistHtml = '<h3>Resists:</h3>';
-		if (types[0] == '' && types[1] == '') (weakHtml = ''), (resistHtml = '');
-
-		const usingWeatherBoost =
-			$settings.weatherBoost.weatherBoostEnabled &&
-			$settings.weatherBoost.useWeatherBoostMultiplier;
-
-		let matchups = [];
-
-		for (let type of TYPE_DATA) {
-			let matchup = getMatchup(type.name, types[0], types[1]);
-			if (usingWeatherBoost && isBoosted([type.name, ''], getWeather())) matchup *= 1.2;
-			if (matchup == 1) continue;
-
-			matchups.push({ name: type.name, matchup: matchup, color: type.color });
-		}
-
-		matchups = matchups.sort((a, b) => b.matchup - a.matchup);
-
-		for (let mu of matchups) {
-			const strong = mu.matchup < 0.625 || mu.matchup > 1.6;
-			const html = `<div class="matchup-item" style="background-color: #${mu.color};">${
-				strong ? '<strong>' : ''
-			}${mu.matchup}${strong ? '</strong>' : ''}x ${capitalize(mu.name)}</div>`;
-			if (mu.matchup > 1) {
-				weakHtml += html;
-			} else {
-				resistHtml += html;
-			}
-		}
-
-		document.getElementById('type-weak').innerHTML = weakHtml;
-		document.getElementById('type-resist').innerHTML = resistHtml;
-
 		const matchupsDiv = document.getElementById('matchups');
 		matchupsDiv.classList.remove('leave', 'enter');
 		matchupsDiv.classList.add('enter');
@@ -452,14 +424,41 @@
 		{/each}
 	</div>
 
-	<div id="matchups" class="grid grid-cols-2 my-2">
-		<div>
-			<div id="type-weak" class="mr-2 md:mr-4" />
+	{#if types[0] !== '' || types[1] !== ''}
+		<div id="matchups" class="grid grid-cols-2 my-2">
+			<div id="type-weak" class="mr-2 md:mr-4">
+				<h3>Weak to:</h3>
+				{#each matchups as mu}
+					{@const strong = mu.matchup < 0.625 || mu.matchup > 1.6}
+					{#if mu.matchup > 1}
+						<div class="matchup-item" style="background-color: #{mu.color}">
+							{#if strong}
+								<strong>{mu.matchup}x</strong> {capitalize(mu.name)}
+							{:else}
+								{mu.matchup}x {capitalize(mu.name)}
+							{/if}
+						</div>
+					{/if}
+				{/each}
+			</div>
+
+			<div id="type-resist" class="mr-2 md:ml-4">
+				<h3>Resists:</h3>
+				{#each matchups as mu}
+					{@const strong = mu.matchup < 0.625 || mu.matchup > 1.6}
+					{#if mu.matchup < 1}
+						<div class="matchup-item" style="background-color: #{mu.color}">
+							{#if strong}
+								<strong>{mu.matchup}x</strong> {capitalize(mu.name)}
+							{:else}
+								{mu.matchup}x {capitalize(mu.name)}
+							{/if}
+						</div>
+					{/if}
+				{/each}
+			</div>
 		</div>
-		<div>
-			<div id="type-resist" class="mr-2 md:ml-4" />
-		</div>
-	</div>
+	{/if}
 </section>
 
 <div id="snackbar" />
