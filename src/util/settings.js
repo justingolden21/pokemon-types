@@ -1,3 +1,5 @@
+// import { updateWeatherBoostDisplay } from '../util/weatherboost';
+
 window.addEventListener('load', () => {
 	// turn on / off weather boost text
 	document.getElementById('weather-boost-toggle').onchange = () => {
@@ -7,8 +9,7 @@ window.addEventListener('load', () => {
 		document.getElementById('weather-boost-select').style.display = display;
 		document.getElementById('weather-boost-check').style.display = display;
 
-		document.getElementById('more-weather-settings').style.display =
-			display;
+		document.getElementById('more-weather-settings').style.display = display;
 
 		if (checked) updateWeatherBoostDisplay();
 		updateTypeDisplay();
@@ -53,9 +54,7 @@ window.addEventListener('load', () => {
 });
 
 function loadSettings() {
-	const preferDark =
-		window.matchMedia &&
-		window.matchMedia('(prefers-color-scheme: dark)').matches;
+	const preferDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 	if (localStorage.getItem('dark-mode-toggle') === null) {
 		storeSetting('dark-mode-toggle', preferDark);
 	}
@@ -65,7 +64,7 @@ function loadSettings() {
 		'use-weather-boost',
 		'dark-mode',
 		'pokemon-with-type',
-		'clear-weather',
+		'clear-weather'
 	];
 	for (let toggle of toggles) {
 		const name = toggle + '-toggle';

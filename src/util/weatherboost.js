@@ -81,3 +81,5 @@ const getTypeIcon = (type) =>
 	`<img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${getColor(
 		type
 	)};">`;
+
+export { updateWeatherBoostDisplay, isBoosted, getWeather, getTypeIcon };

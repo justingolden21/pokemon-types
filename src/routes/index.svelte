@@ -8,6 +8,7 @@
 	import { open } from '../util/modal';
 	import { TYPE_DATA, getMatchup } from '../util/types';
 	import { onloadReadURLParam } from '../util/urlparam';
+	import { updateWeatherBoostDisplay, isBoosted, getWeather } from '../util/weatherboost';
 
 	import { currentType1, currentType2 } from '../stores/stores';
 

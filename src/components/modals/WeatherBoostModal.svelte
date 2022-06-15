@@ -4,6 +4,7 @@
 	import { updateUrlParam, copyUrlParam } from '../../util/urlparam';
 	import printElm from '../../util/printElm';
 	import showSnackbar from '../../util/snackbar';
+	import { getTypeIcon } from '../../util/weatherboost';
 
 	onMount(() => {
 		const boosts = {

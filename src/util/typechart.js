@@ -1,4 +1,5 @@
 // TODO import TYPE_NAMES, getColor, getMatchup from util/types
+// TODO import { getTypeIcon } from util/weatherboost
 
 window.addEventListener('load', () => {
 	// create type chart
