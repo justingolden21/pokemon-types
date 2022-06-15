@@ -92,9 +92,10 @@ function updateSearchString() {
 
 		let minMultiplier = parseFloat(document.getElementById('multiplier-threshold-options').value);
 
+		//TODO: fix $settings usage
 		const usingWeatherBoost =
-			document.getElementById('weather-boost-toggle').checked &&
-			document.getElementById('use-weather-boost-toggle').checked;
+			$settings.weatherBoost.weatherBoostEnabled &&
+			$settings.weatherBoost.useWeatherBoostMultiplier;
 		const currentWeather = getWeather();
 
 		for (let type of TYPE_NAMES) {

@@ -153,7 +153,7 @@
 					on:click={() => setInputVal(option)}
 				>
 					{@html option}
-					<!-- TODO: if type-display-options === 'Words':
+					<!-- TODO: if $settings.autocomplete.showTypesAs === 'words':
 					optionDiv.innerHTML += ` <small>(${pokedexJson[idx].type.join(', ')})</small>`;
 					if it === 'Icons':
 					optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[

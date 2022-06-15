@@ -1,5 +1,6 @@
 import { getColor } from './types';
 import { currentType1, currentType2 } from '../stores/stores';
+import { settings } from '../stores/settings';
 
 const weatherBoost = {
 	'grass': 'sunny',
@@ -46,8 +47,6 @@ const getWeatherSpan = (types) => {
 };
 
 function updateWeatherBoostDisplay() {
-	if (!document.getElementById('weather-boost-toggle').checked) return;
-
 	let types = [];
 	if (currentType1 != '') types.push(currentType1);
 	if (currentType2 != '') types.push(currentType2);
