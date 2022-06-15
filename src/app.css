@@ -85,6 +85,10 @@
 }
 
 @layer components {
+	input,
+	select {
+		@apply p-2;
+	}
 	.matchup-item {
 		@apply px-2 py-1 text-white my-1;
 	}
