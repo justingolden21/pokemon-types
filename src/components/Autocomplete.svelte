@@ -151,6 +151,7 @@
 			}}
 		>
 			{#each filteredOptions as option, idx}
+				{@const pokemonTypes = pokedexJson[idx].type}
 				<li
 					class="bg-white border-2 border-t-0 border-gray-200 whitespace-nowrap overflow-x-hidden block autocomplete-item p-2 cursor-pointer dark:border-gray-800 hover:dark:bg-gray-700 hover:bg-accent hover:text-white dark:text-white {idx ===
 					highlightIdx
@@ -161,24 +162,24 @@
 					{@html option}
 
 					{#if $settings.autocomplete.showTypesAs === 'words'}
-						<small>({pokedexJson[idx].type.join(', ')})</small>
+						<small>({pokemonTypes.join(', ')})</small>
 					{:else if $settings.autocomplete.showTypesAs === 'icons'}
 						<img
 							alt=""
 							class="type-icon"
-							src="img/types/{pokedexJson[idx].type[0].toLowerCase()}.svg"
+							src="img/types/{pokemonTypes[0].toLowerCase()}.svg"
 							style="background-color: #{TYPE_DATA.find(
-								(x) => x.name == pokedexJson[idx].type[0].toLowerCase()
+								(x) => x.name == pokemonTypes[0].toLowerCase()
 							).color}"
 						/>
 
-						{#if pokedexJson[idx].type[1]}
+						{#if pokemonTypes[1]}
 							<img
 								alt=""
 								class="type-icon"
-								src={`img/types/${pokedexJson[idx].type[1].toLowerCase()}.svg`}
+								src={`img/types/${pokemonTypes[1].toLowerCase()}.svg`}
 								style={`background-color: #${
-									TYPE_DATA.find((x) => x.name == pokedexJson[idx].type[1].toLowerCase()).color
+									TYPE_DATA.find((x) => x.name == pokemonTypes[1].toLowerCase()).color
 								}`}
 							/>
 						{/if}
