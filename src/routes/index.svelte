@@ -15,6 +15,17 @@
 	const pokemonNames = pokedexJson.map((x) => x.name);
 
 	$: types = $state.types;
+	$: if (types) {
+		// update url param
+		let typeStr;
+		if (types[0] && types[1]) typeStr = types[0] + '+' + types[1];
+		else if (types[0]) typeStr = types[0];
+		else if (types[1]) typeStr = types[1];
+		else typeStr = '';
+
+		history.replaceState({}, '', '?types=' + typeStr);
+	}
+
 	$: usingWeatherBoost =
 		$settings.weatherBoost.weatherBoostEnabled && $settings.weatherBoost.useWeatherBoostMultiplier;
 	$: matchups = TYPE_DATA.map((type) => {
@@ -105,15 +116,6 @@
 		matchupsDiv.classList.remove('leave', 'enter');
 		matchupsDiv.classList.add('enter');
 		matchupsDiv.addEventListener('animationend', () => matchupsDiv.classList.remove('enter'));
-
-		// update url param
-		let typeStr;
-		if (types[0] && types[1]) typeStr = types[0] + '+' + types[1];
-		else if (types[0]) typeStr = types[0];
-		else if (types[1]) typeStr = types[1];
-		else typeStr = '';
-
-		history.replaceState({}, '', '?types=' + typeStr);
 
 		// pokemon with type combination
 		if ($settings.display.showPokemonWithCurrentType) {
