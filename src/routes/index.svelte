@@ -114,15 +114,6 @@
 
 	const capitalize = (str) => str.charAt(0).toUpperCase() + str.substring(1);
 
-	const copyText = (str) => {
-		const elm = document.createElement('textarea');
-		elm.value = str;
-		document.body.appendChild(elm);
-		elm.select();
-		document.execCommand('copy');
-		document.body.removeChild(elm);
-	};
-
 	const printElm = (elm, title = '', height, width) => {
 		let win = window.open('', 'PRINT', height ? `height=${height},width=${width}` : '');
 
