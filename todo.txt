@@ -21,3 +21,11 @@ future: mention pokemon with levitate ability (immune to ground) if doing mainli
 UPDATE DEX: https://serebii.net/pokemongo/pokemon.shtml
 
 share text add list of weaknesses and resistances
+
+type quiz
+
+delete /docs folder once move to svelte kit / netlify is complete (keeping folder for legacy support so site doesn't go down unitl then)
+
+Notes:
+
+The ID used in url params is not the pokemon ID, but rather the index in the list of pokemon. Update this in future? Index could be "M003" for mega venusaur for example

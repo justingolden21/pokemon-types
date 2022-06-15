@@ -1,13 +1,15 @@
-@import './components/autocomplete.css';
-@import './components/button.css';
-@import './components/dropdown.css';
-@import './components/matchup.css';
-@import './components/modal.css';
-@import './components/snackbar.css';
-@import './components/toggle.css';
-@import './components/typebutton.css';
-@import './components/typechart.css';
-@import './components/weather.css';
+/* Global styles, PostCSS syntax */
+
+@import '../src/components/css/components/autocomplete.css';
+@import '../src/components/css/components/button.css';
+@import '../src/components/css/components/dropdown.css';
+@import '../src/components/css/components/matchup.css';
+@import '../src/components/css/components/modal.css';
+@import '../src/components/css/components/snackbar.css';
+@import '../src/components/css/components/toggle.css';
+@import '../src/components/css/components/typebutton.css';
+@import '../src/components/css/components/typechart.css';
+@import '../src/components/css/components/weather.css';
 
 @tailwind base;
 @tailwind components;

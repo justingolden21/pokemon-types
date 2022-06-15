@@ -1,6 +1,6 @@
 # Pokémon Types
 
-### About
+## About
 
 A simple tool for type matchups in Pokémon Go
 
@@ -8,66 +8,83 @@ https://justingolden.me/pokemon-types
 
 ### Features
 
--   Find the type matchups for any type combination
+Pokemon Types is a webapp to quickly view type matchups and more in Pokemon Go
 
--   Search and open the types for any Pokémon
+- Find the type matchups for any type combination
 
--   View weather boost for types and Pokémon
+- Search and open the types for any Pokémon
 
--   View matchups taking weather into account
+- View weather boost for types and Pokémon
 
--   Quick copy for search strings for Pokémon of certain type(s) and/or with moves of certain type(s)
+- View matchups taking weather into account
+
+- Quick copy for search strings for Pokémon of certain type(s) and/or with moves of certain type(s)
+
+## Development
+
+### First Time
+
+`npm i` to install
 
 ### Development
 
-First time setup: `npm install`
+Once you're done installing, run
 
-_to install packages_
+```bash
+npm run dev
 
-Development: `npm run dev`
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-_to run postcss on watch_
+### Deployment
 
-Localhost: `npm run server`
+To create a production version of the app:
 
-_to host on locahost and open chrome to localhost:8000, requires python_
+```bash
+npm run build
+```
 
-Local Dev: `npm run local-dev`
+You can preview the production build with `npm run preview`.
 
-_to open localhost and run postcss on watch_
+Deploys use the Netlify adapter for Svelte JS
 
-Production: `npm run prod`
+### Stack and Technologies
 
-_builds the project and increments version_
+JS: Svelte + Svelte Kit
 
-To test production build before deployment: `npm run localhost`
+Typing: Typescript
 
-Update `.gitignore` with `docs/css/` so VS code, prettier, and others know to ignore the absolutely massive generated file, however, this file should be commited, and the chagnes to `.gitignore` shouldn't be.
+CSS: Tailwind CSS
 
-### Project Notes
+Back: Netlify
 
-The ID used in url params is not the pokemon ID, but rather the index in the list of pokemon. Update this in future? Index could be "M003" for mega venusaur for example
+Testing: None currently
 
-### Built With
+Linting: Prettier + ESLint + AirBNB
 
-Built with TailwindCSS and Hero Icons. Adapted animations from Animate.css.
+Created with [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+
+Using TailwindCSS colors and Hero Icons. Adapted animations from Animate.css.
+
+## Misc
 
 ### Links
 
--   Live demo: https://justingolden.me/pokemon-types
+- Live demo: https://justingolden.me/pokemon-types
 
--   This repo: https://github.com/justingolden21/pokemon-types
+- This repo: https://github.com/justingolden21/pokemon-types
 
-<hr>
+---
 
--   My website: https://justingolden.me
+- My website: https://justingolden.me
 
--   My repos: https://github.com/justingolden21
+- My repos: https://github.com/justingolden21
 
--   Contact me: contact@justingolden.me
+- Contact me: contact@justingolden.me
 
 ### Legal
 
-©2021 Justin Golden - All Rights Reserved
+©2022 Justin Golden - All Rights Reserved
 
 Pokémon are trademarks of Nintendo, Game Freak, and The Pokémon Company. Pokémon And All Respective Names are Trademark & © of Nintendo, Pokémon GO is Trademark & © of Niantic, Inc. This website is not affiliated with Niantic Inc., The Pokemon Company, or Nintendo.
