@@ -106,13 +106,12 @@
 		const usingWeatherBoost =
 			$settings.weatherBoost.weatherBoostEnabled &&
 			$settings.weatherBoost.useWeatherBoostMultiplier;
-		const currentWeather = getWeather();
 
 		let matchups = [];
 
 		for (let type of TYPE_DATA) {
 			let matchup = getMatchup(type.name, currentType1Value, currentType2Value);
-			if (usingWeatherBoost && isBoosted([type.name, ''], currentWeather)) matchup *= 1.2;
+			if (usingWeatherBoost && isBoosted([type.name, ''], getWeather())) matchup *= 1.2;
 			if (matchup == 1) continue;
 
 			matchups.push({ name: type.name, matchup: matchup, color: type.color });
