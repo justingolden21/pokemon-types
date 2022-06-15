@@ -449,23 +449,13 @@
 				</svg>
 			</button>
 
-			<div id="weather-boost-options" class="dropdown-content select-content" role="menu">
-				<a id="weather-none" role="menuitem">None</a>
-				<a role="menuitem"
-					><img class="weather-icon" src="img/weather/sunny.png" /><img
-						class="weather-icon"
-						src="img/weather/clear.png"
-					/> Sunny/Clear</a
-				>
-				<a role="menuitem"><img class="weather-icon" src="img/weather/rainy.png" /> Rainy</a>
-				<a role="menuitem"
-					><img class="weather-icon" src="img/weather/partly_cloudy.png" /> Partly Cloudy</a
-				>
-				<a role="menuitem"><img class="weather-icon" src="img/weather/cloudy.png" /> Cloudy</a>
-				<a role="menuitem"><img class="weather-icon" src="img/weather/windy.png" /> Windy</a>
-				<a role="menuitem"><img class="weather-icon" src="img/weather/snow.png" /> Snow</a>
-				<a role="menuitem"><img class="weather-icon" src="img/weather/fog.png" /> Fog</a>
-			</div>
+			<div id="weather-boost-options" class="dropdown-content select-content" role="menu" />
+
+			<select id="weather-boost-options" class="relative inline-block">
+				{#each ['None', 'Sunny/Clear', 'Rainy', 'Partly Cloudy', 'Windy', 'Snow', 'Fog'] as val}
+					<option value={val.toString()}>val</option>
+				{/each}
+			</select>
 		</div>
 
 		<p>

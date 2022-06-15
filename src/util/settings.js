@@ -46,7 +46,7 @@ window.addEventListener('load', () => {
 	};
 
 	document.getElementById('type-display-options').onclick = () => {
-		storeSetting('type-display-options', selectVal('type-display-options'));
+		storeSetting('type-display-options', document.getElementById('type-display-options').value);
 	};
 
 	// read local storage
@@ -79,7 +79,7 @@ function loadSettings() {
 	}
 
 	const val = localStorage.getItem('type-display-options');
-	setSelectVal('type-display-options', val);
+	document.getElementById('type-display-options').value = val;
 }
 
 function storeSettingToggle(name) {

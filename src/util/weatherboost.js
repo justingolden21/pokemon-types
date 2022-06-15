@@ -71,8 +71,9 @@ const isBoosted = (types, weather) =>
 	weatherBoost[types[0]] == weather || weatherBoost[types[1]] == weather;
 
 const getWeather = () =>
-	selectVal('weather-boost-options')
-		.replace(/<img[^>]*>/g, '')
+	document
+		.getElementById('weather-boost-options')
+		.value.replace(/<img[^>]*>/g, '')
 		.toLowerCase()
 		.trim()
 		.split('/')[0];

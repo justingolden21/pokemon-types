@@ -90,7 +90,7 @@ function updateSearchString() {
 	} else {
 		let matchups = [];
 
-		let minMultiplier = parseFloat(selectVal('multiplier-threshold-options'));
+		let minMultiplier = parseFloat(document.getElementById('multiplier-threshold-options').value);
 
 		const usingWeatherBoost =
 			document.getElementById('weather-boost-toggle').checked &&

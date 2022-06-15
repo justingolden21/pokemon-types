@@ -8,34 +8,12 @@
 
 <br />
 <div id="multiplier-threshold-div" style="display:none">
-	<label>Minimum Effectiveness Multiplier</label>
-	<div id="multiplier-threshold-select" class="relative inline-block ml-2">
-		<button
-			href="#multiplier-threshold-options"
-			class="dropdown-btn select-btn"
-			aria-haspopup="true"
-			aria-expanded="false"
-		>
-			<span class="select-title">1.6</span>
-			<svg
-				class="absolute right-0 mr-2 w-6 h-6"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-			</svg>
-		</button>
-
-		<div id="multiplier-threshold-options" class="dropdown-content select-content" role="menu">
-			<a role="menuitem">1.2</a>
-			<a role="menuitem">1.6</a>
-			<a role="menuitem">1.92</a>
-			<a role="menuitem">2.56</a>
-			<a role="menuitem">3.07</a>
-		</div>
-	</div>
+	<label for="multiplier-threshold-select">Minimum Effectiveness Multiplier</label>
+	<select id="multiplier-threshold-select" class="relative inline-block">
+		{#each [1.2, 1.6, 1.92, 2.56, 3.07] as val}
+			<option value={val.toString()}>val</option>
+		{/each}
+	</select>
 </div>
 
 <br />

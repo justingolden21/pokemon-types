@@ -49,34 +49,14 @@
 	/>
 </div>
 
-<!-- TODO:
-bind:value={$settings.autocomplete.showTypesAs}
--->
 <h3 class="my-3">Autocomplete</h3>
-<label>Show types as</label>
-
-<div class="relative inline-block">
-	<button
-		href="#type-display-options"
-		class="dropdown-btn select-btn"
-		aria-haspopup="true"
-		aria-expanded="false"
-	>
-		<span class="select-title">Icons</span>
-		<svg
-			class="absolute right-0 mr-2 w-6 h-6"
-			fill="none"
-			stroke="currentColor"
-			viewBox="0 0 24 24"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-		</svg>
-	</button>
-
-	<div id="type-display-options" class="dropdown-content select-content" role="menu">
-		<a role="menuitem">Icons</a>
-		<a role="menuitem">Words</a>
-		<a role="menuitem">Nothing</a>
-	</div>
-</div>
+<label for="type-display-options">Show types as</label>
+<select
+	id="type-display-options"
+	class="relative inline-block"
+	bind:value={$settings.autocomplete.showTypesAs}
+>
+	<option value="icons">Icons</option>
+	<option value="words">Words</option>
+	<option value="nothing">Nothing</option>
+</select>
