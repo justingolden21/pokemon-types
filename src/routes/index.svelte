@@ -227,14 +227,14 @@
 
 	// ================================
 
-	function updateTypes(types) {
+	function updateTypes(newTypes) {
 		types[0] = '';
 		types[1] = '';
 
-		if (types[0]) changeType(1, types[0].toLowerCase());
-		if (types[1]) changeType(2, types[1].toLowerCase());
+		if (newTypes[0]) changeType(1, newTypes[0].toLowerCase());
+		if (newTypes[1]) changeType(2, newTypes[1].toLowerCase());
 
-		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(get(types));
+		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(types);
 	}
 
 	function openPokemon(id) {
