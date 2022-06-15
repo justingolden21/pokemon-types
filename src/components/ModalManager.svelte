@@ -8,7 +8,7 @@
 
 	/// STATE ///
 	const modalData = {
-		'datetime-format': {
+		settingsModal: {
 			title: 'Settings',
 			icon: 'settings',
 			component: SettingsModal
