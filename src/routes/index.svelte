@@ -34,6 +34,8 @@
 		return { name: type.name, matchup: matchup, color: type.color };
 	}).sort((a, b) => b.matchup - a.matchup);
 
+	$: pokemonWithCurrentType = types ? getPokemonWithCurrentType() : {};
+
 	// ========
 
 	onMount(() => {
@@ -116,84 +118,75 @@
 		matchupsDiv.classList.remove('leave', 'enter');
 		matchupsDiv.classList.add('enter');
 		matchupsDiv.addEventListener('animationend', () => matchupsDiv.classList.remove('enter'));
+	}
 
-		// pokemon with type combination
-		if ($settings.display.showPokemonWithCurrentType) {
-			let pokemonWithType = '';
-			let countPokemonOfType = 0;
-			let pokemonWithTypePartial = '';
-			let countPokemonOfTypePartial = 0;
-			for (let i = 0; pokedexJson && i < pokedexJson.length; i++) {
-				// set up variables
-				let currentTypes;
-				let pokemonTypes;
-				let isMatch = false;
-				let isMatchPartial = false;
-				if (types[1] === '') {
-					currentTypes = [types[0]];
-				} else if (types[0] === '') {
-					currentTypes = [types[1]];
-				} else {
-					currentTypes = [types[0], types[1]];
-				}
-				if (pokedexJson[i].type.length === 1) {
-					pokemonTypes = [pokedexJson[i].type[0].toLowerCase()];
-				} else {
-					pokemonTypes = [
-						pokedexJson[i].type[0].toLowerCase(),
-						pokedexJson[i].type[1].toLowerCase()
-					];
-				}
+	function getPokemonWithCurrentType() {
+		let pokemonWithType = '';
+		let countPokemonOfType = 0;
+		let pokemonWithTypePartial = '';
+		let countPokemonOfTypePartial = 0;
+		for (let i = 0; pokedexJson && i < pokedexJson.length; i++) {
+			// set up variables
+			let currentTypes;
+			let pokemonTypes;
+			let isMatch = false;
+			let isMatchPartial = false;
+			if (types[1] === '') {
+				currentTypes = [types[0]];
+			} else if (types[0] === '') {
+				currentTypes = [types[1]];
+			} else {
+				currentTypes = [types[0], types[1]];
+			}
+			if (pokedexJson[i].type.length === 1) {
+				pokemonTypes = [pokedexJson[i].type[0].toLowerCase()];
+			} else {
+				pokemonTypes = [pokedexJson[i].type[0].toLowerCase(), pokedexJson[i].type[1].toLowerCase()];
+			}
 
-				// logic for matching type combination
-				if (pokemonTypes.length === currentTypes.length) {
-					if (pokemonTypes.length === 1) {
-						if (pokemonTypes[0] === currentTypes[0]) {
-							isMatch = true;
-						}
-					}
-					if (pokemonTypes.length === 2) {
-						if (
-							(pokemonTypes[0] === currentTypes[0] && pokemonTypes[1] === currentTypes[1]) ||
-							(pokemonTypes[0] === currentTypes[1] && pokemonTypes[1] === currentTypes[0])
-						) {
-							isMatch = true;
-						}
+			// logic for matching type combination
+			if (pokemonTypes.length === currentTypes.length) {
+				if (pokemonTypes.length === 1) {
+					if (pokemonTypes[0] === currentTypes[0]) {
+						isMatch = true;
 					}
 				}
-
-				// logic for partial match (pokemon has 2 types but 1 type selected)
-				if (
-					pokemonTypes.length === 2 &&
-					currentTypes.length === 1 &&
-					(currentTypes[0] === pokemonTypes[0] || currentTypes[0] === pokemonTypes[1])
-				) {
-					isMatchPartial = true;
-				}
-
-				// if match
-				if (isMatch) {
-					countPokemonOfType++;
-					pokemonWithType += pokedexJson[i].name + ', ';
-				}
-				if (isMatchPartial) {
-					countPokemonOfTypePartial++;
-					pokemonWithTypePartial += pokedexJson[i].name + ', ';
+				if (pokemonTypes.length === 2) {
+					if (
+						(pokemonTypes[0] === currentTypes[0] && pokemonTypes[1] === currentTypes[1]) ||
+						(pokemonTypes[0] === currentTypes[1] && pokemonTypes[1] === currentTypes[0])
+					) {
+						isMatch = true;
+					}
 				}
 			}
-			let html = `${countPokemonOfType} pokemon with this type combination ${
-				countPokemonOfType !== 0 ? ':' : ''
-			} ${pokemonWithType.slice(0, -2)}`;
-			if (countPokemonOfTypePartial !== 0) {
-				html += `<br><br>${countPokemonOfTypePartial} pokemon with this type and another type: ${pokemonWithTypePartial.slice(
-					0,
-					-2
-				)}`;
+
+			// logic for partial match (pokemon has 2 types but 1 type selected)
+			if (
+				pokemonTypes.length === 2 &&
+				currentTypes.length === 1 &&
+				(currentTypes[0] === pokemonTypes[0] || currentTypes[0] === pokemonTypes[1])
+			) {
+				isMatchPartial = true;
 			}
-			document.getElementById('pokemon-with-type').innerHTML = html;
-		} else {
-			document.getElementById('pokemon-with-type').innerHTML = '';
+
+			// if match
+			if (isMatch) {
+				countPokemonOfType++;
+				pokemonWithType += pokedexJson[i].name + ', ';
+			}
+			if (isMatchPartial) {
+				countPokemonOfTypePartial++;
+				pokemonWithTypePartial += pokedexJson[i].name + ', ';
+			}
 		}
+
+		return {
+			pokemonWithType,
+			countPokemonOfType,
+			pokemonWithTypePartial,
+			countPokemonOfTypePartial
+		};
 	}
 
 	function handleClick(type) {
@@ -461,8 +454,24 @@
 			</div>
 		</div>
 	{/if}
+
+	<div id="snackbar" />
+
+	{#if $settings.display.showPokemonWithCurrentType}
+		{@const {
+			pokemonWithType,
+			countPokemonOfType,
+			pokemonWithTypePartial,
+			countPokemonOfTypePartial
+		} = pokemonWithCurrentType}
+		<p class="mt-4">
+			{countPokemonOfType} pokemon with this type combination {countPokemonOfType !== 0 ? ':' : ''}
+			{pokemonWithType.slice(0, -2)}
+			{#if countPokemonOfTypePartial !== 0}
+				<br /><br />
+				{countPokemonOfTypePartial} pokemon with this type and another type:
+				{pokemonWithTypePartial.slice(0, -2)}
+			{/if}
+		</p>
+	{/if}
 </section>
-
-<div id="snackbar" />
-
-<p id="pokemon-with-type" class="mt-4" />
