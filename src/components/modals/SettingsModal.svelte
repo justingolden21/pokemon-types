@@ -1,4 +1,6 @@
 <script>
+	import { settings } from '../../stores/settings';
+
 	import Toggle from '../Toggle.svelte';
 </script>
 
@@ -9,32 +11,47 @@
 <!-- todo: use local storage, read browser default -->
 <h3 class="my-3">Display</h3>
 
-<Toggle id="dark-mode-toggle" checked={false} labelText="Dark Mode" />
+<Toggle id="dark-mode-toggle" bind:checked={$settings.display.darkMode} labelText="Dark Mode" />
 
 <br />
 <br />
 
 <Toggle
 	id="pokemon-with-type-toggle"
-	checked={false}
+	bind:checked={$settings.display.showPokemonWithCurrentType}
 	labelText="Show Pokemon with Current Type Combination"
 />
 
 <h3 class="my-3">Weather Boost</h3>
 
-<Toggle id="weather-boost-toggle" checked={false} labelText="Weather boost" />
+<Toggle
+	id="weather-boost-toggle"
+	bind:checked={$settings.weatherBoost.weatherBoostEnabled}
+	labelText="Weather boost"
+/>
 
 <br />
 <div id="more-weather-settings" class="hidden">
 	<br />
 
-	<Toggle id="clear-weather-toggle" checked={false} labelText="Clear button clears weather" />
+	<Toggle
+		id="clear-weather-toggle"
+		bind:checked={$settings.weatherBoost.clearButtonClearsWeather}
+		labelText="Clear button clears weather"
+	/>
 
 	<br />
 
-	<Toggle id="use-weather-boost-toggle" checked={false} labelText="Use weather boost multiplier" />
+	<Toggle
+		id="use-weather-boost-toggle"
+		bind:checked={$settings.weatherBoost.useWeatherBoostMultiplier}
+		labelText="Use weather boost multiplier"
+	/>
 </div>
 
+<!-- TODO:
+bind:value={$settings.autocomplete.showTypesAs}
+-->
 <h3 class="my-3">Autocomplete</h3>
 <label>Show types as</label>
 

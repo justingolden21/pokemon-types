@@ -3,7 +3,18 @@
 import localStore from '../util/localStore';
 
 export const defaultSettings = {
-	darkMode: false
+	display: {
+		darkMode: false,
+		showPokemonWithCurrentType: false
+	},
+	weatherBoost: {
+		weatherBoostEnabled: false,
+		clearButtonClearsWeather: false,
+		useWeatherBoostMultiplier: false
+	},
+	autocomplete: {
+		showTypesAs: 'Icons'
+	}
 };
 
 // deep copy to preserve original defaultSettings
