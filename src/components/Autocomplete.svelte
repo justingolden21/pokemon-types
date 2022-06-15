@@ -3,8 +3,11 @@
 
 	/// UTILS ///
 	import clickOutside from '../util/clickOutside';
+	import { TYPE_DATA } from '../util/types';
 
-	// import { TYPE_DATA } from '../util/types';
+	import { settings } from '../stores/settings';
+
+	import pokedexJson from '../data/pokedex.json';
 
 	/// STATE ///
 	export let options;
@@ -149,45 +152,54 @@
 				if (closeOnClickAway) filteredOptions = [];
 			}}
 		>
-			{#each filteredOptions as option, i}
+			{#each filteredOptions as option, idx}
 				<li
-					class="bg-white border-2 border-t-0 border-gray-200 whitespace-nowrap overflow-x-hidden block autocomplete-item p-2 cursor-pointer dark:border-gray-800 hover:dark:bg-gray-700 hover:bg-accent hover:text-white dark:text-white {i ===
+					class="bg-white border-2 border-t-0 border-gray-200 whitespace-nowrap overflow-x-hidden block autocomplete-item p-2 cursor-pointer dark:border-gray-800 hover:dark:bg-gray-700 hover:bg-accent hover:text-white dark:text-white {idx ===
 					highlightIdx
 						? 'bg-accent text-white'
 						: 'bg-gray-50 dark:bg-gray-900'}"
 					on:click={() => setInputVal(option)}
 				>
 					{@html option}
-					<!-- TODO: if $settings.autocomplete.showTypesAs === 'words':
-					optionDiv.innerHTML += ` <small>(${pokedexJson[idx].type.join(', ')})</small>`;
-					if it === 'Icons':
-					optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[
-								idx
-							].type[0].toLowerCase()}.svg" style="background-color: #${
-								TYPE_DATA.find((x) => x.name == pokedexJson[idx].type[0].toLowerCase()).color
-							}">`;
-							if (pokedexJson[idx].type[1]) {
-								optionDiv.innerHTML += `<img class="type-icon" src="img/types/${pokedexJson[
-									idx
-								].type[1].toLowerCase()}.svg" style="background-color: #${
-									TYPE_DATA.find((x) => x.name == pokedexJson[idx].type[1].toLowerCase()).color
-								}">`;
-							}
 
-							css for type icons:
-							.autocomplete-items div .type-icon {
-								width: 1.25rem;
-								display: inline;
-								padding: 0.25rem;
-								margin-left: 0.25rem;
-								border-radius: 50%;
-							}
-							.autocomplete-items div .type-icon[src*='undefined'] {
-								display: none;
-							}
-					-->
+					{#if $settings.autocomplete.showTypesAs === 'words'}
+						<small>({pokedexJson[idx].type.join(', ')})</small>
+					{:else if $settings.autocomplete.showTypesAs === 'icons'}
+						<img
+							alt=""
+							class="type-icon"
+							src="img/types/{pokedexJson[idx].type[0].toLowerCase()}.svg"
+							style="background-color: #{TYPE_DATA.find(
+								(x) => x.name == pokedexJson[idx].type[0].toLowerCase()
+							).color}"
+						/>
+
+						{#if pokedexJson[idx].type[1]}
+							<img
+								alt=""
+								class="type-icon"
+								src={`img/types/${pokedexJson[idx].type[1].toLowerCase()}.svg`}
+								style={`background-color: #${
+									TYPE_DATA.find((x) => x.name == pokedexJson[idx].type[1].toLowerCase()).color
+								}`}
+							/>
+						{/if}
+					{/if}
 				</li>
 			{/each}
 		</ul>
 	{/if}
 </div>
+
+<style lang="postcss">
+	.type-icon {
+		width: 1.25rem;
+		display: inline;
+		padding: 0.25rem;
+		margin-left: 0.25rem;
+		border-radius: 50%;
+	}
+	.type-icon[src*='undefined'] {
+		display: none;
+	}
+</style>
