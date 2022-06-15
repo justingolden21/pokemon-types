@@ -81,34 +81,3 @@ const getTypeIcon = (type) =>
 	`<img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${getColor(
 		type
 	)};">`;
-
-window.addEventListener('load', () => {
-	const boosts = {
-		sunny: ['grass', 'fire', 'ground'],
-		rainy: ['water', 'electric', 'bug'],
-		partly_cloudy: ['normal', 'rock'],
-		cloudy: ['fairy', 'fighting', 'poison'],
-		windy: ['flying', 'dragon', 'psychic'],
-		snow: ['ice', 'steel'],
-		fog: ['dark', 'ghost']
-	};
-	let html = '';
-	for (let weather in boosts) {
-		html += `<div class="md:border-b-2 md:border-gray-100 flex flex-col md:flex-row md:justify-between p-2 space-y-2 md:space-y-0">
-			<div class="flex space-x-2">`;
-		if (weather == 'sunny')
-			html += '<img src="img/weather/clear.png" class="weather-icon-big"> Clear &nbsp; ';
-		html += `<img src="img/weather/${weather}.png" class="weather-icon-big">
-			${capitalize(weather).replace('_', ' ')}
-			</div>
-			<div class="flex flex-wrap justify-center flex-col space-y-2 sm:flex-row sm:space-y-0">`;
-		for (let type of boosts[weather]) {
-			html += `<div class="flex items-center space-x-2 mx-4">
-				${getTypeIcon(type)}
-				${capitalize(type)}
-				</div>`;
-		}
-		html += '</div></div>';
-	}
-	document.getElementById('weather-boost').innerHTML = html;
-});
