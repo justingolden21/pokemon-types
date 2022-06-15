@@ -13,7 +13,7 @@ export const defaultSettings = {
 		useWeatherBoostMultiplier: false
 	},
 	autocomplete: {
-		showTypesAs: 'Icons'
+		showTypesAs: 'icons'
 	}
 };
 
