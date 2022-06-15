@@ -21,10 +21,7 @@
 				.catch((err) => console.log('service worker not registered', err));
 		}
 
-		onloadReadURLParam();
-
 		// create type buttons
-
 		for (let type of TYPE_DATA) {
 			let btn = document.createElement('button');
 			btn.innerHTML =
@@ -35,8 +32,7 @@
 			btn.onclick = () => handleClick(btn.classList[1]);
 		}
 
-		// event listeners
-
+		// on spacebar, focus autocomplete
 		document.onkeyup = (e) => {
 			if (e.code == 'Space' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
 				document.getElementById('search').select();
@@ -44,6 +40,9 @@
 		};
 
 		// read url param
+
+		onloadReadURLParam();
+
 		const url = new URL(window.location.href);
 		const typesParam = url.searchParams.get('types');
 		const pokemonParam = url.searchParams.get('pokemon');
