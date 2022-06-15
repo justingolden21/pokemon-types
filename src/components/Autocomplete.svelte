@@ -151,7 +151,14 @@
 			}}
 		>
 			{#each filteredOptions as option, idx}
-				{@const pokemonTypes = pokedexJson[idx].type}
+				<!-- Now this is what I call code... -->
+				{@const pokemonTypes =
+					pokedexJson[
+						pokedexJson
+							.map((o) => o.name)
+							.indexOf(option.replace('<strong>', '').replace('</strong>', ''))
+					].type}
+
 				<li
 					class="bg-white border-2 border-t-0 border-gray-200 whitespace-nowrap overflow-x-hidden block autocomplete-item p-2 cursor-pointer dark:border-gray-800 hover:dark:bg-gray-700 hover:bg-accent hover:text-white dark:text-white {idx ===
 					highlightIdx
