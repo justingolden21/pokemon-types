@@ -1,5 +1,6 @@
 // TODO import TYPE_NAMES, getMatchup from util/types
-// TODO import { currentType1, currentType2 } from '../stores/stores';
+// TODO import { state } from '../stores/state';
+// currentType1 is $state.types[0] and currentType2 is $state.types[1]
 // TODO import { isBoosted, getWeather, getTypeIcon } from uil/weatherboost
 
 window.addEventListener('load', () => {

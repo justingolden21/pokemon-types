@@ -1,6 +1,4 @@
 import { getColor } from './types';
-import { currentType1, currentType2 } from '../stores/stores';
-import { settings } from '../stores/settings';
 
 const weatherBoost = {
 	'grass': 'sunny',
@@ -46,11 +44,9 @@ const getWeatherSpan = (types) => {
 	return 'Boosted in ' + txt + ' weather ' + img;
 };
 
-function updateWeatherBoostDisplay() {
-	let types = [];
-	if (currentType1 != '') types.push(currentType1);
-	if (currentType2 != '') types.push(currentType2);
-	if (!types.length) {
+function updateWeatherBoostDisplay(types) {
+	const validTypes = types.filter((t) => t !== '');
+	if (!validTypes.length) {
 		document.getElementById('weather-boost-text').innerText = '';
 		document.getElementById('weather-boost-check').style.display = 'none';
 		return;
@@ -58,11 +54,11 @@ function updateWeatherBoostDisplay() {
 
 	// remove text after '/' to handle 'Sunny/Clear'
 	const weather = getWeather();
-	document.getElementById('weather-boost-check').style.display = isBoosted(types, weather)
+	document.getElementById('weather-boost-check').style.display = isBoosted(validTypes, weather)
 		? 'inline-block'
 		: 'none';
 
-	document.getElementById('weather-boost-text').innerHTML = getWeatherSpan(types);
+	document.getElementById('weather-boost-text').innerHTML = getWeatherSpan(validTypes);
 }
 
 const isBoosted = (types, weather) =>

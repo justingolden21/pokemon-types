@@ -1,3 +1,5 @@
+// TODO: delte this file once confirmed that everything updates with state correctly
+
 // import { updateWeatherBoostDisplay } from '../util/weatherboost';
 
 window.addEventListener('load', () => {
@@ -5,14 +7,14 @@ window.addEventListener('load', () => {
 	document.getElementById('weather-boost-toggle').onchange = () => {
 		const checked = document.getElementById('weather-boost-toggle').checked;
 
-		if (checked) updateWeatherBoostDisplay();
+		if (checked) updateWeatherBoostDisplay($types);
 		updateTypeDisplay();
 
 		storeSettingToggle('weather-boost-toggle');
 	};
 
 	document.getElementById('weather-boost-select').onchange = () => {
-		updateWeatherBoostDisplay();
+		updateWeatherBoostDisplay($types);
 		updateTypeDisplay();
 
 		// not storing selected weather boost or current pokemon or types for now

@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 
 	import { settings } from '../stores/settings';
+	import { state } from '../stores/state';
 
 	import Autocomplete from '../components/Autocomplete.svelte';
 
@@ -10,11 +11,13 @@
 	import { onloadReadURLParam } from '../util/urlparam';
 	import { updateWeatherBoostDisplay, isBoosted, getWeather } from '../util/weatherboost';
 
-	import { currentType1, currentType2 } from '../stores/stores';
-
 	import pokemonJson from '../data/pokedex.json';
 
 	const pokemonNames = pokemonJson.map((x) => x.name);
+
+	$: types = $state.types;
+
+	let types = ['', ''];
 
 	// ========
 
@@ -88,20 +91,12 @@
 
 	const capitalize = (str) => str.charAt(0).toUpperCase() + str.substring(1);
 
-	let currentType1Value, currentType2Value;
-	currentType1.subscribe((value) => {
-		currentType1Value = value;
-	});
-	currentType2.subscribe((value) => {
-		currentType2Value = value;
-	});
-
 	let recentlyChangedType = -1;
 
 	function updateTypeDisplay() {
 		let weakHtml = '<h3>Weak to:</h3>';
 		let resistHtml = '<h3>Resists:</h3>';
-		if (currentType1Value == '' && currentType2Value == '') (weakHtml = ''), (resistHtml = '');
+		if (types[0] == '' && types[1] == '') (weakHtml = ''), (resistHtml = '');
 
 		const usingWeatherBoost =
 			$settings.weatherBoost.weatherBoostEnabled &&
@@ -110,7 +105,7 @@
 		let matchups = [];
 
 		for (let type of TYPE_DATA) {
-			let matchup = getMatchup(type.name, currentType1Value, currentType2Value);
+			let matchup = getMatchup(type.name, types[0], types[1]);
 			if (usingWeatherBoost && isBoosted([type.name, ''], getWeather())) matchup *= 1.2;
 			if (matchup == 1) continue;
 
@@ -141,10 +136,9 @@
 
 		// update url param
 		let typeStr;
-		if (currentType1Value && currentType2Value)
-			typeStr = currentType1Value + '+' + currentType2Value;
-		else if (currentType1Value) typeStr = currentType1Value;
-		else if (currentType2Value) typeStr = currentType2Value;
+		if (types[0] && types[1]) typeStr = types[0] + '+' + types[1];
+		else if (types[0]) typeStr = types[0];
+		else if (types[1]) typeStr = types[1];
 		else typeStr = '';
 
 		history.replaceState({}, '', '?types=' + typeStr);
@@ -161,12 +155,12 @@
 				let pokemonTypes;
 				let isMatch = false;
 				let isMatchPartial = false;
-				if (currentType2Value === '') {
-					currentTypes = [currentType1Value];
-				} else if (currentType1Value === '') {
-					currentTypes = [currentType2Value];
+				if (types[1] === '') {
+					currentTypes = [types[0]];
+				} else if (types[0] === '') {
+					currentTypes = [types[1]];
 				} else {
-					currentTypes = [currentType1Value, currentType2Value];
+					currentTypes = [types[0], types[1]];
 				}
 				if (pokedexJson[i].type.length === 1) {
 					pokemonTypes = [pokedexJson[i].type[0].toLowerCase()];
@@ -229,23 +223,23 @@
 	}
 
 	function handleClick(type) {
-		if (currentType1Value == type) {
-			currentType1.set('');
+		if (types[0] == type) {
+			types[0] = '';
 			removeActive(type);
-		} else if (currentType2Value == type) {
-			currentType2.set('');
+		} else if (types[1] == type) {
+			types[1] = '';
 			removeActive(type);
 		} else {
-			if (!currentType1Value) {
+			if (!types[0]) {
 				changeType(1, type);
-			} else if (!currentType2Value) {
+			} else if (!types[1]) {
 				changeType(2, type);
 			} else {
 				if (recentlyChangedType == 1) {
-					removeActive(currentType2Value);
+					removeActive(types[1]);
 					changeType(2, type);
 				} else {
-					removeActive(currentType1Value);
+					removeActive(types[0]);
 					changeType(1, type);
 				}
 			}
@@ -254,14 +248,14 @@
 		updateTypeDisplay();
 		document.getElementById('search').value = '';
 
-		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay();
+		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(types);
 	}
 
 	function changeType(num, type) {
 		if (num == 1) {
-			currentType1.set(type);
+			types[0] = type;
 		} else {
-			currentType2.set(type);
+			types[1] = type;
 		}
 		recentlyChangedType = num;
 
@@ -276,20 +270,20 @@
 	}
 
 	function clearTypes(skipUpdate = false) {
-		if (currentType2Value != '') {
-			removeActive(currentType2Value);
-			currentType2.set('');
+		if (types[1] != '') {
+			removeActive(types[1]);
+			types[1] = '';
 		}
-		if (currentType1Value != '') {
-			removeActive(currentType1Value);
-			currentType1.set('');
+		if (types[0] != '') {
+			removeActive(types[0]);
+			types[0] = '';
 		}
 
 		if (!skipUpdate) {
 			if ($settings.weatherBoost.clearButtonClearsWeather)
 				document.getElementById('weather-none').click();
 			document.getElementById('search').value = '';
-			if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay();
+			if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(types);
 
 			const matchupsDiv = document.getElementById('matchups');
 			matchupsDiv.classList.add('leave');
@@ -305,7 +299,7 @@
 		if (types[1]) changeType(2, types[1].toLowerCase());
 
 		updateTypeDisplay();
-		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay();
+		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(get(types));
 	}
 
 	function openPokemon(id) {
