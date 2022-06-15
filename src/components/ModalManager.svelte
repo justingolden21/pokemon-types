@@ -113,11 +113,11 @@
 		@apply text-left relative flex-1 overflow-auto;
 	}
 
-	:global(.dark) .modal {
+	.dark-mode .modal {
 		@apply bg-gray-900 bg-opacity-50;
 	}
-	:global(.dark) .modal-content,
-	:global(.dark) .modal-header {
+	.dark-mode .modal-content,
+	.dark-mode .modal-header {
 		@apply border-gray-700;
 	}
 
