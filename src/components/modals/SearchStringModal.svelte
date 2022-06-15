@@ -1,3 +1,7 @@
+<script>
+	import Toggle from '../Toggle.svelte';
+</script>
+
 <div id="search-string-modal" class="modal">
 	<div class="modal-content">
 		<div class="modal-header">
@@ -22,11 +26,7 @@
 		<div class="modal-body">
 			<div id="search-string-type-display" class="mb-2" />
 
-			<div class="toggle-container">
-				<input type="checkbox" id="super-against-toggle" class="toggle-checkbox" />
-				<label class="toggle-bg" />
-			</div>
-			<label for="super-against-toggle" class="toggle-label">Super Effective Against</label>
+			<Toggle id="super-against-toggle" checked={false} labelText="Super Effective Against" />
 
 			<br />
 			<div id="multiplier-threshold-div" style="display:none">
@@ -73,35 +73,19 @@
 			<hr />
 			<br />
 
-			<div class="toggle-container">
-				<input checked type="checkbox" id="has-type-toggle" class="toggle-checkbox" />
-				<label class="toggle-bg" />
-			</div>
-			<label for="has-type-toggle" class="toggle-label">Has type</label>
+			<Toggle id="has-type-toggle" checked={false} labelText="Has type" />
 
 			<br />
 
-			<div class="toggle-container">
-				<input checked type="checkbox" id="has-fast-move-toggle" class="toggle-checkbox" />
-				<label class="toggle-bg" />
-			</div>
-			<label for="has-fast-move-toggle" class="toggle-label">Has fast move of type</label>
+			<Toggle id="has-fast-move-toggle" checked={false} labelText="Has fast move of type" />
 
 			<br />
 
-			<div class="toggle-container">
-				<input checked type="checkbox" id="has-charge-move-toggle" class="toggle-checkbox" />
-				<label class="toggle-bg" />
-			</div>
-			<label for="has-charge-move-toggle" class="toggle-label">Has charge move of type</label>
+			<Toggle id="has-charge-move-toggle" checked={false} labelText="Has charge move of type" />
 
 			<br />
 
-			<div class="toggle-container">
-				<input type="checkbox" id="has-any-move-toggle" class="toggle-checkbox" />
-				<label class="toggle-bg" />
-			</div>
-			<label for="has-any-move-toggle" class="toggle-label">Has any move of type</label>
+			<Toggle id="has-any-move-toggle" checked={false} labelText="Has any move of type" />
 
 			<textarea
 				id="searchstring-output"

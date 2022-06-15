@@ -1,4 +1,5 @@
 <script>
+	import Toggle from '../Toggle.svelte';
 </script>
 
 <!-- <h2 class="my-3 border-b-2 border-gray-100">Display</h2> -->
@@ -8,44 +9,30 @@
 <!-- todo: use local storage, read browser default -->
 <h3 class="my-3">Display</h3>
 
-<div class="toggle-container">
-	<input type="checkbox" id="dark-mode-toggle" class="toggle-checkbox" />
-	<label class="toggle-bg" />
-</div>
-<label for="dark-mode-toggle" class="toggle-label">Dark Mode</label>
+<Toggle id="dark-mode-toggle" checked={false} labelText="Dark Mode" />
+
 <br />
 <br />
-<div class="toggle-container">
-	<input type="checkbox" id="pokemon-with-type-toggle" class="toggle-checkbox" />
-	<label class="toggle-bg" />
-</div>
-<label for="pokemon-with-type-toggle" class="toggle-label"
-	>Show Pokemon with Current Type Combination</label
->
+
+<Toggle
+	id="pokemon-with-type-toggle"
+	checked={false}
+	labelText="Show Pokemon with Current Type Combination"
+/>
 
 <h3 class="my-3">Weather Boost</h3>
 
-<div class="toggle-container">
-	<input type="checkbox" id="weather-boost-toggle" class="toggle-checkbox" />
-	<label class="toggle-bg" />
-</div>
-<label for="weather-boost-toggle" class="toggle-label">Weather boost</label>
+<Toggle id="weather-boost-toggle" checked={false} labelText="Weather boost" />
 
 <br />
 <div id="more-weather-settings" class="hidden">
 	<br />
-	<div class="toggle-container">
-		<input type="checkbox" id="clear-weather-toggle" class="toggle-checkbox" />
-		<label class="toggle-bg" />
-	</div>
-	<label for="clear-weather-toggle" class="toggle-label">Clear button clears weather</label>
+
+	<Toggle id="clear-weather-toggle" checked={false} labelText="Clear button clears weather" />
 
 	<br />
-	<div class="toggle-container">
-		<input checked type="checkbox" id="use-weather-boost-toggle" class="toggle-checkbox" />
-		<label class="toggle-bg" />
-	</div>
-	<label for="use-weather-boost-toggle" class="toggle-label">Use weather boost multiplier</label>
+
+	<Toggle id="use-weather-boost-toggle" checked={false} labelText="Use weather boost multiplier" />
 </div>
 
 <h3 class="my-3">Autocomplete</h3>
