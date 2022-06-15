@@ -10,9 +10,9 @@
 	import { TYPE_DATA, getMatchup } from '../util/types';
 	import { updateWeatherBoostDisplay, isBoosted, getWeather } from '../util/weatherboost';
 
-	import pokemonJson from '../data/pokedex.json';
+	import pokedexJson from '../data/pokedex.json';
 
-	const pokemonNames = pokemonJson.map((x) => x.name);
+	const pokemonNames = pokedexJson.map((x) => x.name);
 
 	$: types = $state.types;
 
@@ -44,6 +44,17 @@
 	let threeDotMenuOpen = false;
 	const toggleThreeDotMenu = () => {
 		threeDotMenuOpen = !threeDotMenuOpen;
+	};
+
+	const autocompleteChange = (val) => {
+		// openPokemon(pokedexJson.find(({ name }) => name === val).index);
+		openPokemon(
+			pokedexJson
+				.map(function (o) {
+					return o.name;
+				})
+				.indexOf(val)
+		);
 	};
 
 	const shareApp = () => {
@@ -398,6 +409,7 @@
 			maxResults={50}
 			selectOnFocus={true}
 			selectOnClick={true}
+			onChange={autocompleteChange}
 		/>
 	</div>
 

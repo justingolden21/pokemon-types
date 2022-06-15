@@ -15,6 +15,7 @@
 	export let id = '';
 	export let selectOnClick = false;
 	export let selectOnFocus = false;
+	export let onChange = (val) => {};
 
 	// min characters in input for autocomplete to appear
 	export let minChars = 2;
@@ -120,7 +121,6 @@
 <svelte:window on:keydown={navigateList} />
 
 <div class="relative inline-block w-64">
-	{value}
 	<!-- input classes? bg-gray-100 w-64 md:w-96 px-4 py-2 -->
 	<input
 		{id}
@@ -135,6 +135,11 @@
 		on:input={filterOptions}
 		on:focus={(event) => selectOnFocus && event.target.select()}
 		on:click={(event) => selectOnClick && event.target.select()}
+		on:change={(event) => {
+			if (options.includes(event.target.value)) {
+				onChange(event.target.value);
+			}
+		}}
 	/>
 	{#if filteredOptions.length > 0}
 		<ul
