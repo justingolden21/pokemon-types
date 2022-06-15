@@ -14,13 +14,6 @@
 	// ========
 
 	onMount(() => {
-		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker
-				.register('sw.js')
-				.then((reg) => console.log('service worker registered'))
-				.catch((err) => console.log('service worker not registered', err));
-		}
-
 		// create type buttons
 		for (let type of TYPE_DATA) {
 			let btn = document.createElement('button');
