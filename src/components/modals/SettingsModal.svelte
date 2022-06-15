@@ -4,17 +4,9 @@
 	import Toggle from '../Toggle.svelte';
 </script>
 
-<!-- <h2 class="my-3 border-b-2 border-gray-100">Display</h2> -->
-
-<!-- <h2 class="my-3 border-b-2 border-gray-100">Features</h2> -->
-
-<!-- todo: use local storage, read browser default -->
 <h3 class="my-3">Display</h3>
 
 <Toggle id="dark-mode-toggle" bind:checked={$settings.display.darkMode} labelText="Dark Mode" />
-
-<br />
-<br />
 
 <Toggle
 	id="pokemon-with-type-toggle"
@@ -30,24 +22,19 @@
 	labelText="Weather boost"
 />
 
-<br />
-<div id="more-weather-settings" class="hidden">
-	<br />
-
+{#if $settings.weatherBoost.weatherBoostEnabled}
 	<Toggle
 		id="clear-weather-toggle"
 		bind:checked={$settings.weatherBoost.clearButtonClearsWeather}
 		labelText="Clear button clears weather"
 	/>
 
-	<br />
-
 	<Toggle
 		id="use-weather-boost-toggle"
 		bind:checked={$settings.weatherBoost.useWeatherBoostMultiplier}
 		labelText="Use weather boost multiplier"
 	/>
-</div>
+{/if}
 
 <h3 class="my-3">Autocomplete</h3>
 <label for="type-display-options">Show types as</label>
