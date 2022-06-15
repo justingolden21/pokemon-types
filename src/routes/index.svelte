@@ -26,7 +26,7 @@
 		else if (types[1]) typeStr = types[1];
 		else typeStr = '';
 
-		history?.replaceState({}, '', '?types=' + typeStr);
+		setURLParamTypes(typeStr);
 	}
 
 	$: usingWeatherBoost =
@@ -41,7 +41,13 @@
 
 	// ========
 
+	let setURLParamTypes = () => {};
+
 	onMount(() => {
+		setURLParamTypes = (typeStr) => {
+			history?.replaceState({}, '', '?types=' + typeStr);
+		};
+
 		// read url param
 
 		const url = new URL(window.location.href);
