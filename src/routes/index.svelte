@@ -8,7 +8,6 @@
 
 	import { open } from '../util/modal';
 	import { TYPE_DATA, getMatchup } from '../util/types';
-	import { onloadReadURLParam } from '../util/urlparam';
 	import { updateWeatherBoostDisplay, isBoosted, getWeather } from '../util/weatherboost';
 
 	import pokemonJson from '../data/pokedex.json';
@@ -29,9 +28,14 @@
 
 		// read url param
 
-		onloadReadURLParam();
-
 		const url = new URL(window.location.href);
+		const q = url.searchParams.get('q');
+		if (q == 'typechart') {
+			open('typeChartModal');
+		} else if (q == 'weatherboost') {
+			open('weatherBoostModal');
+		}
+
 		const typesParam = url.searchParams.get('types');
 		const pokemonParam = url.searchParams.get('pokemon');
 		if (typesParam && typesParam.indexOf(' ') != -1) {

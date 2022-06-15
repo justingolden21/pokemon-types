@@ -1,15 +1,3 @@
-import { open } from './modal';
-
-const onloadReadURLParam = () => {
-	const url = new URL(window.location.href);
-	const q = url.searchParams.get('q');
-	if (q == 'typechart') {
-		open('typeChartModal');
-	} else if (q == 'weatherboost') {
-		open('weatherBoostModal');
-	}
-};
-
 function updateUrlParam(q) {
 	history.replaceState({}, '', '?q=' + q);
 }
@@ -27,4 +15,4 @@ function copyUrlParam() {
 	copyText(window.location.href);
 }
 
-export { onloadReadURLParam, updateUrlParam, copyUrlParam };
+export { updateUrlParam, copyUrlParam };
