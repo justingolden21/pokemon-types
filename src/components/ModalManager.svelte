@@ -5,6 +5,10 @@
 
 	import Icon from './Icon.svelte';
 	import SettingsModal from '../components/modals/SettingsModal.svelte';
+	import InfoModal from '../components/modals/InfoModal.svelte';
+	import WeatherBoostModal from '../components/modals/WeatherBoostModal.svelte';
+	import SearchStringModal from '../components/modals/SearchStringModal.svelte';
+	import TypeChartModal from '../components/modals/TypeChartModal.svelte';
 
 	/// STATE ///
 	const modalData = {
@@ -12,6 +16,23 @@
 			title: 'Settings',
 			icon: 'settings',
 			component: SettingsModal
+		},
+
+		infoModal: {
+			title: 'Settings',
+			component: InfoModal
+		},
+		weatherBoostModal: {
+			title: 'Settings',
+			component: WeatherBoostModal
+		},
+		searchStringModal: {
+			title: 'Settings',
+			component: SearchStringModal
+		},
+		typeChartModal: {
+			title: 'Settings',
+			component: TypeChartModal
 		}
 	};
 
