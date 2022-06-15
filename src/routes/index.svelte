@@ -219,12 +219,8 @@
 	}
 
 	function clearTypes(skipUpdate = false) {
-		if (types[1] != '') {
-			types[1] = '';
-		}
-		if (types[0] != '') {
-			types[0] = '';
-		}
+		types[0] = '';
+		types[1] = '';
 
 		if (!skipUpdate) {
 			if ($settings.weatherBoost.clearButtonClearsWeather)
@@ -371,7 +367,11 @@
 	</div>
 
 	{#if $settings.weatherBoost.weatherBoostEnabled}
-		<div id="weather-boost-select" class="relative inline-block ml-2">
+		<div
+			id="weather-boost-select"
+			class="relative inline-block ml-2"
+			on:change={() => updateWeatherBoostDisplay(types)}
+		>
 			<select id="weather-boost-options" class="relative inline-block">
 				{#each ['None', 'Sunny/Clear', 'Rainy', 'Partly Cloudy', 'Windy', 'Snow', 'Fog'] as val}
 					<option value={val.toString()}>{val}</option>
