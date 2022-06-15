@@ -31,3 +31,7 @@ Notes:
 The ID used in url params is not the pokemon ID, but rather the index in the list of pokemon. Update this in future? Index could be "M003" for mega venusaur for example
 
 typescript fixes: update globals file, look deeper into docs, fix typescript and eslint warnings and errors
+
+local store and storage, reference desktop clock
+
+move modals to their own components/files
