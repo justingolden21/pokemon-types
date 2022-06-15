@@ -25,8 +25,6 @@ window.addEventListener('load', () => {
 	};
 
 	document.getElementById('dark-mode-toggle').onchange = () => {
-		document.body.classList.toggle('dark-mode');
-
 		storeSettingToggle('dark-mode-toggle');
 	};
 
