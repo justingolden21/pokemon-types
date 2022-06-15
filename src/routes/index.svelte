@@ -424,16 +424,21 @@
 			/>
 		</div>
 
-		<div id="weather-boost-select" class="relative inline-block hidden ml-2">
-			<button
-				href="#weather-boost-options"
-				class="dropdown-btn select-btn"
-				aria-haspopup="true"
-				aria-expanded="false"
-			>
-				<span class="select-title">None</span>
+		{#if $settings.weatherBoost.weatherBoostEnabled}
+			<div id="weather-boost-select" class="relative inline-block ml-2">
+				<select id="weather-boost-options" class="relative inline-block">
+					{#each ['None', 'Sunny/Clear', 'Rainy', 'Partly Cloudy', 'Windy', 'Snow', 'Fog'] as val}
+						<option value={val.toString()}>{val}</option>
+					{/each}
+				</select>
+			</div>
+		{/if}
+
+		<p>
+			{#if $settings.weatherBoost.weatherBoostEnabled}
 				<svg
-					class="absolute right-0 mr-2 w-6 h-6"
+					id="weather-boost-check"
+					class="w-4 h-4 hidden"
 					fill="none"
 					stroke="currentColor"
 					viewBox="0 0 24 24"
@@ -443,32 +448,11 @@
 						stroke-linecap="round"
 						stroke-linejoin="round"
 						stroke-width="2"
-						d="M19 9l-7 7-7-7"
+						d="M5 13l4 4L19 7"
 					/>
 				</svg>
-			</button>
-
-			<div id="weather-boost-options" class="dropdown-content select-content" role="menu" />
-
-			<select id="weather-boost-options" class="relative inline-block">
-				{#each ['None', 'Sunny/Clear', 'Rainy', 'Partly Cloudy', 'Windy', 'Snow', 'Fog'] as val}
-					<option value={val.toString()}>val</option>
-				{/each}
-			</select>
-		</div>
-
-		<p>
-			<svg
-				id="weather-boost-check"
-				class="w-4 h-4 hidden"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-			</svg>
-			<small id="weather-boost-text" class="hidden" />
+				<small id="weather-boost-text" class="hidden" />
+			{/if}
 		</p>
 
 		<div id="type-btns" class="grid grid-cols-3 md:grid-cols-6 xl:grid-cols-9 my-2" />

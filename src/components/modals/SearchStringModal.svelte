@@ -11,7 +11,7 @@
 	<label for="multiplier-threshold-select">Minimum Effectiveness Multiplier</label>
 	<select id="multiplier-threshold-select" class="relative inline-block">
 		{#each [1.2, 1.6, 1.92, 2.56, 3.07] as val}
-			<option value={val.toString()}>val</option>
+			<option value={val.toString()}>{val}</option>
 		{/each}
 	</select>
 </div>
