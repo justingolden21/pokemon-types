@@ -1,4 +1,5 @@
 // TODO import getColor from util/types
+// TODO import { currentType1, currentType2 } from '../stores/stores';
 
 const weatherBoost = {
 	'grass': 'sunny',

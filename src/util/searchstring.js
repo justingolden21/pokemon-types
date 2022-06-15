@@ -1,4 +1,5 @@
 // TODO import TYPE_NAMES, getMatchup from util/types
+// TODO import { currentType1, currentType2 } from '../stores/stores';
 
 window.addEventListener('load', () => {
 	// display types and update search string

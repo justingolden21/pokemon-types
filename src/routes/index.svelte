@@ -7,6 +7,8 @@
 	import { TYPE_DATA, getMatchup } from '../util/types';
 	import { onloadReadURLParam } from '../util/urlparam';
 
+	import { currentType1, currentType2 } from '../stores/stores';
+
 	import pokemonJson from '../data/pokedex.json';
 
 	const pokemonNames = pokemonJson.map((x) => x.name);
@@ -83,14 +85,20 @@
 
 	const capitalize = (str) => str.charAt(0).toUpperCase() + str.substring(1);
 
-	let currentType1 = '',
-		currentType2 = '';
+	let currentType1Value, currentType2Value;
+	currentType1.subscribe((value) => {
+		currentType1Value = value;
+	});
+	currentType2.subscribe((value) => {
+		currentType2Value = value;
+	});
+
 	let recentlyChangedType = -1;
 
 	function updateTypeDisplay() {
 		let weakHtml = '<h3>Weak to:</h3>';
 		let resistHtml = '<h3>Resists:</h3>';
-		if (currentType1 == '' && currentType2 == '') (weakHtml = ''), (resistHtml = '');
+		if (currentType1Value == '' && currentType2Value == '') (weakHtml = ''), (resistHtml = '');
 
 		const usingWeatherBoost =
 			document.getElementById('weather-boost-toggle').checked &&
@@ -100,7 +108,7 @@
 		let matchups = [];
 
 		for (let type of TYPE_DATA) {
-			let matchup = getMatchup(type.name, currentType1, currentType2);
+			let matchup = getMatchup(type.name, currentType1Value, currentType2Value);
 			if (usingWeatherBoost && isBoosted([type.name, ''], currentWeather)) matchup *= 1.2;
 			if (matchup == 1) continue;
 
@@ -131,9 +139,10 @@
 
 		// update url param
 		let typeStr;
-		if (currentType1 && currentType2) typeStr = currentType1 + '+' + currentType2;
-		else if (currentType1) typeStr = currentType1;
-		else if (currentType2) typeStr = currentType2;
+		if (currentType1Value && currentType2Value)
+			typeStr = currentType1Value + '+' + currentType2Value;
+		else if (currentType1Value) typeStr = currentType1Value;
+		else if (currentType2Value) typeStr = currentType2Value;
 		else typeStr = '';
 
 		history.replaceState({}, '', '?types=' + typeStr);
@@ -150,12 +159,12 @@
 				let pokemonTypes;
 				let isMatch = false;
 				let isMatchPartial = false;
-				if (currentType2 === '') {
-					currentTypes = [currentType1];
-				} else if (currentType1 === '') {
-					currentTypes = [currentType2];
+				if (currentType2Value === '') {
+					currentTypes = [currentType1Value];
+				} else if (currentType1Value === '') {
+					currentTypes = [currentType2Value];
 				} else {
-					currentTypes = [currentType1, currentType2];
+					currentTypes = [currentType1Value, currentType2Value];
 				}
 				if (pokedexJson[i].type.length === 1) {
 					pokemonTypes = [pokedexJson[i].type[0].toLowerCase()];
@@ -218,23 +227,23 @@
 	}
 
 	function handleClick(type) {
-		if (currentType1 == type) {
-			currentType1 = '';
+		if (currentType1Value == type) {
+			currentType1.set('');
 			removeActive(type);
-		} else if (currentType2 == type) {
-			currentType2 = '';
+		} else if (currentType2Value == type) {
+			currentType2.set('');
 			removeActive(type);
 		} else {
-			if (!currentType1) {
+			if (!currentType1Value) {
 				changeType(1, type);
-			} else if (!currentType2) {
+			} else if (!currentType2Value) {
 				changeType(2, type);
 			} else {
 				if (recentlyChangedType == 1) {
-					removeActive(currentType2);
+					removeActive(currentType2Value);
 					changeType(2, type);
 				} else {
-					removeActive(currentType1);
+					removeActive(currentType1Value);
 					changeType(1, type);
 				}
 			}
@@ -247,9 +256,9 @@
 
 	function changeType(num, type) {
 		if (num == 1) {
-			currentType1 = type;
+			currentType1.set(type);
 		} else {
-			currentType2 = type;
+			currentType2.set(type);
 		}
 		recentlyChangedType = num;
 
@@ -264,13 +273,13 @@
 	}
 
 	function clearTypes(skipUpdate = false) {
-		if (currentType2 != '') {
-			removeActive(currentType2);
-			currentType2 = '';
+		if (currentType2Value != '') {
+			removeActive(currentType2Value);
+			currentType2.set('');
 		}
-		if (currentType1 != '') {
-			removeActive(currentType1);
-			currentType1 = '';
+		if (currentType1Value != '') {
+			removeActive(currentType1Value);
+			currentType1.set('');
 		}
 
 		if (!skipUpdate) {
