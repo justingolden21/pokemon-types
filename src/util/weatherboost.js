@@ -57,7 +57,6 @@ function updateWeatherBoostDisplay() {
 		return;
 	}
 
-	// replace img tag: https://stackoverflow.com/a/11025465/4907950
 	// remove text after '/' to handle 'Sunny/Clear'
 	const weather = getWeather();
 	document.getElementById('weather-boost-check').style.display = isBoosted(types, weather)
@@ -71,12 +70,7 @@ const isBoosted = (types, weather) =>
 	weatherBoost[types[0]] == weather || weatherBoost[types[1]] == weather;
 
 const getWeather = () =>
-	document
-		.getElementById('weather-boost-options')
-		.value.replace(/<img[^>]*>/g, '')
-		.toLowerCase()
-		.trim()
-		.split('/')[0];
+	document.getElementById('weather-boost-options').value.toLowerCase().trim().split('/')[0];
 
 const getTypeIcon = (type) =>
 	`<img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${getColor(
