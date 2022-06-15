@@ -539,8 +539,6 @@
 		</div>
 	</section>
 
-	v>
-
 	<div id="snackbar" />
 
 	<p id="pokemon-with-type" class="mt-4" />
