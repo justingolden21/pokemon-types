@@ -215,22 +215,22 @@
 		recentlyChangedType = num;
 	}
 
-	function clearTypes(skipUpdate = false) {
+	function clearTypes() {
 		types[0] = '';
 		types[1] = '';
 
-		if (!skipUpdate) {
-			if ($settings.weatherBoost.clearButtonClearsWeather)
-				document.getElementById('weather-none').click();
-			document.getElementById('search').value = '';
-			if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(types);
-		}
+		if ($settings.weatherBoost.clearButtonClearsWeather)
+			document.getElementById('weather-none').click();
+		document.getElementById('search').value = '';
+		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(types);
 	}
 
 	// ================================
 
 	function updateTypes(types) {
-		clearTypes(true);
+		types[0] = '';
+		types[1] = '';
+
 		if (types[0]) changeType(1, types[0].toLowerCase());
 		if (types[1]) changeType(2, types[1].toLowerCase());
 
