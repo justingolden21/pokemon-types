@@ -20,17 +20,6 @@
 	// ========
 
 	onMount(() => {
-		// create type buttons
-		for (let type of TYPE_DATA) {
-			let btn = document.createElement('button');
-			btn.innerHTML =
-				`<img class="type-icon" src="img/types/${type.name}.svg"> ` + capitalize(type.name);
-			btn.classList = `btn ${type.name}`;
-			btn.name = capitalize(type.name);
-			document.getElementById('type-btns').appendChild(btn);
-			btn.onclick = () => handleClick(btn.classList[1]);
-		}
-
 		// on spacebar, focus autocomplete
 		document.onkeyup = (e) => {
 			if (e.code == 'Space' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
@@ -448,7 +437,14 @@
 			{/if}
 		</p>
 
-		<div id="type-btns" class="grid grid-cols-3 md:grid-cols-6 xl:grid-cols-9 my-2" />
+		<div id="type-btns" class="grid grid-cols-3 md:grid-cols-6 xl:grid-cols-9 my-2">
+			{#each TYPE_DATA as type}
+				<button class="btn {type.name}" name={type.name} on:click={() => handleClick(type.name)}>
+					<img class="type-icon" src="/img/types/{type.name}.svg" alt={type.name} />
+					<span>{capitalize(type.name)}</span>
+				</button>
+			{/each}
+		</div>
 
 		<div id="matchups" class="grid grid-cols-2 my-2">
 			<div>
