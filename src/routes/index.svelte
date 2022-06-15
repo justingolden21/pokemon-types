@@ -71,13 +71,7 @@
 
 	const autocompleteChange = (val) => {
 		// openPokemon(pokedexJson.find(({ name }) => name === val).index);
-		openPokemon(
-			pokedexJson
-				.map(function (o) {
-					return o.name;
-				})
-				.indexOf(val)
-		);
+		openPokemon(pokedexJson.map((o) => o.name).indexOf(val));
 	};
 
 	const shareApp = () => {
