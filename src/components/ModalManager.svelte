@@ -19,19 +19,19 @@
 		},
 
 		infoModal: {
-			title: 'Settings',
+			title: 'Info',
 			component: InfoModal
 		},
 		weatherBoostModal: {
-			title: 'Settings',
+			title: 'Weather Boost',
 			component: WeatherBoostModal
 		},
 		searchStringModal: {
-			title: 'Settings',
+			title: 'Search Strings',
 			component: SearchStringModal
 		},
 		typeChartModal: {
-			title: 'Settings',
+			title: 'Type Chart',
 			component: TypeChartModal
 		}
 	};
