@@ -1,12 +1,14 @@
-window.addEventListener('load', () => {
+import { open } from './modal';
+
+const onloadReadURLParam = () => {
 	const url = new URL(window.location.href);
 	const q = url.searchParams.get('q');
 	if (q == 'typechart') {
-		document.getElementById('type-chart-modal').style.display = 'block';
+		open('typeChartModal');
 	} else if (q == 'weatherboost') {
-		document.getElementById('weather-boost-modal').style.display = 'block';
+		open('weatherBoostModal');
 	}
-});
+};
 
 function updateUrlParam(q) {
 	history.replaceState({}, '', '?q=' + q);
@@ -24,3 +26,5 @@ const copyText = (str) => {
 function copyUrlParam() {
 	copyText(window.location.href);
 }
+
+export { onloadReadURLParam, updateUrlParam, copyUrlParam };

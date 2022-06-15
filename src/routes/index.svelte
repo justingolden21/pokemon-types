@@ -4,8 +4,8 @@
 	import Autocomplete from '../components/Autocomplete.svelte';
 
 	import { open } from '../util/modal';
-
 	import { TYPE_DATA, getMatchup } from '../util/types';
+	import { onloadReadURLParam, updateUrlParam, copyUrlParam } from '../util/urlparam';
 
 	import pokemonJson from '../data/pokedex.json';
 
@@ -20,6 +20,8 @@
 				.then((reg) => console.log('service worker registered'))
 				.catch((err) => console.log('service worker not registered', err));
 		}
+
+		onloadReadURLParam();
 
 		// create type buttons
 
