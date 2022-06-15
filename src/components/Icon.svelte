@@ -1,4 +1,6 @@
 <script>
+	// Copied from Desktop Clock
+
 	export let name;
 	export let focusable = false;
 

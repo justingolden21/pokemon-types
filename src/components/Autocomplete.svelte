@@ -1,4 +1,6 @@
 <script>
+	// Copied from Desktop Clock
+
 	/// UTILS ///
 	import clickOutside from '../util/clickOutside';
 

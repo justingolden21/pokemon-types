@@ -1,4 +1,6 @@
 <script context="module">
+	// Copied from Desktop Clock
+
 	export const load = ({ error, status }) => {
 		return {
 			props: {

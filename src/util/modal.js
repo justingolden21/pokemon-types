@@ -1,3 +1,5 @@
+// Copied from Desktop Clock
+
 // set this to null to close the modal
 
 import { writable, get } from 'svelte/store';

@@ -1,4 +1,6 @@
 <script>
+	// Copied from Desktop Clock
+
 	import { open, close, modal } from '../util/modal';
 
 	import Icon from './Icon.svelte';

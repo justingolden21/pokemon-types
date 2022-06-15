@@ -1,3 +1,5 @@
+// Copied from Desktop Clock
+
 // https://dev.to/100lvlmaster/create-a-pwa-with-sveltekit-svelte-a36
 
 /// <reference lib="webworker" />
