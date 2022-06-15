@@ -17,8 +17,6 @@
 
 	$: types = $state.types;
 
-	let types = ['', ''];
-
 	// ========
 
 	onMount(() => {
