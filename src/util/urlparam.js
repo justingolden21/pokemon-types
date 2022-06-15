@@ -1,5 +1,5 @@
 function updateUrlParam(q) {
-	history.replaceState({}, '', '?q=' + q);
+	history?.replaceState({}, '', '?q=' + q);
 }
 
 const copyText = (str) => {

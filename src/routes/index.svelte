@@ -1,6 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 
+	import { fade, scale } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
+
 	import { settings } from '../stores/settings';
 	import { state } from '../stores/state';
 
@@ -23,7 +26,7 @@
 		else if (types[1]) typeStr = types[1];
 		else typeStr = '';
 
-		history.replaceState({}, '', '?types=' + typeStr);
+		history?.replaceState({}, '', '?types=' + typeStr);
 	}
 
 	$: usingWeatherBoost =
@@ -113,13 +116,6 @@
 
 	let recentlyChangedType = -1;
 
-	function updateTypeDisplay() {
-		const matchupsDiv = document.getElementById('matchups');
-		matchupsDiv.classList.remove('leave', 'enter');
-		matchupsDiv.classList.add('enter');
-		matchupsDiv.addEventListener('animationend', () => matchupsDiv.classList.remove('enter'));
-	}
-
 	function getPokemonWithCurrentType() {
 		let pokemonWithType = '';
 		let countPokemonOfType = 0;
@@ -208,7 +204,6 @@
 			}
 		}
 
-		updateTypeDisplay();
 		document.getElementById('search').value = '';
 
 		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(types);
@@ -236,10 +231,6 @@
 				document.getElementById('weather-none').click();
 			document.getElementById('search').value = '';
 			if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(types);
-
-			const matchupsDiv = document.getElementById('matchups');
-			matchupsDiv.classList.add('leave');
-			matchupsDiv.addEventListener('animationend', updateTypeDisplay);
 		}
 	}
 
@@ -250,7 +241,6 @@
 		if (types[0]) changeType(1, types[0].toLowerCase());
 		if (types[1]) changeType(2, types[1].toLowerCase());
 
-		updateTypeDisplay();
 		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(get(types));
 	}
 
@@ -258,7 +248,7 @@
 		updateTypes(pokedexJson[id].type);
 
 		// update url param
-		history.replaceState({}, '', '?pokemon=' + id);
+		history?.replaceState({}, '', '?pokemon=' + id);
 	}
 </script>
 
@@ -423,33 +413,37 @@
 		<div id="matchups" class="grid grid-cols-2 my-2">
 			<div id="type-weak" class="mr-2 md:mr-4">
 				<h3>Weak to:</h3>
-				{#each matchups as mu}
+				{#each matchups as mu (mu.name)}
 					{@const strong = mu.matchup < 0.625 || mu.matchup > 1.6}
-					{#if mu.matchup > 1}
-						<div class="matchup-item" style="background-color: #{mu.color}">
-							{#if strong}
-								<strong>{mu.matchup}x</strong> {capitalize(mu.name)}
-							{:else}
-								{mu.matchup}x {capitalize(mu.name)}
-							{/if}
-						</div>
-					{/if}
+					<div animate:flip={{ duration: 250 }} in:scale out:fade>
+						{#if mu.matchup > 1}
+							<div class="matchup-item" style="background-color: #{mu.color}">
+								{#if strong}
+									<strong>{mu.matchup}x</strong> {capitalize(mu.name)}
+								{:else}
+									{mu.matchup}x {capitalize(mu.name)}
+								{/if}
+							</div>
+						{/if}
+					</div>
 				{/each}
 			</div>
 
 			<div id="type-resist" class="mr-2 md:ml-4">
 				<h3>Resists:</h3>
-				{#each matchups as mu}
+				{#each matchups as mu (mu.name)}
 					{@const strong = mu.matchup < 0.625 || mu.matchup > 1.6}
-					{#if mu.matchup < 1}
-						<div class="matchup-item" style="background-color: #{mu.color}">
-							{#if strong}
-								<strong>{mu.matchup}x</strong> {capitalize(mu.name)}
-							{:else}
-								{mu.matchup}x {capitalize(mu.name)}
-							{/if}
-						</div>
-					{/if}
+					<div animate:flip={{ duration: 250 }} in:scale out:fade>
+						{#if mu.matchup < 1}
+							<div class="matchup-item" style="background-color: #{mu.color}">
+								{#if strong}
+									<strong>{mu.matchup}x</strong> {capitalize(mu.name)}
+								{:else}
+									{mu.matchup}x {capitalize(mu.name)}
+								{/if}
+							</div>
+						{/if}
+					</div>
 				{/each}
 			</div>
 		</div>

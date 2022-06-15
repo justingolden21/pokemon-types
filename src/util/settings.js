@@ -8,21 +8,17 @@ window.addEventListener('load', () => {
 		const checked = document.getElementById('weather-boost-toggle').checked;
 
 		if (checked) updateWeatherBoostDisplay($types);
-		updateTypeDisplay();
 
 		storeSettingToggle('weather-boost-toggle');
 	};
 
 	document.getElementById('weather-boost-select').onchange = () => {
 		updateWeatherBoostDisplay($types);
-		updateTypeDisplay();
 
 		// not storing selected weather boost or current pokemon or types for now
 	};
 
 	document.getElementById('use-weather-boost-toggle').onchange = () => {
-		updateTypeDisplay();
-
 		storeSettingToggle('use-weather-boost-toggle');
 	};
 
@@ -31,7 +27,6 @@ window.addEventListener('load', () => {
 	};
 
 	document.getElementById('pokemon-with-type-toggle').onchange = () => {
-		updateTypeDisplay();
 		storeSettingToggle('pokemon-with-type-toggle');
 	};
 
