@@ -19,13 +19,6 @@
 	// ========
 
 	onMount(() => {
-		// on spacebar, focus autocomplete
-		document.onkeyup = (e) => {
-			if (e.code == 'Space' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-				document.getElementById('search').select();
-			}
-		};
-
 		// read url param
 
 		const url = new URL(window.location.href);
@@ -300,6 +293,15 @@
 		history.replaceState({}, '', '?pokemon=' + id);
 	}
 </script>
+
+<!-- on spacebar, focus autocomplete -->
+<svelte:window
+	on:onkeyup={(e) => {
+		if (e.code == 'Space' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+			document.getElementById('search').select();
+		}
+	}}
+/>
 
 <section class="text-center m-4 text-gray-900">
 	<button
