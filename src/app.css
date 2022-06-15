@@ -69,18 +69,18 @@
 	}
 
 	/* dark mode */
-	body.dark-mode {
+	body.dark {
 		@apply bg-gray-900;
 	}
-	body.dark-mode textarea,
-	body.dark-mode input {
+	body.dark textarea,
+	body.dark input {
 		@apply bg-gray-800 text-gray-100;
 	}
-	body.dark-mode,
-	body.dark-mode p,
-	body.dark-mode h1,
-	body.dark-mode h2,
-	body.dark-mode button:not(#type-btns button) {
+	body.dark,
+	body.dark p,
+	body.dark h1,
+	body.dark h2,
+	body.dark button:not(#type-btns button) {
 		@apply text-gray-100;
 	}
 }

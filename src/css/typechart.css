@@ -21,17 +21,17 @@
 	@apply bg-gray-100;
 }
 
-body.dark-mode #type-chart td.super {
+body.dark #type-chart td.super {
 	@apply bg-green-800;
 }
-body.dark-mode #type-chart td.resist {
+body.dark #type-chart td.resist {
 	@apply bg-red-800;
 }
-body.dark-mode #type-chart td.immune {
+body.dark #type-chart td.immune {
 	@apply bg-gray-600;
 }
 
-body.dark-mode #type-chart th {
+body.dark #type-chart th {
 	@apply text-gray-200;
 }
 

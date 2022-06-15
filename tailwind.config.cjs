@@ -1,5 +1,7 @@
 const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
+	safelist: ['dark'],
+	darkMode: 'class',
 
 	theme: {
 		extend: {
