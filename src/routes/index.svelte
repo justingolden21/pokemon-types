@@ -1,6 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
 
+	import { settings } from '../stores/settings';
+
 	import Autocomplete from '../components/Autocomplete.svelte';
 
 	import { open } from '../util/modal';
@@ -101,8 +103,8 @@
 		if (currentType1Value == '' && currentType2Value == '') (weakHtml = ''), (resistHtml = '');
 
 		const usingWeatherBoost =
-			document.getElementById('weather-boost-toggle').checked &&
-			document.getElementById('use-weather-boost-toggle').checked;
+			$settings.weatherBoost.weatherBoostEnabled &&
+			$settings.weatherBoost.useWeatherBoostMultiplier;
 		const currentWeather = getWeather();
 
 		let matchups = [];
@@ -148,7 +150,7 @@
 		history.replaceState({}, '', '?types=' + typeStr);
 
 		// pokemon with type combination
-		if (document.getElementById('pokemon-with-type-toggle').checked) {
+		if ($settings.display.showPokemonWithCurrentType) {
 			let pokemonWithType = '';
 			let countPokemonOfType = 0;
 			let pokemonWithTypePartial = '';
@@ -283,7 +285,7 @@
 		}
 
 		if (!skipUpdate) {
-			if (document.getElementById('clear-weather-toggle').checked)
+			if ($settings.weatherBoost.clearButtonClearsWeather)
 				document.getElementById('weather-none').click();
 			document.getElementById('search').value = '';
 			updateWeatherBoostDisplay();
