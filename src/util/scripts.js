@@ -11,8 +11,7 @@ window.addEventListener('load', () => {
 	for (let type of TYPE_DATA) {
 		let btn = document.createElement('button');
 		btn.innerHTML =
-			`<img class="type-icon" src="img/types/${type.name}.svg"> ` +
-			capitalize(type.name);
+			`<img class="type-icon" src="img/types/${type.name}.svg"> ` + capitalize(type.name);
 		btn.classList = `btn ${type.name}`;
 		btn.name = capitalize(type.name);
 		document.getElementById('type-btns').appendChild(btn);
@@ -31,26 +30,20 @@ window.addEventListener('load', () => {
 			const typesParam = url.searchParams.get('types');
 			const pokemonParam = url.searchParams.get('pokemon');
 			if (typesParam && typesParam.indexOf(' ') != -1) {
-				shareTxt = `See the type matchups for ${typesParam
-					.split(' ')
-					.join(' and ')}`;
+				shareTxt = `See the type matchups for ${typesParam.split(' ').join(' and ')}`;
 			} else if (typesParam) {
 				shareTxt = `See the type matchups for ${typesParam}`;
-			} else if (
-				(pokemonParam && pokemonParam in pokedexJson) ||
-				pokemonParam === 0
-			) {
+			} else if ((pokemonParam && pokemonParam in pokedexJson) || pokemonParam === 0) {
 				shareTxt = `See the type matchups for ${pokedexJson[pokemonParam].name}`;
 			} else {
-				shareTxt =
-					'View type matchups of all Pokémon in Pokémon Go in seconds';
+				shareTxt = 'View type matchups of all Pokémon in Pokémon Go in seconds';
 			}
 
 			navigator
 				.share({
 					title: 'Pokémon Types',
 					text: shareTxt,
-					url: window.location.href,
+					url: window.location.href
 				})
 				.then(() => {
 					console.log('Share successful');
@@ -62,10 +55,7 @@ window.addEventListener('load', () => {
 	};
 
 	document.onkeyup = (e) => {
-		if (
-			e.code == 'Space' &&
-			!['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)
-		) {
+		if (e.code == 'Space' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
 			document.getElementById('search').select();
 		}
 	};
@@ -93,10 +83,7 @@ window.addEventListener('load', () => {
 		printElm('type-chart', 'Type Effectiveness in Pokemon Go');
 
 	document.getElementById('print-type-attack-chart-btn').onclick = () =>
-		printElm(
-			'type-attack-chart',
-			'Attacking Type Effectiveness in Pokemon Go'
-		);
+		printElm('type-attack-chart', 'Attacking Type Effectiveness in Pokemon Go');
 
 	// read url param
 	const url = new URL(window.location.href);
@@ -106,13 +93,9 @@ window.addEventListener('load', () => {
 		updateTypes(typesParam.split(' '));
 	} else if (typesParam) {
 		updateTypes([typesParam]);
-	} else if (
-		(pokemonParam && pokemonParam in pokedexJson) ||
-		pokemonParam === 0
-	) {
+	} else if ((pokemonParam && pokemonParam in pokedexJson) || pokemonParam === 0) {
 		openPokemon(pokemonParam);
-		document.getElementById('search').value =
-			pokedexJson[pokemonParam].name;
+		document.getElementById('search').value = pokedexJson[pokemonParam].name;
 	}
 });
 
@@ -128,11 +111,7 @@ const copyText = (str) => {
 };
 
 const printElm = (elm, title = '', height, width) => {
-	let win = window.open(
-		'',
-		'PRINT',
-		height ? `height=${height},width=${width}` : ''
-	);
+	let win = window.open('', 'PRINT', height ? `height=${height},width=${width}` : '');
 
 	win.document.write(
 		'<html><head><link rel="stylesheet" href="css/styles.css"><title>' +
@@ -155,8 +134,7 @@ let recentlyChangedType = -1;
 function updateTypeDisplay() {
 	let weakHtml = '<h3>Weak to:</h3>';
 	let resistHtml = '<h3>Resists:</h3>';
-	if (currentType1 == '' && currentType2 == '')
-		(weakHtml = ''), (resistHtml = '');
+	if (currentType1 == '' && currentType2 == '') (weakHtml = ''), (resistHtml = '');
 
 	const usingWeatherBoost =
 		document.getElementById('weather-boost-toggle').checked &&
@@ -167,8 +145,7 @@ function updateTypeDisplay() {
 
 	for (let type of TYPE_DATA) {
 		let matchup = getMatchup(type.name, currentType1, currentType2);
-		if (usingWeatherBoost && isBoosted([type.name, ''], currentWeather))
-			matchup *= 1.2;
+		if (usingWeatherBoost && isBoosted([type.name, ''], currentWeather)) matchup *= 1.2;
 		if (matchup == 1) continue;
 
 		matchups.push({ name: type.name, matchup: matchup, color: type.color });
@@ -178,11 +155,9 @@ function updateTypeDisplay() {
 
 	for (let mu of matchups) {
 		const strong = mu.matchup < 0.625 || mu.matchup > 1.6;
-		const html = `<div class="matchup-item" style="background-color: #${
-			mu.color
-		};">${strong ? '<strong>' : ''}${mu.matchup}${
-			strong ? '</strong>' : ''
-		}x ${capitalize(mu.name)}</div>`;
+		const html = `<div class="matchup-item" style="background-color: #${mu.color};">${
+			strong ? '<strong>' : ''
+		}${mu.matchup}${strong ? '</strong>' : ''}x ${capitalize(mu.name)}</div>`;
 		if (mu.matchup > 1) {
 			weakHtml += html;
 		} else {
@@ -196,14 +171,11 @@ function updateTypeDisplay() {
 	const matchupsDiv = document.getElementById('matchups');
 	matchupsDiv.classList.remove('leave', 'enter');
 	matchupsDiv.classList.add('enter');
-	matchupsDiv.addEventListener('animationend', () =>
-		matchupsDiv.classList.remove('enter')
-	);
+	matchupsDiv.addEventListener('animationend', () => matchupsDiv.classList.remove('enter'));
 
 	// update url param
 	let typeStr;
-	if (currentType1 && currentType2)
-		typeStr = currentType1 + '+' + currentType2;
+	if (currentType1 && currentType2) typeStr = currentType1 + '+' + currentType2;
 	else if (currentType1) typeStr = currentType1;
 	else if (currentType2) typeStr = currentType2;
 	else typeStr = '';
@@ -232,10 +204,7 @@ function updateTypeDisplay() {
 			if (pokedexJson[i].type.length === 1) {
 				pokemonTypes = [pokedexJson[i].type[0].toLowerCase()];
 			} else {
-				pokemonTypes = [
-					pokedexJson[i].type[0].toLowerCase(),
-					pokedexJson[i].type[1].toLowerCase(),
-				];
+				pokemonTypes = [pokedexJson[i].type[0].toLowerCase(), pokedexJson[i].type[1].toLowerCase()];
 			}
 
 			// logic for matching type combination
@@ -247,10 +216,8 @@ function updateTypeDisplay() {
 				}
 				if (pokemonTypes.length === 2) {
 					if (
-						(pokemonTypes[0] === currentTypes[0] &&
-							pokemonTypes[1] === currentTypes[1]) ||
-						(pokemonTypes[0] === currentTypes[1] &&
-							pokemonTypes[1] === currentTypes[0])
+						(pokemonTypes[0] === currentTypes[0] && pokemonTypes[1] === currentTypes[1]) ||
+						(pokemonTypes[0] === currentTypes[1] && pokemonTypes[1] === currentTypes[0])
 					) {
 						isMatch = true;
 					}
@@ -261,8 +228,7 @@ function updateTypeDisplay() {
 			if (
 				pokemonTypes.length === 2 &&
 				currentTypes.length === 1 &&
-				(currentTypes[0] === pokemonTypes[0] ||
-					currentTypes[0] === pokemonTypes[1])
+				(currentTypes[0] === pokemonTypes[0] || currentTypes[0] === pokemonTypes[1])
 			) {
 				isMatchPartial = true;
 			}
@@ -361,19 +327,6 @@ function clearTypes(skipUpdate = false) {
 }
 
 // ================================
-
-let pokedexJson;
-
-fetch('data/pokedex.json')
-	.then((response) => response.json())
-	.then((json) => {
-		autocomplete(
-			document.getElementById('search'),
-			json.map((x) => x.name)
-		);
-
-		pokedexJson = json;
-	});
 
 function updateTypes(types) {
 	clearTypes(true);

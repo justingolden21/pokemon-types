@@ -1,5 +1,11 @@
 <script>
+	import Autocomplete from '../components/Autocomplete.svelte';
+
+	import pokemonJson from '../data/pokedex.json';
+
 	$: year = new Date().getFullYear();
+
+	const pokemonNames = pokemonJson.map((x) => x.name);
 </script>
 
 <body class="text-center m-4 text-gray-900">
@@ -92,16 +98,14 @@
 			Pokémon Types
 		</h1>
 
-		<div class="autocomplete my-2">
-			<input
+		<div class="my-2">
+			<Autocomplete
 				id="search"
-				type="search"
-				name="Search"
 				placeholder="Search for a Pokémon..."
-				autocomplete="off"
-				autocorrect="off"
-				autocapitalize="off"
-				spellcheck="false"
+				options={pokemonNames}
+				maxResults={50}
+				selectOnFocus={true}
+				selectOnClick={true}
 			/>
 		</div>
 
