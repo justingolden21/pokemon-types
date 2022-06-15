@@ -8,8 +8,6 @@
 	matchups, search for pokemon, view weather boost, copy search strings, and more.
 </p>
 <p>Hit <kbd>space</kbd> to focus the search input</p>
-<!-- <p>Made with <a href="https://tailwindcss.com/docs" target="_blank">Tailwind CSS</a> and <a href="https://heroicons.dev/" target="_blank">Hero Icons</a></p> -->
-<!-- <p>Version 1.0.0</p> -->
 <h3 class="my-3">Contact</h3>
 <p>
 	Feel free to contact me with any questions, mistakes, or suggestions at <a

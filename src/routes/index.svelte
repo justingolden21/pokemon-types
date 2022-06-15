@@ -33,40 +33,6 @@
 
 		// event listeners
 
-		document.getElementById('clear-btn').onclick = () => clearTypes();
-
-		document.getElementById('share-btn').onclick = () => {
-			if (navigator.share) {
-				let shareTxt;
-				// read url param
-				const url = new URL(window.location.href);
-				const typesParam = url.searchParams.get('types');
-				const pokemonParam = url.searchParams.get('pokemon');
-				if (typesParam && typesParam.indexOf(' ') != -1) {
-					shareTxt = `See the type matchups for ${typesParam.split(' ').join(' and ')}`;
-				} else if (typesParam) {
-					shareTxt = `See the type matchups for ${typesParam}`;
-				} else if ((pokemonParam && pokemonParam in pokedexJson) || pokemonParam === 0) {
-					shareTxt = `See the type matchups for ${pokedexJson[pokemonParam].name}`;
-				} else {
-					shareTxt = 'View type matchups of all Pokémon in Pokémon Go in seconds';
-				}
-
-				navigator
-					.share({
-						title: 'Pokémon Types',
-						text: shareTxt,
-						url: window.location.href
-					})
-					.then(() => {
-						console.log('Share successful');
-					})
-					.catch(console.error);
-			} else {
-				console.log('Share not supported'); // TODO?
-			}
-		};
-
 		document.onkeyup = (e) => {
 			if (e.code == 'Space' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
 				document.getElementById('search').select();
@@ -111,6 +77,38 @@
 			document.getElementById('search').value = pokedexJson[pokemonParam].name;
 		}
 	});
+
+	const shareApp = () => {
+		if (navigator.share) {
+			let shareTxt;
+			// read url param
+			const url = new URL(window.location.href);
+			const typesParam = url.searchParams.get('types');
+			const pokemonParam = url.searchParams.get('pokemon');
+			if (typesParam && typesParam.indexOf(' ') != -1) {
+				shareTxt = `See the type matchups for ${typesParam.split(' ').join(' and ')}`;
+			} else if (typesParam) {
+				shareTxt = `See the type matchups for ${typesParam}`;
+			} else if ((pokemonParam && pokemonParam in pokedexJson) || pokemonParam === 0) {
+				shareTxt = `See the type matchups for ${pokedexJson[pokemonParam].name}`;
+			} else {
+				shareTxt = 'View type matchups of all Pokémon in Pokémon Go in seconds';
+			}
+
+			navigator
+				.share({
+					title: 'Pokémon Types',
+					text: shareTxt,
+					url: window.location.href
+				})
+				.then(() => {
+					console.log('Share successful');
+				})
+				.catch(console.error);
+		} else {
+			console.log('Share not supported'); // TODO?
+		}
+	};
 
 	const capitalize = (str) => str.charAt(0).toUpperCase() + str.substring(1);
 
@@ -389,7 +387,7 @@
 				/>
 			</svg>
 		</button>
-		<button id="clear-btn" class="btn hover-fill" name="Clear">
+		<button on:click={clearTypes} class="btn hover-fill" name="Clear">
 			<svg
 				class="w-6 h-6"
 				fill="none"
@@ -440,7 +438,7 @@
 		</div>
 
 		<h1 class="my-2 tracking-wider">
-			<button id="share-btn" class="btn hover-fill" name="Share">
+			<button on:click={shareApp} class="btn hover-fill" name="Share">
 				<svg
 					class="w-6 h-6"
 					fill="none"
