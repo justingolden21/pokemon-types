@@ -151,9 +151,9 @@
 		>
 			{#each filteredOptions as option, i}
 				<li
-					class="bg-white border-2 border-t-0 border-gray-200 whitespace-nowrap overflow-x-hidden block autocomplete-item p-2 cursor-pointer dark:border-gray-800 hover:dark:bg-gray-700 hover:bg-accent hover:text-white {i ===
+					class="bg-white border-2 border-t-0 border-gray-200 whitespace-nowrap overflow-x-hidden block autocomplete-item p-2 cursor-pointer dark:border-gray-800 hover:dark:bg-gray-700 hover:bg-accent hover:text-white dark:text-white {i ===
 					highlightIdx
-						? 'bg-accent'
+						? 'bg-accent text-white'
 						: 'bg-gray-50 dark:bg-gray-900'}"
 					on:click={() => setInputVal(option)}
 				>
