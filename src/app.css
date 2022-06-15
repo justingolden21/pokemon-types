@@ -1,5 +1,13 @@
 /* Global styles, PostCSS syntax */
 
+@import './css/button.css';
+@import './css/dropdown.css';
+@import './css/matchup.css';
+@import './css/snackbar.css';
+@import './css/typebutton.css';
+@import './css/typechart.css';
+@import './css/weather.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
