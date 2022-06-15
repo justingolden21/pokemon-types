@@ -9,3 +9,5 @@ function showSnackbar(html, ms = 2500) {
 	clearTimeout(timeout);
 	timeout = setTimeout(() => s.classList.remove('show'), ms);
 }
+
+export default showSnackbar;
