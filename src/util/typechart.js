@@ -1,3 +1,5 @@
+// TODO import TYPE_NAMES, getColor, getMatchup from util/types
+
 window.addEventListener('load', () => {
 	// create type chart
 
@@ -19,15 +21,7 @@ window.addEventListener('load', () => {
 		for (let j = 0; j < TYPE_NAMES.length; j++) {
 			let mu = getMatchup(TYPE_NAMES[i], TYPE_NAMES[j]);
 			mu = mu == 5 ? 0.5 : mu;
-			tmpHTML += `<td class="${
-				mu > 1
-					? 'super'
-					: mu < 0.625
-					? 'immune'
-					: mu < 1
-					? 'resist'
-					: ''
-			}">
+			tmpHTML += `<td class="${mu > 1 ? 'super' : mu < 0.625 ? 'immune' : mu < 1 ? 'resist' : ''}">
 				${mu < 1 ? mu.toString().substring(1) : mu}
 				</td>`; // substring to remove leading zero from float
 		}
@@ -44,27 +38,23 @@ window.addEventListener('load', () => {
 	const getTypeDiv = (typeName, isMain = false) =>
 		typeName == ''
 			? `<div class="${divClassesCSS}"></div>`
-			: `<div class="${divClassesCSS} ${
-					isMain ? 'bg-black text-white rounded' : ''
-			  }">${getTypeIcon(typeName)} <br> ${
-					isMain ? '<b>' : ''
-			  } ${capitalize(typeName)} ${isMain ? '</b>' : ''}</div>`;
+			: `<div class="${divClassesCSS} ${isMain ? 'bg-black text-white rounded' : ''}">${getTypeIcon(
+					typeName
+			  )} <br> ${isMain ? '<b>' : ''} ${capitalize(typeName)} ${isMain ? '</b>' : ''}</div>`;
 
 	const rightArrow =
 		'<svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>';
 
 	// top row
 	tmpHTML = '';
-	for (let i = 0; i < 4; i++)
-		tmpHTML += `<div class="${divClassesCSS}"></div>`;
+	for (let i = 0; i < 4; i++) tmpHTML += `<div class="${divClassesCSS}"></div>`;
 	tmpHTML +=
 		`<div class="${divClassesCSS}"><b>Weak To</b></div>` +
 		rightArrow.replace('currentColor', 'transparent') +
 		`<div class="${divClassesCSS}"></div>` +
 		rightArrow.replace('currentColor', 'transparent') +
 		`<div class="${divClassesCSS}"><b>Strong Against</b></div>`;
-	for (let i = 0; i < 4; i++)
-		tmpHTML += `<div class="${divClassesCSS}"></div>`;
+	for (let i = 0; i < 4; i++) tmpHTML += `<div class="${divClassesCSS}"></div>`;
 	tmpHTML += '<br>';
 
 	let matchups = [];

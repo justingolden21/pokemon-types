@@ -16,7 +16,7 @@ const TYPE_DATA = [
 	{ name: 'ice', eff: '112121115552115211', color: '98D8D8' },
 	{ name: 'dragon', eff: '111111115111111210', color: '7038F8' },
 	{ name: 'dark', eff: '151111121111121155', color: '705848' },
-	{ name: 'fairy', eff: '121511115511111221', color: 'EE99AC' },
+	{ name: 'fairy', eff: '121511115511111221', color: 'EE99AC' }
 ];
 
 const TYPE_NAMES =
@@ -39,17 +39,12 @@ function getSingleMatchup(attackType, defendType) {
 }
 
 function getDoubleMatchup(attackType, defendType1, defendType2) {
-	return (
-		getSingleMatchup(attackType, defendType1) *
-		getSingleMatchup(attackType, defendType2)
-	);
+	return getSingleMatchup(attackType, defendType1) * getSingleMatchup(attackType, defendType2);
 }
 
 function getMatchup(attackType, defendType1, defendType2) {
-	if (defendType1 == '')
-		return round(getSingleMatchup(attackType, defendType2));
-	if (defendType2 == '')
-		return round(getSingleMatchup(attackType, defendType1));
+	if (defendType1 == '') return round(getSingleMatchup(attackType, defendType2));
+	if (defendType2 == '') return round(getSingleMatchup(attackType, defendType1));
 	return round(getDoubleMatchup(attackType, defendType1, defendType2));
 }
 
@@ -57,3 +52,5 @@ function getMatchup(attackType, defendType1, defendType2) {
 function round(n) {
 	return Math.round(n * 1000) / 1000;
 }
+
+export { TYPE_DATA, TYPE_NAMES, getColor, getMatchup };

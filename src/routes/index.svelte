@@ -5,6 +5,8 @@
 
 	import { open } from '../util/modal';
 
+	import { TYPE_DATA, getMatchup } from '../util/types';
+
 	import pokemonJson from '../data/pokedex.json';
 
 	const pokemonNames = pokemonJson.map((x) => x.name);

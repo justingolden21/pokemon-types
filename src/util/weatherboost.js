@@ -1,29 +1,29 @@
+// TODO import getColor from util/types
+
 const weatherBoost = {
-	grass: 'sunny',
-	fire: 'sunny',
-	ground: 'sunny',
-	water: 'rainy',
-	electric: 'rainy',
-	bug: 'rainy',
-	normal: 'partly cloudy',
-	rock: 'partly cloudy',
-	fairy: 'cloudy',
-	fighting: 'cloudy',
-	poison: 'cloudy',
-	flying: 'windy',
-	dragon: 'windy',
-	psychic: 'windy',
-	ice: 'snow',
-	steel: 'snow',
-	dark: 'fog',
-	ghost: 'fog',
-	'': '',
+	'grass': 'sunny',
+	'fire': 'sunny',
+	'ground': 'sunny',
+	'water': 'rainy',
+	'electric': 'rainy',
+	'bug': 'rainy',
+	'normal': 'partly cloudy',
+	'rock': 'partly cloudy',
+	'fairy': 'cloudy',
+	'fighting': 'cloudy',
+	'poison': 'cloudy',
+	'flying': 'windy',
+	'dragon': 'windy',
+	'psychic': 'windy',
+	'ice': 'snow',
+	'steel': 'snow',
+	'dark': 'fog',
+	'ghost': 'fog',
+	'': ''
 };
 
 const getWeatherImg = (weather) =>
-	'<img class="weather-icon" src="img/weather/' +
-	weather.replace(' ', '_') +
-	'.png">';
+	'<img class="weather-icon" src="img/weather/' + weather.replace(' ', '_') + '.png">';
 
 const getWeatherSpan = (types) => {
 	types = types.map((s) => s.toLowerCase());
@@ -31,9 +31,7 @@ const getWeatherSpan = (types) => {
 
 	if (types.length == 2 && weatherBoost[types[0]] != weatherBoost[types[1]]) {
 		txt = weatherBoost[types[0]] + ' or ' + weatherBoost[types[1]];
-		img =
-			getWeatherImg(weatherBoost[types[0]]) +
-			getWeatherImg(weatherBoost[types[1]]);
+		img = getWeatherImg(weatherBoost[types[0]]) + getWeatherImg(weatherBoost[types[1]]);
 	} else {
 		txt = weatherBoost[types[0]];
 		img = getWeatherImg(weatherBoost[types[0]]);
@@ -61,15 +59,11 @@ function updateWeatherBoostDisplay() {
 	// replace img tag: https://stackoverflow.com/a/11025465/4907950
 	// remove text after '/' to handle 'Sunny/Clear'
 	const weather = getWeather();
-	document.getElementById('weather-boost-check').style.display = isBoosted(
-		types,
-		weather
-	)
+	document.getElementById('weather-boost-check').style.display = isBoosted(types, weather)
 		? 'inline-block'
 		: 'none';
 
-	document.getElementById('weather-boost-text').innerHTML =
-		getWeatherSpan(types);
+	document.getElementById('weather-boost-text').innerHTML = getWeatherSpan(types);
 }
 
 const isBoosted = (types, weather) =>
@@ -95,15 +89,14 @@ window.addEventListener('load', () => {
 		cloudy: ['fairy', 'fighting', 'poison'],
 		windy: ['flying', 'dragon', 'psychic'],
 		snow: ['ice', 'steel'],
-		fog: ['dark', 'ghost'],
+		fog: ['dark', 'ghost']
 	};
 	let html = '';
 	for (let weather in boosts) {
 		html += `<div class="md:border-b-2 md:border-gray-100 flex flex-col md:flex-row md:justify-between p-2 space-y-2 md:space-y-0">
 			<div class="flex space-x-2">`;
 		if (weather == 'sunny')
-			html +=
-				'<img src="img/weather/clear.png" class="weather-icon-big"> Clear &nbsp; ';
+			html += '<img src="img/weather/clear.png" class="weather-icon-big"> Clear &nbsp; ';
 		html += `<img src="img/weather/${weather}.png" class="weather-icon-big">
 			${capitalize(weather).replace('_', ' ')}
 			</div>

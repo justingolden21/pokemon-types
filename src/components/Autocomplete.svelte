@@ -4,6 +4,8 @@
 	/// UTILS ///
 	import clickOutside from '../util/clickOutside';
 
+	// import { TYPE_DATA } from '../util/types';
+
 	/// STATE ///
 	export let options;
 	export let placeholder = '';
