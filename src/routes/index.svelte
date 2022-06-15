@@ -209,10 +209,8 @@
 	function handleClick(type) {
 		if (types[0] == type) {
 			types[0] = '';
-			removeActive(type);
 		} else if (types[1] == type) {
 			types[1] = '';
-			removeActive(type);
 		} else {
 			if (!types[0]) {
 				changeType(1, type);
@@ -220,10 +218,8 @@
 				changeType(2, type);
 			} else {
 				if (recentlyChangedType == 1) {
-					removeActive(types[1]);
 					changeType(2, type);
 				} else {
-					removeActive(types[0]);
 					changeType(1, type);
 				}
 			}
@@ -242,24 +238,13 @@
 			types[1] = type;
 		}
 		recentlyChangedType = num;
-
-		addActive(type);
-	}
-
-	function addActive(type) {
-		document.querySelector(`.${type}`).classList.add('active');
-	}
-	function removeActive(type) {
-		document.querySelector(`.${type}`).classList.remove('active');
 	}
 
 	function clearTypes(skipUpdate = false) {
 		if (types[1] != '') {
-			removeActive(types[1]);
 			types[1] = '';
 		}
 		if (types[0] != '') {
-			removeActive(types[0]);
 			types[0] = '';
 		}
 
@@ -439,7 +424,11 @@
 
 	<div id="type-btns" class="grid grid-cols-3 md:grid-cols-6 xl:grid-cols-9 my-2">
 		{#each TYPE_DATA as type}
-			<button class="btn {type.name}" name={type.name} on:click={() => handleClick(type.name)}>
+			<button
+				class="btn {type.name} {types.includes(type.name) ? 'active' : ''}"
+				name={type.name}
+				on:click={() => handleClick(type.name)}
+			>
 				<img class="type-icon" src="/img/types/{type.name}.svg" alt={type.name} />
 				<span>{capitalize(type.name)}</span>
 			</button>
