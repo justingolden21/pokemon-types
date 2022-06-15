@@ -35,7 +35,10 @@
 	 * make new variable for inputValue and on inputValue change set value to it only if it's one of the options
 	 */
 	let inputValue = value;
-	$: if (options.includes(inputValue)) value = inputValue;
+	$: if (options.includes(inputValue)) {
+		value = inputValue;
+		onChange(value);
+	}
 
 	const splitStringThree = (str, idx0, idx1, idx2) => [
 		str.substring(idx0, idx1),
@@ -138,11 +141,6 @@
 		on:input={filterOptions}
 		on:focus={(event) => selectOnFocus && event.target.select()}
 		on:click={(event) => selectOnClick && event.target.select()}
-		on:change={(event) => {
-			if (options.includes(event.target.value)) {
-				onChange(event.target.value);
-			}
-		}}
 	/>
 	{#if filteredOptions.length > 0}
 		<ul
