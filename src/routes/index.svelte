@@ -18,16 +18,7 @@
 	const pokemonNames = pokedexJson.map((x) => x.name);
 
 	$: types = $state.types;
-	$: if (types) {
-		// update url param
-		let typeStr;
-		if (types[0] && types[1]) typeStr = types[0] + '+' + types[1];
-		else if (types[0]) typeStr = types[0];
-		else if (types[1]) typeStr = types[1];
-		else typeStr = '';
-
-		setURLParamTypes(typeStr);
-	}
+	$: if (types && setURLParamTypes) setURLParamTypes();
 
 	$: usingWeatherBoost =
 		$settings.weatherBoost.weatherBoostEnabled && $settings.weatherBoost.useWeatherBoostMultiplier;
@@ -41,10 +32,16 @@
 
 	// ========
 
-	let setURLParamTypes = () => {};
+	let setURLParamTypes;
 
 	onMount(() => {
-		setURLParamTypes = (typeStr) => {
+		setURLParamTypes = () => {
+			let typeStr;
+			if (types[0] && types[1]) typeStr = types[0] + '+' + types[1];
+			else if (types[0]) typeStr = types[0];
+			else if (types[1]) typeStr = types[1];
+			else typeStr = '';
+
 			history?.replaceState({}, '', '?types=' + typeStr);
 		};
 
