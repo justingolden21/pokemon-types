@@ -41,6 +41,11 @@
 		}
 	});
 
+	let threeDotMenuOpen = false;
+	const toggleThreeDotMenu = () => {
+		threeDotMenuOpen = !threeDotMenuOpen;
+	};
+
 	const shareApp = () => {
 		if (navigator.share) {
 			let shareTxt;
@@ -332,7 +337,7 @@
 		</svg>
 	</button>
 	<div id="dropdown" class="dropdown float-right ml-2" aria-haspopup="true" aria-expanded="false">
-		<button id="dropdown-btn" class="btn dropdown-btn hover-fill" name="More">
+		<button class="btn hover-fill" name="More" on:click={toggleThreeDotMenu}>
 			<svg
 				class="w-6 h-6"
 				fill="none"
@@ -348,7 +353,7 @@
 				/>
 			</svg>
 		</button>
-		<div id="dropdown-content" class="dropdown-content text-left">
+		<div id="dropdown-content" class="dropdown-content text-left {threeDotMenuOpen && 'show'}">
 			<a class="modal-btn" on:click={() => open('weatherBoostModal')} role="menuitem"
 				>Weather Boost</a
 			>
