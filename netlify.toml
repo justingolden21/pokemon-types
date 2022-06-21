@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
-  publish = "build/publish/"
-  functions = "build/functions/"
+  publish = "build/"
+  functions = "functions/"
   environment = { NODE_VERSION = "14.17.5" }
 
 [dev]
