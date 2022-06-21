@@ -22,9 +22,17 @@
 		($state.types[0] && $state.types[1] && ' &nbsp; ') +
 		($state.types[1] && `${getTypeIcon($state.types[1])} ${capitalize($state.types[1])}`);
 
-	$: searchstring = getSearchString(superAgainst, hasType, hasFast, hasCharge, hasAny);
+	$: searchstring = getSearchString(
+		superAgainst,
+		hasType,
+		hasFast,
+		hasCharge,
+		hasAny,
+		minimumMultiplier
+	);
 
-	function getSearchString(superAgainst, hasType, hasFast, hasCharge, hasAny) {
+	// pass in params so `searchstring` updates reactively to changes in those values
+	function getSearchString(superAgainst, hasType, hasFast, hasCharge, hasAny, minimumMultiplier) {
 		if ($state.types[0] === '' && $state.types[1] === '') return '';
 
 		let str = '';
