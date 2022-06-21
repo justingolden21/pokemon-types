@@ -17,7 +17,6 @@
 
 <h3 class="my-3">Weather Boost</h3>
 
-<!-- on:change={() => updateWeatherBoostDisplay(types)} -->
 <Toggle
 	id="weather-boost-toggle"
 	bind:checked={$settings.weatherBoost.weatherBoostEnabled}

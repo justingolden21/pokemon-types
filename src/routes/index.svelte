@@ -12,10 +12,11 @@
 	import { open } from '../util/modal';
 	import capitalize from '../util/capitalize';
 	import { TYPE_DATA, getMatchup } from '../util/types';
-	import { updateWeatherBoostDisplay, isBoosted, getWeather } from '../util/weatherboost';
+	import { isBoosted } from '../util/weatherboost';
 	import clickOutside from '../util/clickOutside';
 
 	import pokedexJson from '../data/pokedex.json';
+	import WeatherBoostText from '../components/WeatherBoostText.svelte';
 
 	const pokemonNames = pokedexJson.map((x) => x.name);
 
@@ -26,7 +27,7 @@
 		$settings.weatherBoost.weatherBoostEnabled && $settings.weatherBoost.useWeatherBoostMultiplier;
 	$: matchups = TYPE_DATA.map((type) => {
 		let matchup = getMatchup(type.name, types[0], types[1]);
-		if (usingWeatherBoost && isBoosted([type.name, ''], getWeather())) matchup *= 1.2;
+		if (usingWeatherBoost && isBoosted([type.name, ''], $state.weather)) matchup *= 1.2;
 		return { name: type.name, matchup: matchup, color: type.color };
 	}).sort((a, b) => b.matchup - a.matchup);
 
@@ -202,8 +203,6 @@
 		}
 
 		document.getElementById('search').value = '';
-
-		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(types);
 	}
 
 	function changeType(num, type) {
@@ -222,7 +221,6 @@
 		if ($settings.weatherBoost.clearButtonClearsWeather)
 			document.getElementById('weather-none').click();
 		document.getElementById('search').value = '';
-		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(types);
 	}
 
 	// ================================
@@ -233,8 +231,6 @@
 
 		if (newTypes[0]) changeType(1, newTypes[0].toLowerCase());
 		if (newTypes[1]) changeType(2, newTypes[1].toLowerCase());
-
-		if ($settings.weatherBoost.weatherBoostEnabled) updateWeatherBoostDisplay(types);
 	}
 
 	function openPokemon(id) {
@@ -369,32 +365,14 @@
 	/>
 
 	{#if $settings.weatherBoost.weatherBoostEnabled}
-		<select
-			id="weather-boost-options"
-			class=" ml-2 relative inline-block"
-			on:change={() => updateWeatherBoostDisplay(types)}
-		>
+		<select class=" ml-2 relative inline-block" bind:value={$state.weather}>
 			{#each ['None', 'Sunny/Clear', 'Rainy', 'Partly Cloudy', 'Windy', 'Snow', 'Fog'] as val}
-				<option value={val.toString()}>{val}</option>
+				<option value={val.toLowerCase().trim().split('/')[0]}>{val}</option>
 			{/each}
 		</select>
 	{/if}
 
-	<p>
-		{#if $settings.weatherBoost.weatherBoostEnabled}
-			<svg
-				id="weather-boost-check"
-				class="w-4 h-4 hidden"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-			</svg>
-			<small id="weather-boost-text" class="hidden" />
-		{/if}
-	</p>
+	<WeatherBoostText />
 
 	<div id="type-btns" class="grid grid-cols-3 md:grid-cols-6 xl:grid-cols-9 my-2">
 		{#each TYPE_DATA as type}

@@ -4,7 +4,7 @@
 	import { TYPE_NAMES, getMatchup } from '../../util/types';
 	import capitalize from '../../util/capitalize';
 	import showSnackbar from '../../util/snackbar';
-	import { isBoosted, getWeather, getTypeIcon } from '../../util/weatherboost';
+	import { isBoosted, getTypeIcon } from '../../util/weatherboost';
 	import { state } from '../../stores/state';
 	import { settings } from '../../stores/settings';
 
@@ -62,13 +62,12 @@
 			const usingWeatherBoost =
 				$settings.weatherBoost.weatherBoostEnabled &&
 				$settings.weatherBoost.useWeatherBoostMultiplier;
-			const currentWeather = getWeather();
 
 			const multiplierThreshold = parseFloat(minimumMultiplier);
 
 			for (let type of TYPE_NAMES) {
 				let matchup = getMatchup(type, $state.types[0], $state.types[1]);
-				if (usingWeatherBoost && isBoosted([type, ''], currentWeather)) matchup *= 1.2;
+				if (usingWeatherBoost && isBoosted([type, ''], $state.weather)) matchup *= 1.2;
 				if (matchup < multiplierThreshold) continue;
 				matchups.push({ name: type, matchup: matchup });
 			}
