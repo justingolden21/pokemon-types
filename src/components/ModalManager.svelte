@@ -57,7 +57,7 @@
 		<div class="modal-content surface rounded" on:mousedown|stopPropagation>
 			<div class="modal-header">
 				<button
-					class="icon-btn float-right btn sm close hover-fill"
+					class="icon-btn float-right btn sm close hover-fill mt-0"
 					on:click={close}
 					aria-label="Close"
 				>
@@ -85,9 +85,6 @@
 		@apply rounded border-2 border-gray-300 bg-white p-6 pt-3 relative m-auto w-full md:w-3/4;
 		animation: animateTop 0.25s;
 		-webkit-animation: animateTop 0.25s;
-	}
-	.modal-header button {
-		@apply z-30 mt-2;
 	}
 	.modal h1 {
 		@apply text-left mt-3;
