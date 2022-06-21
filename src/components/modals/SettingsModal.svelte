@@ -1,6 +1,7 @@
 <script>
-	import { settings } from '../../stores/settings';
+	import { settings, defaultSettings } from '../../stores/settings';
 
+	import Icon from '../Icon.svelte';
 	import Toggle from '../Toggle.svelte';
 </script>
 
@@ -56,3 +57,13 @@
 	<option value="words">Words</option>
 	<option value="nothing">Nothing</option>
 </select>
+
+<h3 class="my-3">Settings</h3>
+
+<button
+	on:click={() => ($settings = JSON.parse(JSON.stringify(defaultSettings)))}
+	class="btn sm hover-fill my-3 mr-3"
+>
+	<Icon name="undo" class="w-6 h-6 inline" />
+	Reset settings
+</button>
