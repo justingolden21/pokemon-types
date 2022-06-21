@@ -90,7 +90,7 @@
 		@apply p-2;
 	}
 	select {
-		@apply dark:bg-gray-800;
+		@apply dark:bg-gray-800 dark:text-white;
 	}
 	.matchup-item {
 		@apply px-2 py-1 text-white my-1;
