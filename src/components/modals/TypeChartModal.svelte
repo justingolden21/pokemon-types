@@ -4,10 +4,12 @@
 	import printElm from '../../util/printElm';
 	import showSnackbar from '../../util/snackbar';
 
-	// TODO import TYPE_NAMES, getColor, getMatchup from util/types
-	// TODO import { getTypeIcon } from util/weatherboost
+	import { TYPE_NAMES, getColor, getMatchup } from '../../util/types';
+	import { getTypeIcon } from '../../util/weatherboost';
+	import { onMount } from 'svelte';
+	import capitalize from '../../util/capitalize';
 
-	window.addEventListener('load', () => {
+	onMount(() => {
 		// create type chart
 
 		const getTypeTD = (typeName) =>
