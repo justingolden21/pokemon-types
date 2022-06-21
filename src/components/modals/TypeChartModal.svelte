@@ -109,7 +109,7 @@
 	});
 </script>
 
-<div id="type-chart" />
+<div id="type-chart" class="overflow-x-auto" />
 
 <button
 	on:click={() => {

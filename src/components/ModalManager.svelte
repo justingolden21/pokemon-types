@@ -93,7 +93,7 @@
 
 <style lang="postcss">
 	.modal {
-		@apply sm:p-6 md:p-12 fixed left-0 top-0 w-full h-full bg-gray-700 bg-opacity-50 z-20;
+		@apply sm:p-6 md:p-12 fixed left-0 top-0 w-full h-full bg-gray-700 bg-opacity-50 z-20 overflow-auto;
 	}
 	.modal-content {
 		@apply rounded border-2 border-gray-300 bg-white p-6 pt-3 relative m-auto w-full md:w-3/4;
