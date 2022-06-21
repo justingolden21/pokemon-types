@@ -20,18 +20,17 @@
 
 	const pokemonNames = pokedexJson.map((x) => x.name);
 
-	$: types = $state.types;
-	$: if (types && setURLParamTypes) setURLParamTypes();
+	$: if ($state.types && setURLParamTypes) setURLParamTypes();
 
 	$: usingWeatherBoost =
 		$settings.weatherBoost.weatherBoostEnabled && $settings.weatherBoost.useWeatherBoostMultiplier;
 	$: matchups = TYPE_DATA.map((type) => {
-		let matchup = getMatchup(type.name, types[0], types[1]);
+		let matchup = getMatchup(type.name, $state.types[0], $state.types[1]);
 		if (usingWeatherBoost && isBoosted([type.name, ''], $state.weather)) matchup *= 1.2;
 		return { name: type.name, matchup: matchup, color: type.color };
 	}).sort((a, b) => b.matchup - a.matchup);
 
-	$: pokemonWithCurrentType = types ? getPokemonWithCurrentType() : {};
+	$: pokemonWithCurrentType = $state.types ? getPokemonWithCurrentType() : {};
 
 	// ========
 
@@ -40,9 +39,9 @@
 	onMount(() => {
 		setURLParamTypes = () => {
 			let typeStr;
-			if (types[0] && types[1]) typeStr = types[0] + '+' + types[1];
-			else if (types[0]) typeStr = types[0];
-			else if (types[1]) typeStr = types[1];
+			if ($state.types[0] && $state.types[1]) typeStr = $state.types[0] + '+' + $state.types[1];
+			else if ($state.types[0]) typeStr = $state.types[0];
+			else if ($state.types[1]) typeStr = $state.types[1];
 			else typeStr = '';
 
 			history?.replaceState({}, '', '?types=' + typeStr);
@@ -125,12 +124,12 @@
 			let pokemonTypes;
 			let isMatch = false;
 			let isMatchPartial = false;
-			if (types[1] === '') {
-				currentTypes = [types[0]];
-			} else if (types[0] === '') {
-				currentTypes = [types[1]];
+			if ($state.types[1] === '') {
+				currentTypes = [$state.types[0]];
+			} else if ($state.types[0] === '') {
+				currentTypes = [$state.types[1]];
 			} else {
-				currentTypes = [types[0], types[1]];
+				currentTypes = [$state.types[0], $state.types[1]];
 			}
 			if (pokedexJson[i].type.length === 1) {
 				pokemonTypes = [pokedexJson[i].type[0].toLowerCase()];
@@ -184,14 +183,14 @@
 	}
 
 	function handleClick(type) {
-		if (types[0] == type) {
-			types[0] = '';
-		} else if (types[1] == type) {
-			types[1] = '';
+		if ($state.types[0] == type) {
+			$state.types[0] = '';
+		} else if ($state.types[1] == type) {
+			$state.types[1] = '';
 		} else {
-			if (!types[0]) {
+			if (!$state.types[0]) {
 				changeType(1, type);
-			} else if (!types[1]) {
+			} else if (!$state.types[1]) {
 				changeType(2, type);
 			} else {
 				if (recentlyChangedType == 1) {
@@ -207,16 +206,16 @@
 
 	function changeType(num, type) {
 		if (num == 1) {
-			types[0] = type;
+			$state.types[0] = type;
 		} else {
-			types[1] = type;
+			$state.types[1] = type;
 		}
 		recentlyChangedType = num;
 	}
 
 	function clearTypes() {
-		types[0] = '';
-		types[1] = '';
+		$state.types[0] = '';
+		$state.types[1] = '';
 
 		if ($settings.weatherBoost.clearButtonClearsWeather)
 			document.getElementById('weather-none').click();
@@ -226,8 +225,8 @@
 	// ================================
 
 	function updateTypes(newTypes) {
-		types[0] = '';
-		types[1] = '';
+		$state.types[0] = '';
+		$state.types[1] = '';
 
 		if (newTypes[0]) changeType(1, newTypes[0].toLowerCase());
 		if (newTypes[1]) changeType(2, newTypes[1].toLowerCase());
@@ -377,7 +376,7 @@
 	<div id="type-btns" class="grid grid-cols-3 md:grid-cols-6 xl:grid-cols-9 my-2">
 		{#each TYPE_DATA as type}
 			<button
-				class="btn {type.name} {types.includes(type.name) ? 'active' : ''}"
+				class="btn {type.name} {$state.types.includes(type.name) ? 'active' : ''}"
 				name={type.name}
 				on:click={() => handleClick(type.name)}
 			>
@@ -387,7 +386,7 @@
 		{/each}
 	</div>
 
-	{#if types[0] !== '' || types[1] !== ''}
+	{#if $state.types[0] !== '' || $state.types[1] !== ''}
 		<div id="matchups" class="grid grid-cols-2 my-2">
 			<div id="type-weak" class="mr-2 md:mr-4">
 				<h3>Weak to:</h3>
