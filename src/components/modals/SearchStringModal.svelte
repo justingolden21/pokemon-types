@@ -1,34 +1,20 @@
 <script>
 	import Toggle from '../Toggle.svelte';
 	import { TYPE_NAMES, getMatchup } from '../../util/types';
+	import capitalize from '../../util/capitalize';
 	import { isBoosted, getWeather, getTypeIcon } from '../../util/weatherboost';
 	import { state } from '../../stores/state';
 	import { settings } from '../../stores/settings';
 
-	window.addEventListener('load', () => {
-		// display types and update search string
-		document.querySelector('a[href="#search-string-modal"]').addEventListener('click', () => {
-			let typeHTML = '';
-			if ($state.types[0])
-				typeHTML += `${getTypeIcon($state.types[0])} ${capitalize($state.types[0])}`;
-			if ($state.types[0] && $state.types[1]) typeHTML += ' &nbsp; ';
-			if ($state.types[1])
-				typeHTML += `${getTypeIcon($state.types[1])} ${capitalize($state.types[1])}`;
-			document.getElementById('search-string-type-display').innerHTML = typeHTML;
-			updateSearchString();
-		});
-
-		// update search string
-		document
-			.querySelectorAll('#search-string-modal .toggle-checkbox')
-			.forEach((elm) => elm.addEventListener('change', updateSearchString));
-
-		document.getElementById('multiplier-threshold-select').onchange = updateSearchString;
-	});
 	const copySearchString = () => {
 		searchstringOutput.select();
 		document.execCommand('copy');
 	};
+
+	$: searchstringTypeHTML =
+		($state.types[0] && `${getTypeIcon($state.types[0])} ${capitalize($state.types[0])}`) +
+		($state.types[0] && $state.types[1] && ' &nbsp; ') +
+		($state.types[1] && `${getTypeIcon($state.types[1])} ${capitalize($state.types[1])}`);
 
 	$: searchstring =
 		$state.types[0] === '' && $state.types[1] === ''
@@ -109,7 +95,7 @@
 	}
 </script>
 
-<div id="search-string-type-display" class="mb-2" />
+<div class="mb-2">{@html searchstringTypeHTML}</div>
 
 <Toggle checked={superAgainst} labelText="Super Effective Against" />
 

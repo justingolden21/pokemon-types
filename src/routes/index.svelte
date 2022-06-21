@@ -10,6 +10,7 @@
 	import Autocomplete from '../components/Autocomplete.svelte';
 
 	import { open } from '../util/modal';
+	import capitalize from '../util/capitalize';
 	import { TYPE_DATA, getMatchup } from '../util/types';
 	import { updateWeatherBoostDisplay, isBoosted, getWeather } from '../util/weatherboost';
 
@@ -108,8 +109,6 @@
 			console.log('Share not supported'); // TODO?
 		}
 	};
-
-	const capitalize = (str) => str.charAt(0).toUpperCase() + str.substring(1);
 
 	let recentlyChangedType = -1;
 
