@@ -6,12 +6,7 @@
 	import { state } from '../../stores/state';
 	import { settings } from '../../stores/settings';
 
-	const copySearchString = () => {
-		searchstringOutput.select();
-		document.execCommand('copy');
-	};
-
-	$: searchstringTypeHTML =
+	$: typeHTML =
 		($state.types[0] && `${getTypeIcon($state.types[0])} ${capitalize($state.types[0])}`) +
 		($state.types[0] && $state.types[1] && ' &nbsp; ') +
 		($state.types[1] && `${getTypeIcon($state.types[1])} ${capitalize($state.types[1])}`);
@@ -93,9 +88,14 @@
 
 		return str;
 	}
+
+	const copySearchString = () => {
+		searchstringOutput.select();
+		document.execCommand('copy');
+	};
 </script>
 
-<div class="mb-2">{@html searchstringTypeHTML}</div>
+<div class="mb-2">{@html typeHTML}</div>
 
 <Toggle checked={superAgainst} labelText="Super Effective Against" />
 
