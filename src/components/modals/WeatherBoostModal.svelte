@@ -1,11 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
 
+	import Icon from '../Icon.svelte';
 	import { updateUrlParam, copyUrlParam } from '../../util/urlparam';
 	import printElm from '../../util/printElm';
 	import showSnackbar from '../../util/snackbar';
 	import { getTypeIcon } from '../../util/weatherboost';
-	import Icon from '../Icon.svelte';
+	import capitalize from '../../util/capitalize';
 
 	onMount(() => {
 		const boosts = {
