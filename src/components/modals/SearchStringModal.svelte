@@ -13,6 +13,8 @@
 		hasCharge = true,
 		hasAny = false;
 
+	let minimumMultiplier = 1.6;
+
 	let searchstringOutput;
 
 	$: typeHTML =
@@ -48,18 +50,17 @@
 		} else {
 			let matchups = [];
 
-			let minMultiplier = parseFloat(document.getElementById('multiplier-threshold-options').value);
-
-			//TODO: fix $settings usage
 			const usingWeatherBoost =
 				$settings.weatherBoost.weatherBoostEnabled &&
 				$settings.weatherBoost.useWeatherBoostMultiplier;
 			const currentWeather = getWeather();
 
+			const multiplierThreshold = parseFloat(minimumMultiplier);
+
 			for (let type of TYPE_NAMES) {
 				let matchup = getMatchup(type, $state.types[0], $state.types[1]);
 				if (usingWeatherBoost && isBoosted([type, ''], currentWeather)) matchup *= 1.2;
-				if (matchup < minMultiplier) continue;
+				if (matchup < multiplierThreshold) continue;
 				matchups.push({ name: type, matchup: matchup });
 			}
 
@@ -100,11 +101,15 @@
 <Toggle id="super-against-toggle" bind:checked={superAgainst} labelText="Super Effective Against" />
 
 <br />
-<div class={superAgainst ? '' : 'hidden'}>
+<div class={superAgainst ? '' : 'opacity-0'}>
 	<label for="multiplier-threshold-select">Minimum Effectiveness Multiplier</label>
-	<select id="multiplier-threshold-select" class="relative inline-block">
+	<select
+		id="multiplier-threshold-select"
+		class="relative inline-block"
+		bind:value={minimumMultiplier}
+	>
 		{#each [1.2, 1.6, 1.92, 2.56, 3.07] as val}
-			<option value={val.toString()}>{val}</option>
+			<option value={val}>{val}</option>
 		{/each}
 	</select>
 </div>
