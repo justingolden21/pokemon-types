@@ -5,6 +5,7 @@
 	import printElm from '../../util/printElm';
 	import showSnackbar from '../../util/snackbar';
 	import { getTypeIcon } from '../../util/weatherboost';
+	import Icon from '../Icon.svelte';
 
 	onMount(() => {
 		const boosts = {
@@ -68,39 +69,13 @@
 	}}
 	class="btn sm hover-fill my-3 mr-3"
 >
-	<svg
-		class="w-6 h-6 inline"
-		fill="none"
-		stroke="currentColor"
-		viewBox="0 0 24 24"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			stroke-width="2"
-			d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-		/>
-	</svg>
+	<Icon name="link" class="w-6 h-6 inline" />
 	Copy Link
 </button>
 <button
 	on:click={() => printElm('weather-boost', 'Weather Boost in Pokemon Go')}
 	class="btn sm hover-fill my-3 mr-3"
 >
-	<svg
-		class="w-6 h-6 inline"
-		fill="none"
-		stroke="currentColor"
-		viewBox="0 0 24 24"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			stroke-width="2"
-			d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-		/>
-	</svg>
+	<Icon name="print" class="w-6 h-6 inline" />
 	Print
 </button>
