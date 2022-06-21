@@ -9,8 +9,8 @@ export const defaultSettings = {
 	},
 	weatherBoost: {
 		weatherBoostEnabled: false,
-		clearButtonClearsWeather: false,
-		useWeatherBoostMultiplier: false
+		clearButtonClearsWeather: true,
+		useWeatherBoostMultiplier: true
 	},
 	autocomplete: {
 		showTypesAs: 'icons'
