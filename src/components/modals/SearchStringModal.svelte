@@ -11,10 +11,7 @@
 		($state.types[0] && $state.types[1] && ' &nbsp; ') +
 		($state.types[1] && `${getTypeIcon($state.types[1])} ${capitalize($state.types[1])}`);
 
-	$: searchstring =
-		$state.types[0] === '' && $state.types[1] === ''
-			? ''
-			: getSearchString(superAgainst, hasType, hasFast, hasCharge, hasAny);
+	$: searchstring = getSearchString(superAgainst, hasType, hasFast, hasCharge, hasAny);
 
 	let superAgainst = false,
 		hasType = true,
@@ -25,6 +22,8 @@
 	let searchstringOutput;
 
 	function getSearchString(superAgainst, hasType, hasFast, hasCharge, hasAny) {
+		if ($state.types[0] === '' && $state.types[1] === '') return '';
+
 		let str = '';
 
 		if (!superAgainst) {
@@ -95,9 +94,9 @@
 	};
 </script>
 
-<div class="mb-2">{@html typeHTML}</div>
+<div class="my-4">{@html typeHTML}</div>
 
-<Toggle checked={superAgainst} labelText="Super Effective Against" />
+<Toggle id="super-against-toggle" checked={superAgainst} labelText="Super Effective Against" />
 
 <br />
 <div class={superAgainst ? '' : 'hidden'}>
@@ -111,9 +110,10 @@
 
 <hr />
 
-<Toggle checked={hasType} labelText="Has type" />
+<Toggle id="has-type-toggle" checked={hasType} labelText="Has type" />
 
 <Toggle
+	id="has-fast-toggle"
 	checked={hasFast}
 	on:change={() => {
 		if (hasFast) hasAny = false;
@@ -122,6 +122,7 @@
 />
 
 <Toggle
+	id="has-charge-toggle"
 	checked={hasCharge}
 	on:change={() => {
 		if (hasCharge) hasAny = false;
@@ -130,6 +131,7 @@
 />
 
 <Toggle
+	id="has-any-toggle"
 	checked={hasAny}
 	on:change={() => {
 		if (hasAny) {
