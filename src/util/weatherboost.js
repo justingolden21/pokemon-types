@@ -68,7 +68,7 @@ const getWeather = () =>
 	document.getElementById('weather-boost-options')?.value.toLowerCase().trim().split('/')[0];
 
 const getTypeIcon = (type) =>
-	`<img src="img/types/${type}.svg" class="type-icon-big" style="background-color: #${getColor(
+	`<img src="/img/types/${type}.svg" class="type-icon-big" style="background-color: #${getColor(
 		type
 	)};">`;
 
