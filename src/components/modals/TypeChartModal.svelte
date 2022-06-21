@@ -9,6 +9,7 @@
 	import { onMount } from 'svelte';
 	import capitalize from '../../util/capitalize';
 
+	// TODO use #each loop instead of this old crap
 	onMount(() => {
 		// create type chart
 
