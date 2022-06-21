@@ -116,9 +116,12 @@
 	:global(html.dark) .modal {
 		@apply bg-gray-900 bg-opacity-50;
 	}
+	:global(html.dark) .modal-content {
+		@apply bg-gray-800 text-white;
+	}
 	:global(html.dark) .modal-content,
 	:global(html.dark) .modal-header {
-		@apply bg-gray-800 text-white;
+		@apply border-gray-700;
 	}
 
 	@keyframes animateTop {
