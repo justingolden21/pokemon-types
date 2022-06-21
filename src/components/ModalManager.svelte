@@ -113,12 +113,12 @@
 		@apply text-left relative flex-1 overflow-auto;
 	}
 
-	html.dark .modal {
+	:global(html.dark) .modal {
 		@apply bg-gray-900 bg-opacity-50;
 	}
-	html.dark .modal-content,
-	html.dark .modal-header {
-		@apply border-gray-700;
+	:global(html.dark) .modal-content,
+	:global(html.dark) .modal-header {
+		@apply bg-gray-800 text-white;
 	}
 
 	@keyframes animateTop {
