@@ -1,6 +1,6 @@
 import { getColor } from './types';
 
-const weatherBoost = {
+const weatherBoostData = {
 	'grass': 'sunny',
 	'fire': 'sunny',
 	'ground': 'sunny',
@@ -23,11 +23,11 @@ const weatherBoost = {
 };
 
 const isBoosted = (types, weather) =>
-	weatherBoost[types[0]] == weather || weatherBoost[types[1]] == weather;
+	weatherBoostData[types[0]] == weather || weatherBoostData[types[1]] == weather;
 
 const getTypeIcon = (type) =>
 	`<img src="/img/types/${type}.svg" class="type-icon-big" style="background-color: #${getColor(
 		type
 	)};">`;
 
-export { isBoosted, getTypeIcon };
+export { isBoosted, getTypeIcon, weatherBoostData };

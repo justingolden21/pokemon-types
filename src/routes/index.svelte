@@ -367,7 +367,7 @@
 	{#if $settings.weatherBoost.weatherBoostEnabled}
 		<select class=" ml-2 relative inline-block" bind:value={$state.weather}>
 			{#each ['None', 'Sunny/Clear', 'Rainy', 'Partly Cloudy', 'Windy', 'Snow', 'Fog'] as val}
-				<option value={val.toLowerCase().trim().split('/')[0]}>{val}</option>
+				<option value={val.toLowerCase().trim().split('/')[0].replace(' ', '_')}>{val}</option>
 			{/each}
 		</select>
 	{/if}
