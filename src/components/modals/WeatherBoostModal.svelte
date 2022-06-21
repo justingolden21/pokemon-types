@@ -60,12 +60,7 @@
 </p>
 <br />
 <p>Moves of a weather boosted type will deal <b>1.2x</b> damage.</p>
-<a
-	href="https://niantic.helpshift.com/a/pokemon-go/?s=finding-evolving-hatching&f=weather-boosts"
-	target="_blank">Learn more</a
->
 
-<br />
 <button
 	on:click={() => {
 		updateUrlParam('weatherboost');
