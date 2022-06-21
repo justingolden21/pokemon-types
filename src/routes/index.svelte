@@ -13,6 +13,7 @@
 	import capitalize from '../util/capitalize';
 	import { TYPE_DATA, getMatchup } from '../util/types';
 	import { updateWeatherBoostDisplay, isBoosted, getWeather } from '../util/weatherboost';
+	import clickOutside from '../util/clickOutside';
 
 	import pokedexJson from '../data/pokedex.json';
 
@@ -313,15 +314,22 @@
 				/>
 			</svg>
 		</button>
-		<div id="dropdown-content" class="dropdown-content text-left {threeDotMenuOpen && 'show'}">
-			<a class="modal-btn" on:click={() => open('weatherBoostModal')} role="menuitem"
-				>Weather Boost</a
+		<div
+			id="dropdown-content"
+			class="dropdown-content text-left {threeDotMenuOpen && 'show'}"
+			use:clickOutside
+			on:click_outside={() => (threeDotMenuOpen = false)}
+		>
+			<button class="modal-btn" on:click={() => open('weatherBoostModal')} role="menuitem"
+				>Weather Boost</button
 			>
-			<a class="modal-btn" on:click={() => open('searchStringModal')} role="menuitem"
-				>Search Strings</a
+			<button class="modal-btn" on:click={() => open('searchStringModal')} role="menuitem"
+				>Search Strings</button
 			>
-			<a class="modal-btn" on:click={() => open('infoModal')} role="menuitem">App Info</a>
-			<a class="modal-btn" on:click={() => open('typeChartModal')} role="menuitem">Type Chart</a>
+			<button class="modal-btn" on:click={() => open('infoModal')} role="menuitem">App Info</button>
+			<button class="modal-btn" on:click={() => open('typeChartModal')} role="menuitem"
+				>Type Chart</button
+			>
 			<!--  				<a role="menuitem">Coming soon...</a>
 				<a role="menuitem">App Info / Help</a>
 				<a role="menuitem">Multipliers</a>

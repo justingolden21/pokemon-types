@@ -6,10 +6,10 @@
 	@apply absolute right-0 bg-white border-2 border-gray-200 z-10 overflow-auto;
 	min-width: 12rem;
 }
-.dropdown-content a {
-	@apply block px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-700;
+.dropdown-content button {
+	@apply block px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 w-full text-left;
 }
-.dropdown-content a:not(:last-child) {
+.dropdown-content button:not(:last-child) {
 	@apply border-b-2 border-gray-200;
 }
 .dropdown-content.show {
@@ -35,7 +35,7 @@
 body.dark .dropdown-content {
 	@apply bg-gray-800;
 }
-body.dark .dropdown-content a {
+body.dark .dropdown-content button {
 	@apply hover:bg-gray-700 text-gray-100;
 }
 body.dark .select-btn {
