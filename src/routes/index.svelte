@@ -217,8 +217,7 @@
 		$state.types[0] = '';
 		$state.types[1] = '';
 
-		if ($settings.weatherBoost.clearButtonClearsWeather)
-			document.getElementById('weather-none').click();
+		if ($settings.weatherBoost.clearButtonClearsWeather) $state.weather = 'none';
 		document.getElementById('search').value = '';
 	}
 
