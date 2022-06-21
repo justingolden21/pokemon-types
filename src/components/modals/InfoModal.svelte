@@ -10,14 +10,12 @@
 <p>Hit <kbd>space</kbd> to focus the search input</p>
 <h3 class="my-3">Contact</h3>
 <p>
-	Feel free to contact me with any questions, mistakes, or suggestions at <a
-		href="mailto:contact@justingolden.me"
-		target="_blank">contact@justingolden.me</a
-	>.
+	Feel free to contact me with any questions, mistakes, or suggestions at
+	<a href="mailto:contact@justingolden.me" target="_blank">contact@justingolden.me</a>.
 </p>
 <h3 class="my-3">Legal</h3>
 <small>
-	<p>© {year} Justin Golden - All Rights Reserved</p>
+	<p>© {year} Justin Golden &mdash; All Rights Reserved</p>
 	<hr class="my-2" />
 	<p>
 		Pokémon are trademarks of Nintendo, Game Freak, and The Pokémon Company. Pokémon And All
