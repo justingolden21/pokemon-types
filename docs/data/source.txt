@@ -1,0 +1,1 @@
+https://github.com/ericmick/pokemon-type-chart/tree/master/data
