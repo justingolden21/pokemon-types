@@ -3,6 +3,7 @@
 	import Toggle from '../Toggle.svelte';
 	import { TYPE_NAMES, getMatchup } from '../../util/types';
 	import capitalize from '../../util/capitalize';
+	import showSnackbar from '../../util/snackbar';
 	import { isBoosted, getWeather, getTypeIcon } from '../../util/weatherboost';
 	import { state } from '../../stores/state';
 	import { settings } from '../../stores/settings';
@@ -101,6 +102,10 @@
 	const copySearchString = () => {
 		searchstringOutput.select();
 		document.execCommand('copy');
+
+		const check =
+			'<svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>';
+		showSnackbar(check + ' Copied searchstring');
 	};
 </script>
 
