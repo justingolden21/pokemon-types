@@ -36,13 +36,13 @@
 		}
 	};
 
-	let component, title, icon, previous, data;
+	let component, title, icon, data;
 	$: {
 		const modalName = $modal?.name;
 		if (modalName) {
-			({ component, title, icon, previous, data } = modalData[modalName]);
+			({ component, title, icon, data } = modalData[modalName]);
 		} else {
-			({ component, title, icon, previous, data } = {});
+			({ component, title, icon, data } = {});
 		}
 	}
 	$: data = $modal?.data || {};
@@ -51,11 +51,7 @@
 	function onWindowKeyDown(e) {
 		if (e.key !== 'Escape') return;
 
-		if (previous) {
-			open(previous);
-		} else {
-			close();
-		}
+		close();
 	}
 </script>
 
@@ -65,16 +61,11 @@
 	<div class="modal" on:mousedown={close}>
 		<div class="modal-content surface rounded" on:mousedown|stopPropagation>
 			<div class="modal-header">
-				{#if previous}
-					<button
-						class="icon-btn float-left mr-8"
-						on:click={() => open(previous)}
-						aria-label="Go back"
-					>
-						<Icon name="arrow_left" class="w-6 h-6" />
-					</button>
-				{/if}
-				<button class="icon-btn float-right" on:click={close} aria-label="Close">
+				<button
+					class="icon-btn float-right btn sm close hover-fill"
+					on:click={close}
+					aria-label="Close"
+				>
 					<Icon name="close" class="w-6 h-6" />
 				</button>
 				<h1>
