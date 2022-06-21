@@ -17,7 +17,7 @@
 			`<th style="color: #${getColor(typeName)}">
 			<img class="type-icon" style="background-color: #${getColor(
 				typeName
-			)}" src="img/types/${typeName}.svg"> 
+			)}" src="/img/types/${typeName}.svg"> 
 			${typeName.substring(0, 3).toUpperCase()}
 		</th>`;
 
@@ -125,13 +125,13 @@
 	Copy Link
 </button>
 
-<a href="img/typechart.png" download>
+<a href="/img/typechart.png" download>
 	<button class="btn sm hover-fill my-3 mr-3">
 		<Icon name="download" class="w-6 h-6 inline" />
 		Download PNG
 	</button>
 </a>
-<a href="img/typechart.pdf" download>
+<a href="/img/typechart.pdf" download>
 	<button class="btn sm hover-fill my-3 mr-3">
 		<Icon name="download" class="w-6 h-6 inline" />
 		Download PDF
@@ -149,13 +149,13 @@
 
 <div id="type-attack-chart" class="w-max mx-auto" />
 
-<a href="img/typechartattack.png" download>
+<a href="/img/typechartattack.png" download>
 	<button class="btn sm hover-fill my-3 mr-3">
 		<Icon name="download" class="w-6 h-6 inline" />
 		Download PNG
 	</button>
 </a>
-<a href="img/typechartattack.pdf" download>
+<a href="/img/typechartattack.pdf" download>
 	<button class="btn sm hover-fill my-3 mr-3">
 		<Icon name="download" class="w-6 h-6 inline" />
 		Download PDF

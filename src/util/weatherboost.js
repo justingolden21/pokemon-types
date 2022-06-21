@@ -23,7 +23,7 @@ const weatherBoost = {
 };
 
 const getWeatherImg = (weather) =>
-	'<img class="weather-icon" src="img/weather/' + weather.replace(' ', '_') + '.png">';
+	'<img class="weather-icon" src="/img/weather/' + weather.replace(' ', '_') + '.png">';
 
 const getWeatherSpan = (types) => {
 	types = types.map((s) => s.toLowerCase());

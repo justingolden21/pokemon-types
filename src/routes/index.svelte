@@ -358,30 +358,26 @@
 		Pokémon Types
 	</h1>
 
-	<div class="my-2">
-		<Autocomplete
-			id="search"
-			placeholder="Search for a Pokémon..."
-			options={pokemonNames}
-			maxResults={50}
-			selectOnFocus={true}
-			selectOnClick={true}
-			onChange={autocompleteChange}
-		/>
-	</div>
+	<Autocomplete
+		id="search"
+		placeholder="Search for a Pokémon..."
+		options={pokemonNames}
+		maxResults={50}
+		selectOnFocus={true}
+		selectOnClick={true}
+		onChange={autocompleteChange}
+	/>
 
 	{#if $settings.weatherBoost.weatherBoostEnabled}
-		<div
-			id="weather-boost-select"
-			class="relative inline-block ml-2"
+		<select
+			id="weather-boost-options"
+			class=" ml-2 relative inline-block"
 			on:change={() => updateWeatherBoostDisplay(types)}
 		>
-			<select id="weather-boost-options" class="relative inline-block">
-				{#each ['None', 'Sunny/Clear', 'Rainy', 'Partly Cloudy', 'Windy', 'Snow', 'Fog'] as val}
-					<option value={val.toString()}>{val}</option>
-				{/each}
-			</select>
-		</div>
+			{#each ['None', 'Sunny/Clear', 'Rainy', 'Partly Cloudy', 'Windy', 'Snow', 'Fog'] as val}
+				<option value={val.toString()}>{val}</option>
+			{/each}
+		</select>
 	{/if}
 
 	<p>

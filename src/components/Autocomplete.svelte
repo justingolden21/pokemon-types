@@ -126,14 +126,13 @@
 
 <svelte:window on:keydown={navigateList} />
 
-<div class="relative inline-block w-64">
-	<!-- input classes? bg-gray-100 w-64 md:w-96 px-4 py-2 -->
+<div class="relative inline-block w-64 md:w-96 my-2">
 	<input
 		{id}
 		spellcheck="false"
 		autocomplete="off"
 		type="text"
-		class="w-full"
+		class="bg-gray-100 w-full px-4 py-2"
 		{disabled}
 		{placeholder}
 		bind:this={searchInput}
@@ -174,7 +173,7 @@
 						<img
 							alt=""
 							class="type-icon"
-							src="img/types/{pokemonTypes[0].toLowerCase()}.svg"
+							src="/img/types/{pokemonTypes[0].toLowerCase()}.svg"
 							style="background-color: #{TYPE_DATA.find(
 								(x) => x.name == pokemonTypes[0].toLowerCase()
 							).color}"
