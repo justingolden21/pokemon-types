@@ -16,21 +16,13 @@
 	</select>
 </div>
 
-<br />
 <hr />
-<br />
 
 <Toggle id="has-type-toggle" checked={false} labelText="Has type" />
 
-<br />
-
 <Toggle id="has-fast-move-toggle" checked={false} labelText="Has fast move of type" />
 
-<br />
-
 <Toggle id="has-charge-move-toggle" checked={false} labelText="Has charge move of type" />
-
-<br />
 
 <Toggle id="has-any-move-toggle" checked={false} labelText="Has any move of type" />
 
