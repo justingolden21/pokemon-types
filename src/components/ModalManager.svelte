@@ -1,7 +1,7 @@
 <script>
 	// Copied from Desktop Clock
 
-	import { open, close, modal } from '../util/modal';
+	import { close, modal } from '../util/modal';
 
 	import Icon from './Icon.svelte';
 	import SettingsModal from '../components/modals/SettingsModal.svelte';
@@ -10,14 +10,12 @@
 	import SearchStringModal from '../components/modals/SearchStringModal.svelte';
 	import TypeChartModal from '../components/modals/TypeChartModal.svelte';
 
-	/// STATE ///
 	const modalData = {
 		settingsModal: {
 			title: 'Settings',
 			icon: 'settings',
 			component: SettingsModal
 		},
-
 		infoModal: {
 			title: 'Info',
 			component: InfoModal
@@ -46,16 +44,13 @@
 		}
 	}
 	$: data = $modal?.data || {};
-
-	/// EVENT HANDLERS ///
-	function onWindowKeyDown(e) {
-		if (e.key !== 'Escape') return;
-
-		close();
-	}
 </script>
 
-<svelte:window on:keydown={onWindowKeyDown} />
+<svelte:window
+	on:keydown={(e) => {
+		if (e.key === 'Escape') close();
+	}}
+/>
 
 {#if component}
 	<div class="modal" on:mousedown={close}>
