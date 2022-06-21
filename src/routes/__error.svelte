@@ -28,5 +28,5 @@
 
 	<p>{error.message}</p>
 
-	<a href="/" class="btn block mt-8 hover:no-underline">Go back to the homepage</a>
+	<a href="/" class="btn block mt-8 hover:no-underline text-accent">Go back to the homepage</a>
 </div>
