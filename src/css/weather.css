@@ -35,6 +35,6 @@
 }
 
 /* dark mode */
-body.dark .weather-icon {
+html.dark .weather-icon {
 	filter: brightness(3);
 }

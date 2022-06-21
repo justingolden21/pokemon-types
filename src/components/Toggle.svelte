@@ -29,16 +29,16 @@
 		@apply bg-gray-500;
 	}
 
-	body.dark .toggle-checkbox {
+	html.dark .toggle-checkbox {
 		@apply bg-gray-100 border-gray-400;
 	}
-	body.dark .toggle-checkbox:checked {
+	html.dark .toggle-checkbox:checked {
 		@apply border-gray-600;
 	}
-	body.dark .toggle-checkbox + .toggle-bg {
+	html.dark .toggle-checkbox + .toggle-bg {
 		@apply bg-gray-400;
 	}
-	body.dark .toggle-checkbox:checked + .toggle-bg {
+	html.dark .toggle-checkbox:checked + .toggle-bg {
 		@apply bg-gray-600;
 	}
 </style>

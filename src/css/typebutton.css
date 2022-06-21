@@ -138,7 +138,7 @@
 	display: none;
 }
 
-body.dark #type-btns .btn {
+html.dark #type-btns .btn {
 	color: white;
 }
 

@@ -7,15 +7,7 @@
 
 <h3 class="my-3">Display</h3>
 
-<Toggle
-	id="dark-mode-toggle"
-	bind:checked={$settings.display.darkMode}
-	on:change={() => {
-		if ($settings.display.darkMode) document.body.classList.add('dark');
-		else document.body.classList.remove('dark');
-	}}
-	labelText="Dark Mode"
-/>
+<Toggle id="dark-mode-toggle" bind:checked={$settings.display.darkMode} labelText="Dark Mode" />
 
 <Toggle
 	id="pokemon-with-type-toggle"
