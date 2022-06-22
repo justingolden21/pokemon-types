@@ -141,6 +141,9 @@
 html.dark #type-btns .btn {
 	color: white;
 }
+html.dark #type-btns .btn:focus {
+	--tw-ring-shadow: 0 0 0 2px #fff;
+}
 
 @media (min-width: 640px) {
 	/* sm */
