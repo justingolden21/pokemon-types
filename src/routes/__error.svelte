@@ -22,9 +22,10 @@
 
 <div class="m-16 text-center">
 	{#if status === 404}
-		<h2>The resource could not be found</h2>
+		<h1>The resource could not be found</h1>
 	{/if}
-	<h2 class="my-4">{error.name} {status}</h2>
+
+	<p class="my-4">{error.name} {status}</p>
 
 	<p>{error.message}</p>
 
