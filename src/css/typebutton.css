@@ -12,137 +12,83 @@
 	border: 2px solid #a8a878;
 	background: linear-gradient(to right, #a8a878 50%, transparent 50%) right;
 }
-.btn.normal:focus {
-	--tw-ring-shadow: 0 0 0 2px #a8a87844;
-}
 .btn.fighting {
 	border: 2px solid #c03028;
 	background: linear-gradient(to right, #c03028 50%, transparent 50%) right;
-}
-.btn.fighting:focus {
-	--tw-ring-shadow: 0 0 0 2px #c0302844;
 }
 .btn.flying {
 	border: 2px solid #a890f0;
 	background: linear-gradient(to right, #a890f0 50%, transparent 50%) right;
 }
-.btn.flying:focus {
-	--tw-ring-shadow: 0 0 0 2px #a890f044;
-}
 .btn.poison {
 	border: 2px solid #a040a0;
 	background: linear-gradient(to right, #a040a0 50%, transparent 50%) right;
-}
-.btn.poison:focus {
-	--tw-ring-shadow: 0 0 0 2px #a040a044;
 }
 .btn.ground {
 	border: 2px solid #e0c068;
 	background: linear-gradient(to right, #e0c068 50%, transparent 50%) right;
 }
-.btn.ground:focus {
-	--tw-ring-shadow: 0 0 0 2px #e0c06844;
-}
 .btn.rock {
 	border: 2px solid #b8a038;
 	background: linear-gradient(to right, #b8a038 50%, transparent 50%) right;
-}
-.btn.rock:focus {
-	--tw-ring-shadow: 0 0 0 2px #b8a03844;
 }
 .btn.bug {
 	border: 2px solid #a8b820;
 	background: linear-gradient(to right, #a8b820 50%, transparent 50%) right;
 }
-.btn.bug:focus {
-	--tw-ring-shadow: 0 0 0 2px #a8b82044;
-}
 .btn.ghost {
 	border: 2px solid #705898;
 	background: linear-gradient(to right, #705898 50%, transparent 50%) right;
-}
-.btn.ghost:focus {
-	--tw-ring-shadow: 0 0 0 2px #70589844;
 }
 .btn.steel {
 	border: 2px solid #b8b8d0;
 	background: linear-gradient(to right, #b8b8d0 50%, transparent 50%) right;
 }
-.btn.steel:focus {
-	--tw-ring-shadow: 0 0 0 2px #b8b8d044;
-}
 .btn.fire {
 	border: 2px solid #f08030;
 	background: linear-gradient(to right, #f08030 50%, transparent 50%) right;
-}
-.btn.fire:focus {
-	--tw-ring-shadow: 0 0 0 2px #f0803044;
 }
 .btn.water {
 	border: 2px solid #6890f0;
 	background: linear-gradient(to right, #6890f0 50%, transparent 50%) right;
 }
-.btn.water:focus {
-	--tw-ring-shadow: 0 0 0 2px #6890f044;
-}
 .btn.grass {
 	border: 2px solid #78c850;
 	background: linear-gradient(to right, #78c850 50%, transparent 50%) right;
-}
-.btn.grass:focus {
-	--tw-ring-shadow: 0 0 0 2px #78c85044;
 }
 .btn.electric {
 	border: 2px solid #f8d030;
 	background: linear-gradient(to right, #f8d030 50%, transparent 50%) right;
 }
-.btn.electric:focus {
-	--tw-ring-shadow: 0 0 0 2px #f8d03044;
-}
 .btn.psychic {
 	border: 2px solid #f85888;
 	background: linear-gradient(to right, #f85888 50%, transparent 50%) right;
-}
-.btn.psychic:focus {
-	--tw-ring-shadow: 0 0 0 2px #f8588844;
 }
 .btn.ice {
 	border: 2px solid #98d8d8;
 	background: linear-gradient(to right, #98d8d8 50%, transparent 50%) right;
 }
-.btn.ice:focus {
-	--tw-ring-shadow: 0 0 0 2px #98d8d844;
-}
 .btn.dragon {
 	border: 2px solid #7038f8;
 	background: linear-gradient(to right, #7038f8 50%, transparent 50%) right;
-}
-.btn.dragon:focus {
-	--tw-ring-shadow: 0 0 0 2px #7038f844;
 }
 .btn.dark {
 	border: 2px solid #705848;
 	background: linear-gradient(to right, #705848 50%, transparent 50%) right;
 }
-.btn.dark:focus {
-	--tw-ring-shadow: 0 0 0 2px #70584844;
-}
 .btn.fairy {
 	border: 2px solid #ee99ac;
 	background: linear-gradient(to right, #ee99ac 50%, transparent 50%) right;
 }
-.btn.fairy:focus {
-	--tw-ring-shadow: 0 0 0 2px #ee99ac44;
-}
 #type-btns .btn .type-icon {
 	display: none;
+}
+#type-btns .btn:focus {
+	@apply ring-gray-300;
 }
 
 html.dark #type-btns .btn {
 	color: white;
-}
-html.dark #type-btns .btn:focus {
-	--tw-ring-shadow: 0 0 0 2px #fff;
 }
 
 @media (min-width: 640px) {
