@@ -14,9 +14,11 @@
 	import { TYPE_DATA, getMatchup } from '../util/types';
 	import { isBoosted } from '../util/weatherboost';
 	import clickOutside from '../util/clickOutside';
+	import { showInstallButton, installButtonClick } from '../util/install';
 
 	import pokedexJson from '../data/pokedex.json';
 	import WeatherBoostText from '../components/WeatherBoostText.svelte';
+	import Icon from '../components/Icon.svelte';
 
 	const pokemonNames = pokedexJson.map((x) => x.name);
 
@@ -350,6 +352,11 @@
 			</svg>
 		</button>
 		Pokémon Types
+		{#if $showInstallButton}
+			<button on:click={installButtonClick} class="btn hover-fill">
+				<Icon name="download" class="w-6 h-6 inline" />
+			</button>
+		{/if}
 	</h1>
 
 	<Autocomplete
