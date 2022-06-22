@@ -7,6 +7,9 @@ const config = {
 		extend: {
 			colors: {
 				accent: '#7038F8'
+			},
+			screens: {
+				xs: '360px'
 			}
 		}
 	},

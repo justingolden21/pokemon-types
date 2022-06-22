@@ -321,7 +321,7 @@
 
 	<WeatherBoostText />
 
-	<div id="type-btns" class="grid grid-cols-3 md:grid-cols-6 xl:grid-cols-9 my-2">
+	<div id="type-btns" class="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-6 xl:grid-cols-9 my-2">
 		{#each TYPE_DATA as type}
 			<button
 				class="btn {type.name} {$state.types.includes(type.name) ? 'active' : ''}"
