@@ -241,6 +241,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Pokémon Types</title>
+</svelte:head>
+
 <!-- on spacebar, focus autocomplete -->
 <svelte:window
 	on:onkeyup={(e) => {
